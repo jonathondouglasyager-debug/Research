@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Command Center - Jonathon's Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .stat-card.investigations .stat-number { color: #4a9eff; }
+        .stat-card.files .stat-number { color: #4caf50; }
+        .stat-card.databases .stat-number { color: #ff9800; }
+        .stat-card.tools .stat-number { color: #9c27b0; }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 RESEARCH COMMAND CENTER</h1>
+            <p class="subtitle">Jonathon's Research Index | December 17, 2025</p>
+        </header>
+
+        <div class="stats-dashboard">
+            <div class="stat-card investigations">
+                <span class="stat-number">7</span>
+                <span class="stat-label">Active Investigations</span>
+            </div>
+            <div class="stat-card files">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Total Files</span>
+            </div>
+            <div class="stat-card databases">
+                <span class="stat-number">12</span>
+                <span class="stat-label">CSV Databases</span>
+            </div>
+            <div class="stat-card tools">
+                <span class="stat-number">15</span>
+                <span class="stat-label">Python Tools</span>
+            </div>
+        </div>
+
+        <footer>
+            <p>Research Command Center | Built for systematic truth-seeking</p>
+            <p>Your full Research Hub is live at your local files</p>
+        </footer>
+    </div>
+</body>
+</html>
