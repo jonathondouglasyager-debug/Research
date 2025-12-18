@@ -1,0 +1,539 @@
+{
+  "indexed_files": {
+    "COMMAND_CENTER_GUIDE.md": {
+      "indexed_date": "2025-12-10T05:06:27.657341",
+      "source_id": "efb71872f2a3",
+      "investigations": [
+        "surveillance_infrastructure",
+        "weather_modification",
+        "media_ownership",
+        "flight_tracking"
+      ]
+    },
+    "INDEX.html": {
+      "indexed_date": "2025-12-10T05:56:40.987472",
+      "source_id": "b1cf7ef61fb0",
+      "investigations": []
+    },
+    "INDEX_v1.html": {
+      "indexed_date": "2025-12-10T05:06:27.717781",
+      "source_id": "9a02450efa88",
+      "investigations": []
+    },
+    "INDEX_v2.html": {
+      "indexed_date": "2025-12-10T05:06:27.744620",
+      "source_id": "95e6bbf2c2bd",
+      "investigations": []
+    },
+    "INDEX_v3.html": {
+      "indexed_date": "2025-12-10T05:06:27.770996",
+      "source_id": "da65e8ce3185",
+      "investigations": []
+    },
+    "INDEX_v4.html": {
+      "indexed_date": "2025-12-10T05:06:27.800705",
+      "source_id": "8a356543299d",
+      "investigations": []
+    },
+    "INDEX_v5.html": {
+      "indexed_date": "2025-12-10T05:06:27.828052",
+      "source_id": "31e864f30293",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_1.pdf": {
+      "indexed_date": "2025-12-10T05:06:31.053233",
+      "source_id": "90a2a078c97c",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_10.pdf": {
+      "indexed_date": "2025-12-10T05:06:58.461434",
+      "source_id": "8b064d09b2cc",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_11.pdf": {
+      "indexed_date": "2025-12-10T05:07:07.991839",
+      "source_id": "9f2a24891c98",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_12.pdf": {
+      "indexed_date": "2025-12-10T05:07:08.396742",
+      "source_id": "abd874e8f330",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_13.pdf": {
+      "indexed_date": "2025-12-10T05:07:08.695946",
+      "source_id": "5e34b3cac68d",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_14.pdf": {
+      "indexed_date": "2025-12-10T05:07:08.904071",
+      "source_id": "cc017e1995a6",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_15.pdf": {
+      "indexed_date": "2025-12-10T05:07:09.059575",
+      "source_id": "30071b209550",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_16.pdf": {
+      "indexed_date": "2025-12-10T05:07:09.200853",
+      "source_id": "b79b444c3a7b",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_17.pdf": {
+      "indexed_date": "2025-12-10T05:07:09.397604",
+      "source_id": "302ef3a806d8",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_18.pdf": {
+      "indexed_date": "2025-12-10T05:07:09.933110",
+      "source_id": "8bf4a9483624",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_19.pdf": {
+      "indexed_date": "2025-12-10T05:07:11.363893",
+      "source_id": "6f9f61d135bb",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_2.pdf": {
+      "indexed_date": "2025-12-10T05:07:14.985976",
+      "source_id": "2ec4ded9a86b",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_20.pdf": {
+      "indexed_date": "2025-12-10T05:07:15.093501",
+      "source_id": "e6e190cb3acf",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_3.pdf": {
+      "indexed_date": "2025-12-10T05:07:15.718825",
+      "source_id": "1642317fb9ec",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_4.pdf": {
+      "indexed_date": "2025-12-10T05:07:15.844074",
+      "source_id": "61df80595f24",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_5.pdf": {
+      "indexed_date": "2025-12-10T05:07:15.962772",
+      "source_id": "afaec65079a6",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_6.pdf": {
+      "indexed_date": "2025-12-10T05:07:16.074932",
+      "source_id": "47d4d786e7e3",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_7.pdf": {
+      "indexed_date": "2025-12-10T05:07:17.174586",
+      "source_id": "10c763b7a3d1",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_8.pdf": {
+      "indexed_date": "2025-12-10T05:07:19.790922",
+      "source_id": "78fe90fe09ad",
+      "investigations": []
+    },
+    "Documents and Research\\Epstein-Docs_part_9.pdf": {
+      "indexed_date": "2025-12-10T05:07:36.980711",
+      "source_id": "734a525d430d",
+      "investigations": []
+    },
+    "Documents and Research\\RTX Corporation_ The Complete Technology and Power Structure Investigation.pdf": {
+      "indexed_date": "2025-12-10T05:07:37.349590",
+      "source_id": "39b53a5e656f",
+      "investigations": []
+    },
+    "Tools_and_Systems\\Master Research Hub\\Download_Queue_Manager.md": {
+      "indexed_date": "2025-12-10T05:07:37.388695",
+      "source_id": "68d95891dbd5",
+      "investigations": [
+        "surveillance_infrastructure",
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\Master Research Hub\\Master_Session_Index.md": {
+      "indexed_date": "2025-12-10T05:07:37.424743",
+      "source_id": "3a142abe70a8",
+      "investigations": [
+        "weather_modification",
+        "surveillance_infrastructure",
+        "flight_tracking"
+      ]
+    },
+    "Tools_and_Systems\\Master Research Hub\\Research_Workflow_Integration_Guide.md": {
+      "indexed_date": "2025-12-10T05:07:37.466970",
+      "source_id": "cbffe7741e3a",
+      "investigations": [
+        "surveillance_infrastructure",
+        "weather_modification",
+        "flight_tracking",
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\Master Research Hub\\TEMPLATE_Research_Session.md": {
+      "indexed_date": "2025-12-10T05:07:37.503096",
+      "source_id": "ca97adf33305",
+      "investigations": [
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\master_research_hub_ULTIMATE.html": {
+      "indexed_date": "2025-12-10T05:07:37.529350",
+      "source_id": "0960c0c86e92",
+      "investigations": []
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\Research_Command_Center.html": {
+      "indexed_date": "2025-12-10T05:07:37.554810",
+      "source_id": "90fbf9a6eb2d",
+      "investigations": []
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\Research_Dashboard_FINAL.html": {
+      "indexed_date": "2025-12-10T05:07:37.581166",
+      "source_id": "9714e0ae7c62",
+      "investigations": []
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\research_hub_v1_21.html": {
+      "indexed_date": "2025-12-10T05:07:37.605936",
+      "source_id": "e2c6fa096201",
+      "investigations": []
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\Shroud_Evidence_Requirements.html": {
+      "indexed_date": "2025-12-10T05:07:37.632517",
+      "source_id": "9c974d4ad63a",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Atmospheric_Infrastructure_Actors.csv": {
+      "indexed_date": "2025-12-10T05:07:37.656754",
+      "source_id": "95dfce6f4e3c",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\COMPLETE_ECOSYSTEM_GUIDE.md": {
+      "indexed_date": "2025-12-10T05:07:37.696979",
+      "source_id": "da948d036429",
+      "investigations": [
+        "surveillance_infrastructure",
+        "weather_modification",
+        "flight_tracking",
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Flight_Tracking_Investigation.csv": {
+      "indexed_date": "2025-12-10T05:07:37.722810",
+      "source_id": "768df564b56d",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Geoengineering_Legislation.csv": {
+      "indexed_date": "2025-12-10T05:07:37.748665",
+      "source_id": "728c44373153",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\HOME_SETUP_GUIDE.md": {
+      "indexed_date": "2025-12-10T05:07:37.788676",
+      "source_id": "e0e8618e1fa8",
+      "investigations": [
+        "media_ownership",
+        "surveillance_infrastructure",
+        "weather_modification",
+        "flight_tracking"
+      ]
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub.html": {
+      "indexed_date": "2025-12-10T05:07:37.814675",
+      "source_id": "53fd4a831728",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_PRO.html": {
+      "indexed_date": "2025-12-10T05:07:37.839728",
+      "source_id": "5f380227d70a",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_SEARCH.html": {
+      "indexed_date": "2025-12-10T05:07:37.864425",
+      "source_id": "72212703c791",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_ULTIMATE (4).html": {
+      "indexed_date": "2025-12-10T05:07:37.885921",
+      "source_id": "fddaf5efee00",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\ULTIMATE_HUB_GUIDE.md": {
+      "indexed_date": "2025-12-10T05:07:37.917094",
+      "source_id": "61db463c37d3",
+      "investigations": [
+        "surveillance_infrastructure",
+        "weather_modification",
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Weather_Modification_Timeline.csv": {
+      "indexed_date": "2025-12-10T05:07:37.937369",
+      "source_id": "48ed8d924dcd",
+      "investigations": []
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\WORKFLOW_INSTRUCTIONS.md": {
+      "indexed_date": "2025-12-10T05:07:37.965958",
+      "source_id": "8744273e5c86",
+      "investigations": []
+    },
+    "Tools_and_Systems\\Templates\\CDC_COVID_DATA_DOWNLOAD_GUIDE.md": {
+      "indexed_date": "2025-12-10T05:07:38.002403",
+      "source_id": "2e1fd64fcb6c",
+      "investigations": [
+        "surveillance_infrastructure"
+      ]
+    },
+    "Tools_and_Systems\\Templates\\Download_Queue_Manager.md": {
+      "indexed_date": "2025-12-10T05:07:38.026984",
+      "source_id": "94d6ab0e8673",
+      "investigations": [
+        "surveillance_infrastructure",
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\Templates\\HOW-TO-USE-PRESENTATION.md": {
+      "indexed_date": "2025-12-10T05:07:38.056631",
+      "source_id": "56a19706f9eb",
+      "investigations": [
+        "weather_modification"
+      ]
+    },
+    "Tools_and_Systems\\Templates\\Master_Session_Index.md": {
+      "indexed_date": "2025-12-10T05:07:38.079536",
+      "source_id": "468fc5957c1d",
+      "investigations": [
+        "weather_modification",
+        "surveillance_infrastructure",
+        "flight_tracking"
+      ]
+    },
+    "Tools_and_Systems\\Templates\\Research_Workflow_Integration_Guide.md": {
+      "indexed_date": "2025-12-10T05:07:38.111969",
+      "source_id": "e7c79a05e8bb",
+      "investigations": [
+        "surveillance_infrastructure",
+        "weather_modification",
+        "flight_tracking",
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\Templates\\TEMPLATE_Research_Session.md": {
+      "indexed_date": "2025-12-10T05:07:38.135497",
+      "source_id": "cc3043b2dd51",
+      "investigations": [
+        "media_ownership"
+      ]
+    },
+    "Tools_and_Systems\\Templates\\WORKFLOW_INSTRUCTIONS.md": {
+      "indexed_date": "2025-12-10T05:07:38.158557",
+      "source_id": "c0cb4601e10b",
+      "investigations": []
+    },
+    "Output\\Databases\\compass_artifact_wf-97505f4b-0692-4de5-bf9b-8de1acde77f0_text_markdown.md": {
+      "indexed_date": "2025-12-10T05:07:38.189518",
+      "source_id": "e3be759a6457",
+      "investigations": [
+        "surveillance_infrastructure",
+        "flight_tracking",
+        "weather_modification",
+        "media_ownership"
+      ]
+    },
+    "Output\\Databases\\entity_list_1764799560021.html": {
+      "indexed_date": "2025-12-10T05:07:38.210509",
+      "source_id": "8ce15070603b",
+      "investigations": []
+    },
+    "Output\\Databases\\Untitled Project_complete_1764799636415.json": {
+      "indexed_date": "2025-12-10T05:07:38.230374",
+      "source_id": "3934270e6450",
+      "investigations": []
+    },
+    "Output\\Databases\\Untitled Project_entities_1764804662695.csv": {
+      "indexed_date": "2025-12-10T05:07:38.250989",
+      "source_id": "1112438a1ae9",
+      "investigations": []
+    },
+    "Output\\YouTube_Content\\operation-popeye-presentation.pptx": {
+      "indexed_date": "2025-12-10T05:07:38.271578",
+      "source_id": "b2fda020c9dd",
+      "investigations": []
+    },
+    "Active_Investigations\\flight and weather research\\files (1).zip": {
+      "indexed_date": "2025-12-10T05:07:38.291984",
+      "source_id": "f2a056c317d4",
+      "investigations": [
+        "flight_and_weather_research"
+      ]
+    },
+    "Active_Investigations\\Surveillance_Infrastructure\\rtx_timeline_autoindex_test.md": {
+      "indexed_date": "2025-12-10T05:07:38.315959",
+      "source_id": "35a3fa80d321",
+      "investigations": [
+        "surveillance_infrastructure"
+      ]
+    },
+    "Active_Investigations\\Surveillance_Infrastructure\\surveillance_weather_nexus.md": {
+      "indexed_date": "2025-12-10T05:07:38.352202",
+      "source_id": "eb3f8854d91f",
+      "investigations": [
+        "surveillance_infrastructure",
+        "weather_modification",
+        "flight_tracking",
+        "media_ownership"
+      ]
+    },
+    "Active_Investigations\\Weather_Modification\\auto_index_test.md": {
+      "indexed_date": "2025-12-10T05:07:38.374122",
+      "source_id": "405c7e8c536b",
+      "investigations": [
+        "weather_modification"
+      ]
+    },
+    "Active_Investigations\\Weather_Modification\\weather_modification_research_database.csv": {
+      "indexed_date": "2025-12-10T05:07:38.394678",
+      "source_id": "9afe37b01079",
+      "investigations": [
+        "weather_modification"
+      ]
+    },
+    "Active_Investigations\\Weather_Modification\\Evidence_Matrix\\Atmospheric_Infrastructure_Actors.csv": {
+      "indexed_date": "2025-12-10T05:07:38.414655",
+      "source_id": "da001f969fbd",
+      "investigations": [
+        "weather_modification"
+      ]
+    },
+    "Active_Investigations\\Weather_Modification\\Timeline\\weather_modification_timeline.md": {
+      "indexed_date": "2025-12-10T05:07:38.448277",
+      "source_id": "3f3522324ca6",
+      "investigations": [
+        "weather_modification",
+        "flight_tracking",
+        "surveillance_infrastructure",
+        "media_ownership"
+      ]
+    },
+    "Active_Investigations\\Flight_Tracking\\Analysis\\Flight_Tracking_Investigation.csv": {
+      "indexed_date": "2025-12-10T05:07:38.469229",
+      "source_id": "87d08e9a6bdf",
+      "investigations": [
+        "flight_tracking"
+      ]
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_quick_reference_calendar.txt": {
+      "indexed_date": "2025-12-10T05:07:38.499610",
+      "source_id": "a8bd5bef69f7",
+      "investigations": [
+        "flight_tracking",
+        "surveillance_infrastructure",
+        "media_ownership",
+        "weather_modification"
+      ]
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_research_database.csv": {
+      "indexed_date": "2025-12-10T05:07:38.520019",
+      "source_id": "16316e9d8264",
+      "investigations": [
+        "flight_tracking"
+      ]
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_research_guide.md": {
+      "indexed_date": "2025-12-10T05:07:38.551483",
+      "source_id": "9669eba9b8ed",
+      "investigations": [
+        "flight_tracking",
+        "surveillance_infrastructure",
+        "media_ownership",
+        "weather_modification"
+      ]
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_timeline_calendar.md": {
+      "indexed_date": "2025-12-10T05:07:38.585602",
+      "source_id": "a0b8661e68c3",
+      "investigations": [
+        "flight_tracking",
+        "surveillance_infrastructure",
+        "media_ownership",
+        "weather_modification"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\entity_database.csv": {
+      "indexed_date": "2025-12-10T05:56:41.018418",
+      "source_id": "5265d3fa89cb",
+      "investigations": [
+        "fox_news_corp_investigation"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\investigation_metadata.json": {
+      "indexed_date": "2025-12-10T05:56:41.046481",
+      "source_id": "fa47c31fdb11",
+      "investigations": [
+        "fox_news_corp_investigation"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\investigation_overview.md": {
+      "indexed_date": "2025-12-10T05:56:41.083832",
+      "source_id": "b9704bbca3cd",
+      "investigations": [
+        "media_ownership"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\research_log.md": {
+      "indexed_date": "2025-12-10T05:56:41.120321",
+      "source_id": "68b24fcbb8a9",
+      "investigations": [
+        "media_ownership"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Analysis\\comprehensive_investigation_report.md": {
+      "indexed_date": "2025-12-10T05:56:41.152641",
+      "source_id": "ed60fc8c9a6f",
+      "investigations": [
+        "media_ownership",
+        "surveillance_infrastructure",
+        "weather_modification",
+        "flight_tracking"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Analysis\\README.md": {
+      "indexed_date": "2025-12-10T05:56:41.189415",
+      "source_id": "8fd0183aba9e",
+      "investigations": [
+        "fox_news_corp_investigation"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Corporate_Networks\\README.md": {
+      "indexed_date": "2025-12-10T05:56:41.225400",
+      "source_id": "2844d3d38def",
+      "investigations": [
+        "fox_news_corp_investigation"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Evidence\\README.md": {
+      "indexed_date": "2025-12-10T05:56:41.260971",
+      "source_id": "c158fc9e1a82",
+      "investigations": [
+        "fox_news_corp_investigation"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\README.md": {
+      "indexed_date": "2025-12-10T05:56:41.295112",
+      "source_id": "467d7bef201a",
+      "investigations": [
+        "fox_news_corp_investigation"
+      ]
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\timeline.md": {
+      "indexed_date": "2025-12-10T05:56:41.325094",
+      "source_id": "e30a01667cca",
+      "investigations": [
+        "media_ownership",
+        "surveillance_infrastructure"
+      ]
+    }
+  },
+  "last_scan": "2025-12-10T05:56:41.351346"
+}

@@ -1,0 +1,73 @@
+Entity_Name,Entity_Type,Description,First_Mentioned,Source,Role,Connections,Status,Notes
+Lachlan Murdoch,Person,Executive Chairman & CEO Fox Corporation,1996,Fox Corp Filings,Ultimate Control,Murdoch Family Trust 36.2% voting control,Active,Sole control after September 2025 settlement
+Rupert Murdoch,Person,Chairman Emeritus Fox Corporation & News Corp,1996,Fox Corp Filings,Founder/Advisor,Speaks daily with Lachlan,Semi-Retired,Stepped down November 2023
+Suzanne Scott,Person,CEO Fox News Media,2018,Fox News,Day-to-day Operations,Reports to Lachlan Murdoch,Active,First woman CEO of Fox News
+Jay Wallace,Person,President & Executive Editor Fox News Media,2018,Fox News,Editorial Control,Reports to Suzanne Scott,Active,Oversees all news programming
+John Nallen,Person,President & COO Fox Corporation,2019,Fox Corp,Operations,C-suite executive,Active,Former CFO ~$6.5M SAP target FY2026
+Steve Tomsic,Person,CFO Fox Corporation,2019,Fox Corp,Finance,C-suite executive,Active,~$10.3M total compensation FY2025
+Paul Ryan,Person,Board Director Fox Corporation,2019,Fox Corp Filings,Governance,Former US House Speaker,Active,Governance Committee Chair Compensation Committee
+Chase Carey,Person,Lead Independent Director,2019,Fox Corp Filings,Board Oversight,Former Formula 1 Chairman,Active,Lead independent director owns 244755 shares
+Roland Hernandez,Person,Board Director,2019,Fox Corp Filings,Audit,Former Telemundo CEO,Active,Audit Committee Chair sold 17767 shares Oct 2025
+Peggy Johnson,Person,Board Director,2023,Fox Corp Filings,Board Member,BlackRock board member,Active,Former Magic Leap CEO ex-Microsoft
+William Burck,Person,Board Director,2019,Fox Corp Filings,Compensation,Former White House Counsel,Active,Compensation Committee Chair
+Tony Abbott,Person,Board Director,2019,Fox Corp Filings,Board Member,Former Australian Prime Minister,Active,International perspective
+Roger Ailes,Person,Fox News Founder & Former CEO,1996-2016,Public Record,Founder,Built Fox News dominance,Deceased 2017,Resigned July 2016 amid harassment allegations
+Tucker Carlson,Person,Former Fox News Host,2009-2023,Public Record,Former Primetime Host,Terminated April 2023,Terminated,Post-Dominion settlement termination
+Sean Hannity,Person,Fox News Host,1996-Present,Fox News,Primetime Host,Long-tenured anchor,Active,Named in Dominion lawsuit
+Laura Ingraham,Person,Fox News Host,2017-Present,Fox News,Primetime Host,Major primetime presence,Active,Named in Dominion lawsuit
+Jack Keane,Person,Fox News Contributor,Various,Fox News,Military Analyst,SCP Partners defense VC,Active,Undisclosed defense industry ties
+Van Hipp,Person,Fox News Contributor,Various,Fox News,Defense Analyst,American Defense International,Active,Lobbies for Raytheon Palantir
+Daniel OBrien,Person,Executive VP Head of Global Government Relations,2022,Fox Political Activities Report,Federal Lobbyist,Coordinates all lobbying activities,Active,Top government affairs executive
+Kristopher Jones,Person,Senior VP of Government Relations,2022,Fox Political Activities Report,Federal Lobbyist,Reports to Daniel OBrien,Active,Registered federal lobbyist
+Jamie Gillespie,Person,Senior VP of Government Relations,2022,Fox Political Activities Report,Federal Lobbyist,Reports to Daniel OBrien,Active,Registered federal lobbyist
+Carissa Smith,Person,VP of Government Relations,2022,Fox Political Activities Report,Federal Lobbyist,Government Relations team,Active,Registered federal lobbyist
+Vanguard Group,Institution,Institutional Investor,2019,SEC Filings,Major Shareholder,7.49% ownership,Active,Largest institutional holder
+BlackRock Inc,Institution,Institutional Investor,2019,SEC Filings,Major Shareholder,5.7-15.1% ownership estimates,Active,Second largest institutional holder
+State Street Corporation,Institution,Institutional Investor,2019,SEC Filings,Major Shareholder,4.59% ownership,Active,Third largest institutional holder
+Dodge & Cox,Institution,Institutional Investor,2019,SEC Filings,Institutional Investor,3.1% ownership,Active,Major institutional holder
+Palantir Technologies,Corporation,Technology Partner,2025,Axios Disclosure,AI Newsroom Partner,Direct commercial partnership November 2025,Active,Defense contractor with Fox AI partnership
+Dominion Voting Systems,Corporation,Plaintiff,2021-2023,Court Filings,Defamation Plaintiff,$787.5M settlement April 2023,Settled,Largest media defamation settlement in history
+Smartmatic,Corporation,Active Plaintiff,2021-Present,Court Filings,Defamation Plaintiff,$2.7B lawsuit active,Active Litigation,Appeals court rejected Fox dismissal January 2025
+Walt Disney Company,Corporation,Acquirer,2019,SEC Filings,Content Acquirer,Bought 21st Century Fox assets for $71.3B,Transaction Complete,March 2019 deal closed
+Comcast Corporation,Corporation,Distributor/Competitor,Ongoing,Public Filings,Cable Provider,Acquired Sky plc owns MSNBC,Active,Major cable distributor and competitor
+Fox Corporation,Corporation,Parent Company,2019,SEC Filings,Media Conglomerate,$16.3B FY2025 revenue,Active,Created from 21st Century Fox split
+Fox News Channel,Subsidiary,Cable News Network,1996,Fox Corp,Primary Revenue Driver,23 consecutive years #1 cable news,Active,Flagship property
+Fox Business Network,Subsidiary,Business News Network,2007,Fox Corp,Cable Network,Business news programming,Active,Sister network to FNC
+Fox Television Stations,Subsidiary,Broadcast Stations,Various,Fox Corp,Broadcast Division,29 stations in 18 markets,Active,Local broadcast properties
+Tubi,Subsidiary,Streaming Service,2020,Fox Corp,Digital Platform,100M+ monthly active users $1.1B revenue,Active,Acquired March 2020 for $440M
+Fox Nation,Subsidiary,Subscription Streaming,2018,Fox Corp,Digital Platform,SVOD conservative content,Active,Subscription streaming service
+FOX One,Subsidiary,DTC Streaming Service,2025,Fox Corp Announcement,Digital Platform,Full portfolio streaming launch Fall 2025,Announced,Direct-to-consumer bundle
+Newsmax,Corporation,Competitor,Ongoing,Public Info,Cable News Competitor,Right-leaning competitor,Active,150K-400K daily viewership
+One America News (OAN),Corporation,Former Competitor,Ongoing,Public Info,Cable News Competitor,Lost DirecTV Verizon distribution 2022,Diminished,Far-right competitor
+CNN,Corporation,Competitor,Ongoing,Public Info,Cable News Competitor,Warner Bros Discovery owned,Active,Second place cable news
+MSNBC,Corporation,Competitor,Ongoing,Public Info,Cable News Competitor,Comcast/NBCUniversal owned,Active,Third place cable news
+Murdoch Family Trust,Trust,Control Vehicle,1999,Court Filings,Ownership Trust,36.2% voting control of Fox Corp,Active,Irrevocable trust controls both Fox and News Corp
+GlaxoSmithKline,Corporation,Major Advertiser,Ongoing,Public Info,Pharmaceutical Advertiser,Major pharma advertising presence,Active,Significant ad spending
+Pfizer,Corporation,Major Advertiser,Ongoing,Public Info,Pharmaceutical Advertiser,Major pharma advertising presence,Active,Significant ad spending
+Johnson & Johnson,Corporation,Major Advertiser,Ongoing,Public Info,Pharmaceutical Advertiser,Major pharma advertising presence,Active,Significant ad spending
+Liberty Mutual,Corporation,Major Advertiser,Ongoing,Public Info,Insurance Advertiser,Major insurance advertising,Active,Significant ad spending
+Progressive Insurance,Corporation,Major Advertiser,Ongoing,Public Info,Insurance Advertiser,Major insurance advertising,Active,Significant ad spending
+Charles Schwab,Corporation,Major Advertiser,Ongoing,Public Info,Financial Advertiser,Major financial services advertising,Active,Significant ad spending
+MyPillow,Corporation,Major Advertiser,2016-2024,Public Info,Consumer Products,~$50M 2020 spend $7.8M unpaid 2024,Troubled,Suspended January 2024 over unpaid bills
+FOXPAC,PAC,Political Action Committee,2018,FEC Filing,Corporate PAC,C00693002 50/50 bipartisan policy,Active,$592564 raised 2023-2024 cycle
+News Corp,Corporation,Sister Company,1999,Public Filings,Media Conglomerate,Same Murdoch Family Trust control,Active,Wall Street Journal NY Post Times UK HarperCollins
+Flutter Entertainment,Corporation,Investment,Ongoing,Fox Corp 10K,Online Gaming,~2.4% Fox ownership ~4.3M shares,Active,Fox Sports has 10-yr call option expires Dec 2030
+Caliente TV,Subsidiary,Sports Content Producer,2025,Fox Corp Proxy,Latin America Sports,3000+ hours original sports content,Acquired 2025,Sports content expansion
+Big Ten Network,Subsidiary,Sports Network,Ongoing,Fox Corp,College Sports,Conference sports rights,Active,Part of Cable Network Programming segment
+Fox Sports 1 (FS1),Subsidiary,Sports Cable Network,Ongoing,Fox Corp,Cable Sports Network,Competes with ESPN,Active,Part of Cable Network Programming segment
+Fox Sports 2 (FS2),Subsidiary,Sports Cable Network,Ongoing,Fox Corp,Cable Sports Network,Secondary sports network,Active,Part of Cable Network Programming segment
+Fox Deportes,Subsidiary,Spanish Sports Network,Ongoing,Fox Corp,Spanish-Language Sports,Sports programming in Spanish,Active,Part of Cable Network Programming segment
+Fox Weather,Subsidiary,Digital Weather Platform,Recent,Fox Corp,Digital Platform,Weather news and forecasting,Active,Digital streaming platform
+MyNetworkTV,Subsidiary,Broadcast Network,2006,Fox Corp,Broadcast Network,Secondary broadcast network,Active,Smaller broadcast property
+Credible,Subsidiary,Digital Lead Generation,Ongoing,Fox Corp 10K,Digital Platform,Financial services lead gen,Active,Operating segment
+FOX Studio Lot,Subsidiary,Real Estate Production,Ongoing,Fox Corp 10K,Production Facilities,Studio lot operations,Active,Operating segment
+SCP Partners,Corporation,Defense VC Firm,Via Jack Keane,Fox News,Defense Industry,Connected via Jack Keane,Active,Potential conflict of interest with Keane role
+American Defense International,Corporation,Defense Lobbying,Via Van Hipp,Fox News,Defense Lobbying,Van Hipp firm lobbies for Raytheon Palantir,Active,Potential conflict of interest with Hipp role
+Ernst & Young LLP,Corporation,Independent Auditor,Ongoing,Fox Corp Proxy,External Auditor,Fox Corp independent registered public accounting firm,Active,Ratified annually by shareholders
+OpenSecrets,Organization,Research Org,Ongoing,Political Research,Campaign Finance Data,Center for Responsive Politics nonpartisan,Active,Aggregates FEC and lobbying data
+FEC,Government,Federal Agency,Ongoing,Regulation,Election Oversight,Federal Election Commission,Active,Regulates FOXPAC and campaign finance
+SEC,Government,Federal Agency,Ongoing,Regulation,Securities Oversight,Securities and Exchange Commission,Active,Regulates Fox Corp public filings
+Senate Office of Public Records,Government,Federal Office,Ongoing,Regulation,Lobbying Oversight,Tracks lobbying disclosures,Active,LD-2 quarterly reports
+FCC,Government,Federal Agency,Ongoing,Regulation,Broadcast Licensing,Federal Communications Commission,Active,Licenses Fox Television Stations broadcast licenses
+Delaware Superior Court,Government,Court System,2021-2023,Dominion Case,Venue,Dominion lawsuit jurisdiction,Case Settled,N21C-03-257 EMD CCLD
+New York Supreme Court,Government,Court System,2021-Present,Smartmatic Case,Venue,Smartmatic lawsuit jurisdiction,Active Litigation,New York County

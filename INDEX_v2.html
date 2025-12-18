@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Command Center - Jonathon's Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .section.investigations { border-left: 4px solid #4a9eff; }
+        .section.tools { border-left: 4px solid #4caf50; }
+        .section.output { border-left: 4px solid #ff9800; }
+        .section.archive { border-left: 4px solid #9c27b0; }
+        .section.supporting { border-left: 4px solid #607d8b; }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .section-header:hover {
+            opacity: 0.8;
+        }
+        
+        .section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section.investigations h2 { color: #4a9eff; }
+        .section.tools h2 { color: #4caf50; }
+        .section.output h2 { color: #ff9800; }
+        .section.archive h2 { color: #9c27b0; }
+        .section.supporting h2 { color: #607d8b; }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.6em;
+            font-weight: normal;
+        }
+        
+        .toggle-icon {
+            font-size: 0.7em;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        
+        .section-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .section-content.collapsed {
+            max-height: 0;
+        }
+        
+        .investigation {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .investigation:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+        
+        .investigation h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #6ec1ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 15px;
+            background: rgba(74, 158, 255, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        a:hover {
+            background: rgba(74, 158, 255, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .folder-link {
+            background: rgba(255, 193, 7, 0.3);
+        }
+        
+        .folder-link:hover {
+            background: rgba(255, 193, 7, 0.6);
+        }
+        
+        .csv-link {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .csv-link:hover {
+            background: rgba(76, 175, 80, 0.6);
+        }
+        
+        .md-link {
+            background: rgba(33, 150, 243, 0.3);
+        }
+        
+        .md-link:hover {
+            background: rgba(33, 150, 243, 0.6);
+        }
+        
+        .html-link {
+            background: rgba(156, 39, 176, 0.3);
+        }
+        
+        .html-link:hover {
+            background: rgba(156, 39, 176, 0.6);
+        }
+        
+        .other-link {
+            background: rgba(158, 158, 158, 0.3);
+        }
+        
+        .other-link:hover {
+            background: rgba(158, 158, 158, 0.6);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 RESEARCH COMMAND CENTER</h1>
+            <p class="subtitle">Jonathon's Research Index | Version 2.0 | December 9, 2025</p>
+        </header>
+
+        <!-- ACTIVE INVESTIGATIONS -->
+        <div class="section investigations">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📁 ACTIVE INVESTIGATIONS <span class="badge">5 Projects</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- Weather Modification -->
+                <div class="investigation">
+                    <h3>⚡ Weather Modification</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/weather_modification_research_database.csv" class="csv-link">📊 Main Database</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Timeline/weather_modification_timeline.md" class="md-link">📅 Timeline</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Evidence_Matrix/Atmospheric_Infrastructure_Actors.csv" class="csv-link">📄 Atmospheric Actors</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Legislation" class="folder-link">📜 Legislation</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Primary_Sources" class="folder-link">📚 Primary Sources</a>
+                    </div>
+                </div>
+
+                <!-- Flight Tracking -->
+                <div class="investigation">
+                    <h3>✈️ Flight Tracking</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_research_database.csv" class="csv-link">📊 FR24 Database</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_timeline_calendar.md" class="md-link">📅 Timeline</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_research_guide.md" class="md-link">📖 Research Guide</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_quick_reference_calendar.txt" class="other-link">📋 Quick Ref</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/Analysis/Flight_Tracking_Investigation.csv" class="csv-link">🔍 Analysis</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/Aircraft_Sightings" class="folder-link">🛩️ Sightings</a>
+                    </div>
+                </div>
+
+                <!-- Surveillance Infrastructure -->
+                <div class="investigation">
+                    <h3>👁️ Surveillance Infrastructure</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/surveillance_weather_nexus.md" class="md-link">📝 Weather Nexus</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/Defense_Contractors" class="folder-link">🏢 Defense Contractors</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/Corporate_Networks" class="folder-link">🌐 Corporate Networks</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/Entity_Mapping" class="folder-link">🗺️ Entity Mapping</a>
+                    </div>
+                </div>
+
+                <!-- Media Ownership -->
+                <div class="investigation">
+                    <h3>📺 Media Ownership</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Media_Ownership" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Media_Ownership/Fox_Corporation" class="folder-link">🦊 Fox Corporation</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Media_Ownership/Independent_Journalism" class="folder-link">📰 Indie Journalism</a>
+                    </div>
+                </div>
+
+                <!-- Mixed Research -->
+                <div class="investigation">
+                    <h3>🌪️ Flight & Weather Research</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/flight and weather research" class="folder-link">📂 Open Folder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOOLS AND SYSTEMS -->
+        <div class="section tools">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>🛠️ TOOLS & SYSTEMS <span class="badge">5 Tools</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- Master Research Hub -->
+                <div class="investigation">
+                    <h3>💻 Master Research Hub</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/research_hub_v1_21.html" class="html-link">🌐 Hub v1.21 ⭐</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/master_research_hub_ULTIMATE.html" class="html-link">🌐 Ultimate Hub</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/Research_Dashboard_FINAL.html" class="html-link">🌐 Dashboard</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/Research_Command_Center.html" class="html-link">🌐 Command Center</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/Shroud_Evidence_Requirements.html" class="html-link">🌐 Evidence Reqs</a>
+                    </div>
+                </div>
+
+                <!-- RESEARCH HUB FOLDER -->
+                <div class="investigation">
+                    <h3>🗂️ Research Hub Folder (Legacy)</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/master_research_hub.html" class="html-link">🌐 Master Hub</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/COMPLETE_ECOSYSTEM_GUIDE.md" class="md-link">📖 Complete Guide</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/ULTIMATE_HUB_GUIDE.md" class="md-link">📖 Ultimate Guide</a>
+                    </div>
+                </div>
+
+                <!-- Master Research Hub (Original) -->
+                <div class="investigation">
+                    <h3>📁 Master Research Hub (Original)</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub/Research_Workflow_Integration_Guide.md" class="md-link">📖 Workflow Guide</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub/TEMPLATE_Research_Session.md" class="md-link">📋 Session Template</a>
+                    </div>
+                </div>
+
+                <!-- Google Sheets Automation -->
+                <div class="investigation">
+                    <h3>📊 Google Sheets Automation</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Google_Sheets_Automation" class="folder-link">📂 Ready for Files</a>
+                    </div>
+                </div>
+
+                <!-- Templates -->
+                <div class="investigation">
+                    <h3>📋 Templates</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/Research_Workflow_Integration_Guide.md" class="md-link">📖 Workflow</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/TEMPLATE_Research_Session.md" class="md-link">📋 Session</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/HOW-TO-USE-PRESENTATION.md" class="md-link">📖 Presentation</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/WORKFLOW_INSTRUCTIONS.md" class="md-link">📋 Instructions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OUTPUT -->
+        <div class="section output">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📤 OUTPUT <span class="badge">3 Categories</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- YouTube Content -->
+                <div class="investigation">
+                    <h3>🎥 YouTube Content</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/YouTube_Content" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/YouTube_Content/operation-popeye-presentation.pptx" class="other-link">📊 Operation Popeye</a>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="investigation">
+                    <h3>💾 Databases</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases" class="folder-link">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases/entity_list_1764799560021.html" class="html-link">🌐 Entity List</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases/Untitled Project_complete_1764799636415.json" class="other-link">📄 Project (JSON)</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases/Untitled Project_entities_1764804662695.csv" class="csv-link">📊 Entities</a>
+                    </div>
+                </div>
+
+                <!-- Reports -->
+                <div class="investigation">
+                    <h3>📄 Reports</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Reports" class="folder-link">📂 Ready for Files</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARCHIVE -->
+        <div class="section archive">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📦 ARCHIVE</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="investigation">
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Archive" class="folder-link">📂 Ready for Completed Work</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUPPORTING -->
+        <div class="section supporting">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📚 SUPPORTING DOCUMENTS</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="investigation">
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research" class="folder-link">📂 Documents and Research</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Research Command Center v2.0 | Built for systematic truth-seeking</p>
+            <p>Last Updated: December 9, 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            content.classList.toggle('collapsed');
+            icon.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>

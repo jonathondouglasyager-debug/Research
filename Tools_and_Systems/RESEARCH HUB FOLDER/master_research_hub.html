@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Research Hub - Truth-Seeking Command Center</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+        
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #131921;
+            --bg-elevated: #1a2332;
+            --accent-primary: #00d9ff;
+            --accent-secondary: #ff6b35;
+            --accent-warning: #ffd93d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #525965;
+            --border-color: #30363d;
+            --success: #3fb950;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridScroll 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes gridScroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-elevated) 100%);
+            border-bottom: 2px solid var(--accent-primary);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px var(--accent-primary)); }
+            50% { filter: drop-shadow(0 0 15px var(--accent-primary)); }
+        }
+        
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 1800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .search-wrapper {
+            position: relative;
+        }
+        
+        #globalSearch {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        #globalSearch:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+        
+        #globalSearch::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        
+        /* Navigation Tabs */
+        .nav-tabs {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            overflow-x: auto;
+        }
+        
+        .tab-button {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tab-button:hover {
+            color: var(--text-primary);
+            background: rgba(0, 217, 255, 0.05);
+        }
+        
+        .tab-button.active {
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+        
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1800px;
+            margin: 2rem auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .card-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--accent-primary);
+            font-weight: 700;
+        }
+        
+        .card-badge {
+            background: var(--accent-secondary);
+            color: var(--bg-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        /* Data Grid */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .data-item {
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-primary);
+            border-radius: 4px;
+        }
+        
+        .data-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-value {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        /* File Drop Zone */
+        .drop-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 3rem;
+            text-align: center;
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .drop-zone:hover, .drop-zone.drag-over {
+            border-color: var(--accent-primary);
+            background: rgba(0, 217, 255, 0.05);
+        }
+        
+        .drop-zone-icon {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .drop-zone-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        /* File List */
+        .file-list {
+            margin-top: 1.5rem;
+        }
+        
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .file-item:hover {
+            background: var(--bg-elevated);
+            transform: translateX(5px);
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .file-icon {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+        
+        .file-name {
+            color: var(--text-primary);
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: transparent;
+        }
+        
+        /* Network Map Container */
+        .network-container {
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 2rem;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #networkCanvas {
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        
+        /* Stats Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 217, 255, 0.15);
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .quick-link {
+            padding: 1.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .quick-link:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+        }
+        
+        .quick-link-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+        }
+        
+        .quick-link-content h3 {
+            color: var(--accent-primary);
+            margin-bottom: 0.3rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .quick-link-content p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-tabs {
+                overflow-x: scroll;
+            }
+            
+            .tab-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.8rem;
+            }
+            
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>⚡ Master Research Hub</h1>
+            <div class="header-meta">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>System Active</span>
+                </div>
+                <div id="dateTime"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="globalSearch" placeholder="Search across all research domains... (entities, events, connections, documents)">
+            <span class="search-icon">🔍</span>
+        </div>
+        <div id="searchResults"></div>
+    </div>
+
+    <nav class="nav-tabs">
+        <button class="tab-button active" data-tab="overview">Overview</button>
+        <button class="tab-button" data-tab="geoengineering">Geoengineering</button>
+        <button class="tab-button" data-tab="surveillance">Surveillance-Weather</button>
+        <button class="tab-button" data-tab="flight">Flight Tracking</button>
+        <button class="tab-button" data-tab="weather-mod">Weather Modification</button>
+        <button class="tab-button" data-tab="network">Network Map</button>
+        <button class="tab-button" data-tab="files">File Management</button>
+    </nav>
+
+    <main class="main-content">
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalEntities">171</div>
+                    <div class="stat-label">Infrastructure Actors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalConnections">60+</div>
+                    <div class="stat-label">Timeline Events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalSources">26</div>
+                    <div class="stat-label">State Bills Tracked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="researchDomains">4</div>
+                    <div class="stat-label">Domain Databases</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">⚡ ULTIMATE HUB</h2>
+                    <span class="card-badge">ALL-IN-ONE</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8;">
+                    <strong style="color: var(--accent-primary);">The complete integrated system!</strong> Native Claude chat, drag-and-drop file processing (PDFs, CSVs, images), auto-analysis with entity extraction and OCR, real-time stats dashboard. Everything in one interface.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="master_research_hub_ULTIMATE.html" class="btn" style="display: inline-block; text-decoration: none;">
+                        🚀 Launch ULTIMATE Hub
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">🔍 PRO Search System</h2>
+                    <span class="card-badge">POWER SEARCH</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.8;">
+                    <strong style="color: var(--accent-primary);">All 7 advanced features integrated!</strong> Boolean operators (AND/OR/NOT), fuzzy matching, date range filters, multi-field search, saved searches, automatic history, and interactive network visualization.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="master_research_hub_PRO.html" class="btn" style="display: inline-block; text-decoration: none;">
+                        🚀 Launch PRO Search
+                    </a>
+                    <a href="master_research_hub_SEARCH.html" class="btn btn-secondary" style="display: inline-block; text-decoration: none;">
+                        Basic Search
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Imported Research Data</h2>
+                    <span class="card-badge">Complete</span>
+                </div>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-label">Geoengineering Legislation</div>
+                        <div class="data-value">26 state bills | TN & FL enacted | Political networks mapped</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Infrastructure Actors</div>
+                        <div class="data-value">171 entities | Raytheon, Palantir, Tomorrow.io, HAARP, TITAN</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Weather Mod Timeline</div>
+                        <div class="data-value">1725-2025 | 60+ documented events | Hatfield to Rainmaker</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Flight Tracking</div>
+                        <div class="data-value">FlightRadar24 evolution | C-17 investigation | FBI exposure</div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: 4px; border-left: 3px solid var(--success);">
+                    <p style="color: var(--text-secondary);"><strong style="color: var(--success);">✓ Import Complete:</strong> All previous research successfully integrated into linked domain databases. Each CSV is independently searchable while the hub provides unified navigation and visualization.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Research Domains</h2>
+                    <span class="card-badge">Active</span>
+                </div>
+                <div class="quick-links">
+                    <a href="#" class="quick-link" data-navigate="geoengineering">
+                        <span class="quick-link-icon">🌐</span>
+                        <div class="quick-link-content">
+                            <h3>Geoengineering</h3>
+                            <p>State legislation, 171 actors, 26 bills</p>
+                        </div>
+                    </a>
+                    <a href="#" class="quick-link" data-navigate="surveillance">
+                        <span class="quick-link-icon">📡</span>
+                        <div class="quick-link-content">
+                            <h3>Surveillance-Weather Nexus</h3>
+                            <p>Raytheon, Palantir, Tomorrow.io</p>
+                        </div>
+                    </a>
+                    <a href="#" class="quick-link" data-navigate="flight">
+                        <span class="quick-link-icon">✈️</span>
+                        <div class="quick-link-content">
+                            <h3>Flight Tracking</h3>
+                            <p>FlightRadar24 evolution & C-17 investigation</p>
+                        </div>
+                    </a>
+                    <a href="#" class="quick-link" data-navigate="weather-mod">
+                        <span class="quick-link-icon">⛈️</span>
+                        <div class="quick-link-content">
+                            <h3>Weather Modification</h3>
+                            <p>300-year timeline (1725-2025)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Truth-Seeking Methodology</h2>
+                    <span class="card-badge">Core Principles</span>
+                </div>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-label">Operating Principle</div>
+                        <div class="data-value">"We only seek truth, we only tell truth"</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Primary Focus</div>
+                        <div class="data-value">Primary sources & verifiable evidence</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Approach</div>
+                        <div class="data-value">Active disconfirmation & systematic skepticism</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Documentation</div>
+                        <div class="data-value">Evidence matrices with quality ratings</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GEOENGINEERING TAB -->
+        <div id="geoengineering" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">State Geoengineering Legislation</h2>
+                    <span class="card-badge">30 States</span>
+                </div>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-label">States Tracked</div>
+                        <div class="data-value">30</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Total Bills</div>
+                        <div class="data-value">26</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Enacted</div>
+                        <div class="data-value">Tennessee, Florida</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Primary Sponsors</div>
+                        <div class="data-value">Republican networks</div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Key Findings</h3>
+                    <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                        <li>Pattern of Republican sponsorship across states</li>
+                        <li>Backing from anti-vaccine mandate networks (Zero Geoengineering, Tennessee Stands)</li>
+                        <li>Opposition from scientific communities and utility companies</li>
+                        <li>Most bills failed in committee</li>
+                        <li>Concerns about cloud seeding restrictions affecting legitimate operations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Key Actors & Organizations</h2>
+                    <span class="card-badge">171 Entities</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Comprehensive database of organizations, legislators, activists, and corporate entities involved in geoengineering discourse and legislation.
+                </p>
+                <button class="btn" onclick="alert('Feature: Load full actor database from CSV')">View Full Database</button>
+            </div>
+        </div>
+
+        <!-- SURVEILLANCE-WEATHER TAB -->
+        <div id="surveillance" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Surveillance-Weather Nexus</h2>
+                    <span class="card-badge">Critical Analysis</span>
+                </div>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-label">Primary Contractors</div>
+                        <div class="data-value">Raytheon, Palantir, Northrop Grumman</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Weather Intelligence</div>
+                        <div class="data-value">Tomorrow.io, AccuWeather</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Key Infrastructure</div>
+                        <div class="data-value">HAARP, NOAA contracts</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Integration Systems</div>
+                        <div class="data-value">TITAN AI targeting</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Raytheon Technologies</h2>
+                    <span class="card-badge">Defense Contractor</span>
+                </div>
+                <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Atmospheric Capabilities</h3>
+                <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                    <li>NOAA weather forecasting contracts</li>
+                    <li>HAARP atmospheric modification patents</li>
+                    <li>Holographic projection technology patents</li>
+                    <li>FlightAware acquisition for tracking data</li>
+                    <li>Military targeting system integration</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Tomorrow.io Integration</h2>
+                    <span class="card-badge">Weather Intelligence</span>
+                </div>
+                <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Government & Commercial Clients</h3>
+                <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                    <li>Top logistics innovation company</li>
+                    <li>Pharmaceutical cold chain applications</li>
+                    <li>Military operational weather support</li>
+                    <li>Partnerships with Palantir for data integration</li>
+                    <li>Weather satellite constellation development</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLIGHT TRACKING TAB -->
+        <div id="flight" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">FlightRadar24 Evolution</h2>
+                    <span class="card-badge">Hobby to Surveillance</span>
+                </div>
+                <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Key Developments</h3>
+                <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                    <li>Started as aviation enthusiast hobby project</li>
+                    <li>Exposed FBI domestic surveillance operations</li>
+                    <li>Tracked oligarch jets during Ukraine invasion</li>
+                    <li>Corporate acquisitions by defense contractors</li>
+                    <li>Integration with military tracking systems</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">C-17 Minersville Investigation</h2>
+                    <span class="card-badge">October 2, 2025</span>
+                </div>
+                <div class="data-grid">
+                    <div class="data-item">
+                        <div class="data-label">Aircraft Type</div>
+                        <div class="data-value">C-17 Globemaster III</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Altitude</div>
+                        <div class="data-value">~200 feet</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Location</div>
+                        <div class="data-value">Minersville, PA</div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-label">Destination</div>
+                        <div class="data-value">Fort Indiantown Gap</div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Investigation Findings</h3>
+                    <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                        <li>Aircraft confirmed via photo/video metadata</li>
+                        <li>Heading northeast toward Fort Indiantown Gap</li>
+                        <li>Coincides with WFX 26-01 military exercise (Oct 25 - Nov 3, 2025)</li>
+                        <li>Legitimate military operations explanation</li>
+                        <li>Questions remain about extremely low altitude over populated areas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEATHER MODIFICATION TAB -->
+        <div id="weather-mod" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">300-Year Weather Modification Timeline</h2>
+                    <span class="card-badge">1725-2025</span>
+                </div>
+                <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Historical Evolution</h3>
+                <div style="color: var(--text-secondary); line-height: 2;">
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">1700s-1800s:</strong> Early attempts at "rainmaking" through cannons, explosives, and prayer services</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">1916:</strong> Charles Hatfield's San Diego flood disaster - early cloud seeding attempt causes catastrophic flooding</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">1946:</strong> Vincent Schaefer discovers dry ice cloud seeding - first scientifically successful weather modification</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">1967-1972:</strong> Operation Popeye - U.S. military cloud seeding in Vietnam to extend monsoon season</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">1996:</strong> U.S. Air Force publishes "Owning the Weather in 2025" doctrine</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">2025:</strong> All five technological capabilities from 1996 doctrine now operational through private contractors</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Modern Weather Modification</h2>
+                    <span class="card-badge">Current Operations</span>
+                </div>
+                <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Technologies & Applications</h3>
+                <ul style="list-style-position: inside; color: var(--text-secondary); line-height: 2;">
+                    <li>Conventional cloud seeding (silver iodide, dry ice)</li>
+                    <li>Drone-based seeding operations (Rainmaker, Weather Modification Inc)</li>
+                    <li>Atmospheric ionization (HAARP research)</li>
+                    <li>Graphene oxide seeding patents</li>
+                    <li>AI-enhanced weather prediction and targeting</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NETWORK MAP TAB -->
+        <div id="network" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Entity Relationship Network</h2>
+                    <span class="card-badge">Interactive Visualization</span>
+                </div>
+                <div class="network-container">
+                    <canvas id="networkCanvas"></canvas>
+                    <div style="position: absolute; top: 2rem; left: 2rem; background: var(--bg-elevated); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Legend</h4>
+                        <div style="display: flex; gap: 1rem; color: var(--text-secondary); font-size: 0.85rem;">
+                            <div><span style="color: var(--accent-primary);">●</span> Organizations</div>
+                            <div><span style="color: var(--accent-secondary);">●</span> Technologies</div>
+                            <div><span style="color: var(--accent-warning);">●</span> Events</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.85rem;">
+                    Click and drag nodes to explore connections. Hover for details. Double-click to focus.
+                </p>
+            </div>
+        </div>
+
+        <!-- FILE MANAGEMENT TAB -->
+        <div id="files" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">File Management System</h2>
+                    <span class="card-badge">Drag & Drop</span>
+                </div>
+                <div class="drop-zone" id="dropZone">
+                    <div class="drop-zone-icon">📁</div>
+                    <div class="drop-zone-text">
+                        <strong>Drag and drop files here</strong><br>
+                        or click to browse<br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Supports: PDF, CSV, XLSX, DOCX, TXT, Images</span>
+                    </div>
+                    <input type="file" class="file-input" id="fileInput" multiple>
+                </div>
+                <div class="file-list" id="fileList">
+                    <!-- Files will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Domain Databases</h2>
+                    <span class="card-badge">CSV Files</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; padding: 1rem; background: var(--bg-secondary); border-radius: 4px; border-left: 3px solid var(--accent-warning);">
+                    <strong>📁 File Location:</strong> Keep all CSV files in the same folder as this HTML file. Download them from Claude's outputs, then open the CSVs in Excel/Google Sheets for detailed searching and filtering.
+                </p>
+                <div class="file-list">
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span class="file-icon">🌐</span>
+                            <span class="file-name">Geoengineering_Legislation.csv</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 1rem;">26 state bills | 6.0 KB</span>
+                        </div>
+                        <span class="btn btn-secondary" style="cursor: default;">In Outputs</span>
+                    </div>
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span class="file-icon">📡</span>
+                            <span class="file-name">Atmospheric_Infrastructure_Actors.csv</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 1rem;">171 actors | 18 KB</span>
+                        </div>
+                        <span class="btn btn-secondary" style="cursor: default;">In Outputs</span>
+                    </div>
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span class="file-icon">⛈️</span>
+                            <span class="file-name">Weather_Modification_Timeline.csv</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 1rem;">300 years | 12 KB</span>
+                        </div>
+                        <span class="btn btn-secondary" style="cursor: default;">In Outputs</span>
+                    </div>
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span class="file-icon">✈️</span>
+                            <span class="file-name">Flight_Tracking_Investigation.csv</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 1rem;">FlightRadar24 + C-17 | 12 KB</span>
+                        </div>
+                        <span class="btn btn-secondary" style="cursor: default;">In Outputs</span>
+                    </div>
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span class="file-icon">📊</span>
+                            <span class="file-name">master_database.csv</span>
+                            <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 1rem;">Legacy format | 14 KB</span>
+                        </div>
+                        <span class="btn btn-secondary" style="cursor: default;">In Outputs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">How to Use Your Data</h2>
+                    <span class="card-badge">Workflow</span>
+                </div>
+                <div style="color: var(--text-secondary); line-height: 2;">
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">Step 1:</strong> Download all CSV files from Claude's outputs folder</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">Step 2:</strong> Save them in your Research folder (same location as this HTML file)</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">Step 3:</strong> Open CSVs in Excel to filter, sort, and search your data</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">Step 4:</strong> Use this dashboard for navigation and visualization</p>
+                    <p style="margin-bottom: 1rem;"><strong style="color: var(--accent-primary);">Step 5:</strong> Upload new files to Claude for analysis → Download updates → Add to your folder</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Date and Time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('dateTime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Tab Navigation
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        function switchTab(tabId) {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            const targetButton = document.querySelector(`[data-tab="${tabId}"]`);
+            const targetContent = document.getElementById(tabId);
+            
+            if (targetButton && targetContent) {
+                targetButton.classList.add('active');
+                targetContent.classList.add('active');
+            }
+        }
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                switchTab(tabId);
+            });
+        });
+
+        // Quick link navigation
+        document.querySelectorAll('[data-navigate]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tabId = link.getAttribute('data-navigate');
+                switchTab(tabId);
+            });
+        });
+
+        // Global Search
+        const globalSearch = document.getElementById('globalSearch');
+        let searchTimeout;
+
+        globalSearch.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const query = e.target.value.toLowerCase();
+                if (query.length < 2) return;
+                
+                // This is a placeholder - in a real implementation, this would search through your data
+                console.log('Searching for:', query);
+                // You would implement actual search logic here that filters your data
+            }, 300);
+        });
+
+        // File Drop Zone
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                addFileToList(file);
+            });
+        }
+
+        function addFileToList(file) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div class="file-info">
+                    <span class="file-icon">📄</span>
+                    <span class="file-name">${file.name}</span>
+                    <span style="color: var(--text-muted); font-size: 0.85rem; margin-left: 1rem;">${formatFileSize(file.size)}</span>
+                </div>
+                <div class="file-actions">
+                    <button class="btn btn-secondary" onclick="this.parentElement.parentElement.remove()">Remove</button>
+                </div>
+            `;
+            fileList.insertBefore(fileItem, fileList.firstChild);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Network Visualization (Basic Implementation)
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            drawNetwork();
+        }
+
+        function drawNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Sample nodes - in real implementation, this would be your actual data
+            const nodes = [
+                { x: canvas.width * 0.3, y: canvas.height * 0.3, label: 'Raytheon', color: '#00d9ff' },
+                { x: canvas.width * 0.7, y: canvas.height * 0.3, label: 'Palantir', color: '#00d9ff' },
+                { x: canvas.width * 0.5, y: canvas.height * 0.6, label: 'Tomorrow.io', color: '#00d9ff' },
+                { x: canvas.width * 0.2, y: canvas.height * 0.7, label: 'HAARP', color: '#ff6b35' },
+                { x: canvas.width * 0.8, y: canvas.height * 0.7, label: 'NOAA', color: '#ffd93d' }
+            ];
+            
+            // Draw connections
+            ctx.strokeStyle = 'rgba(0, 217, 255, 0.3)';
+            ctx.lineWidth = 2;
+            
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x, nodes[i].y);
+                    ctx.lineTo(nodes[j].x, nodes[j].y);
+                    ctx.stroke();
+                }
+            }
+            
+            // Draw nodes
+            nodes.forEach(node => {
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, 20, 0, Math.PI * 2);
+                ctx.fillStyle = node.color;
+                ctx.fill();
+                ctx.strokeStyle = '#0a0e14';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // Draw labels
+                ctx.fillStyle = '#e6edf3';
+                ctx.font = '12px Share Tech Mono';
+                ctx.textAlign = 'center';
+                ctx.fillText(node.label, node.x, node.y + 40);
+            });
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Initialize
+        console.log('Master Research Hub initialized');
+        console.log('Truth-Seeking Methodology: Active');
+    </script>
+</body>
+</html>

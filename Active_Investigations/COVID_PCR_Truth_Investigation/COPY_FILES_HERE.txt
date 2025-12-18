@@ -1,0 +1,20 @@
+FILES NEEDED IN THIS FOLDER
+=============================
+
+Download these 6 files from Claude and place them here:
+
+1. index.html (Landing page)
+2. research-hub.html (Interactive research application)  
+3. README.md (Documentation)
+4. RESEARCH_LIBRARY.md (32 studies reference)
+5. PROJECT_STRUCTURE.md (GitHub setup guide)
+6. QUICK_SETUP.md (5-minute launch checklist)
+
+All files are available in the chat outputs.
+
+Once copied, you can:
+- Open index.html in your browser as the landing page
+- Access research-hub.html for the interactive investigation
+- Follow QUICK_SETUP.md to upload to GitHub
+
+Your local INDEX.html is already updated and ready to link to these files!

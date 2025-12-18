@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Research Hub - Truth-Seeking Command Center</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+        
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #131921;
+            --bg-elevated: #1a2332;
+            --accent-primary: #00d9ff;
+            --accent-secondary: #ff6b35;
+            --accent-warning: #ffd93d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #525965;
+            --border-color: #30363d;
+            --success: #3fb950;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridScroll 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes gridScroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-elevated) 100%);
+            border-bottom: 2px solid var(--accent-primary);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px var(--accent-primary)); }
+            50% { filter: drop-shadow(0 0 15px var(--accent-primary)); }
+        }
+        
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        /* Search Container */
+        .search-container {
+            max-width: 1800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .search-wrapper {
+            position: relative;
+        }
+        
+        #globalSearch {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        #globalSearch:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+        
+        #globalSearch::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        
+        /* Search Filters */
+        .search-filters {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-chip {
+            padding: 0.5rem 1rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .filter-chip:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+        
+        .filter-chip.active {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+            font-weight: bold;
+        }
+        
+        /* Search Results */
+        #searchResults {
+            margin-top: 2rem;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .results-count {
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+        
+        .result-item {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .result-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .result-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .result-source {
+            background: var(--accent-secondary);
+            color: var(--bg-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .result-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .result-field {
+            margin-bottom: 0.5rem;
+        }
+        
+        .field-name {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .field-value {
+            color: var(--text-primary);
+            margin-top: 0.2rem;
+        }
+        
+        .highlight {
+            background: rgba(0, 217, 255, 0.3);
+            color: var(--accent-primary);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        /* File Upload Area */
+        .data-upload {
+            background: var(--bg-secondary);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .upload-instruction {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .file-input-label {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input-label:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .loaded-files {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .loaded-file-badge {
+            padding: 0.5rem 1rem;
+            background: var(--success);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        /* Export Button */
+        .btn {
+            padding: 0.5rem 1rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: transparent;
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        /* Instructions */
+        .instructions {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .instructions h2 {
+            color: var(--accent-primary);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ol {
+            color: var(--text-secondary);
+            line-height: 2;
+            padding-left: 1.5rem;
+        }
+        
+        .instructions strong {
+            color: var(--accent-primary);
+        }
+        
+        /* Loading Indicator */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: var(--accent-primary);
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .header-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .search-filters {
+                justify-content: center;
+            }
+            
+            .results-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>⚡ Master Research Hub - Search System</h1>
+            <div class="header-meta">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="systemStatus">Ready to Load Data</span>
+                </div>
+                <div id="dateTime"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="instructions">
+            <h2>How to Use the Search System</h2>
+            <ol>
+                <li><strong>Load Your CSV Files:</strong> Click "Choose CSV Files" below and select all your domain databases</li>
+                <li><strong>Wait for Processing:</strong> The system will parse all CSV files (this may take a few seconds)</li>
+                <li><strong>Search:</strong> Type your query in the search box - searches across ALL fields in ALL loaded databases</li>
+                <li><strong>Filter:</strong> Click domain chips to filter results by specific databases</li>
+                <li><strong>Export:</strong> Export your filtered results to a new CSV file</li>
+            </ol>
+        </div>
+
+        <div class="data-upload">
+            <div class="upload-instruction">
+                Load your CSV databases to enable searching
+            </div>
+            <label for="csvFiles" class="file-input-label">
+                📁 Choose CSV Files
+            </label>
+            <input type="file" id="csvFiles" class="file-input" multiple accept=".csv">
+            <div class="loaded-files" id="loadedFiles"></div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 1rem;">Processing CSV files...</p>
+        </div>
+
+        <div class="search-container" style="display: none;" id="searchContainer">
+            <div class="search-wrapper">
+                <input type="text" id="globalSearch" placeholder="Search across all databases... (e.g., 'Raytheon', 'Tennessee', 'cloud seeding', '2025')">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="search-filters" id="searchFilters">
+                <div class="filter-chip active" data-filter="all">All Databases</div>
+                <div class="filter-chip" data-filter="geoengineering">Geoengineering</div>
+                <div class="filter-chip" data-filter="actors">Actors</div>
+                <div class="filter-chip" data-filter="timeline">Timeline</div>
+                <div class="filter-chip" data-filter="flight">Flight Tracking</div>
+            </div>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global data storage
+        let allData = [];
+        let currentFilter = 'all';
+        let searchResults = [];
+        
+        // Update date/time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('dateTime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+        
+        // File upload handling
+        document.getElementById('csvFiles').addEventListener('change', async (e) => {
+            const files = Array.from(e.target.files);
+            if (files.length === 0) return;
+            
+            document.getElementById('loading').classList.add('active');
+            allData = [];
+            
+            for (const file of files) {
+                await parseCSV(file);
+            }
+            
+            document.getElementById('loading').classList.remove('active');
+            document.getElementById('searchContainer').style.display = 'block';
+            document.getElementById('systemStatus').textContent = `${allData.length} records loaded`;
+            
+            // Show loaded files
+            const loadedFilesDiv = document.getElementById('loadedFiles');
+            loadedFilesDiv.innerHTML = files.map(f => 
+                `<div class="loaded-file-badge">${f.name}</div>`
+            ).join('');
+        });
+        
+        // Parse CSV file
+        function parseCSV(file) {
+            return new Promise((resolve) => {
+                Papa.parse(file, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: function(results) {
+                        // Determine database type from filename
+                        let dbType = 'unknown';
+                        const filename = file.name.toLowerCase();
+                        
+                        if (filename.includes('geoengineering') || filename.includes('legislation')) {
+                            dbType = 'geoengineering';
+                        } else if (filename.includes('actor') || filename.includes('infrastructure')) {
+                            dbType = 'actors';
+                        } else if (filename.includes('timeline') || filename.includes('weather_mod')) {
+                            dbType = 'timeline';
+                        } else if (filename.includes('flight')) {
+                            dbType = 'flight';
+                        }
+                        
+                        // Add metadata to each row
+                        results.data.forEach(row => {
+                            row._source = file.name;
+                            row._dbType = dbType;
+                            allData.push(row);
+                        });
+                        
+                        resolve();
+                    }
+                });
+            });
+        }
+        
+        // Search functionality
+        const searchInput = document.getElementById('globalSearch');
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch(e.target.value);
+            }, 300);
+        });
+        
+        // Perform search
+        function performSearch(query) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query || query.length < 2) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+            
+            const lowerQuery = query.toLowerCase();
+            searchResults = [];
+            
+            // Search through all data
+            allData.forEach(row => {
+                // Check if this row matches current filter
+                if (currentFilter !== 'all' && row._dbType !== currentFilter) {
+                    return;
+                }
+                
+                // Search all fields
+                let matches = [];
+                for (const [key, value] of Object.entries(row)) {
+                    if (key.startsWith('_')) continue; // Skip metadata
+                    
+                    const stringValue = String(value).toLowerCase();
+                    if (stringValue.includes(lowerQuery)) {
+                        matches.push({ field: key, value: value, original: value });
+                    }
+                }
+                
+                if (matches.length > 0) {
+                    searchResults.push({ row, matches });
+                }
+            });
+            
+            displayResults(searchResults, query);
+        }
+        
+        // Display search results
+        function displayResults(results, query) {
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="results-header">
+                        <div class="results-count">No results found</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            const dbLabels = {
+                'geoengineering': 'Geoengineering Legislation',
+                'actors': 'Infrastructure Actors',
+                'timeline': 'Weather Modification Timeline',
+                'flight': 'Flight Tracking',
+                'unknown': 'Unknown Database'
+            };
+            
+            let html = `
+                <div class="results-header">
+                    <div class="results-count">${results.length} result${results.length !== 1 ? 's' : ''} found</div>
+                    <button class="btn btn-secondary" onclick="exportResults()">Export Results to CSV</button>
+                </div>
+            `;
+            
+            results.forEach((result, index) => {
+                const dbType = result.row._dbType;
+                const dbLabel = dbLabels[dbType] || 'Unknown';
+                
+                // Get a title field (try common field names)
+                const titleField = result.row.Entity_Name || result.row.Event || result.row.Bill_Number || 
+                                  result.row.Entity_Event || result.row.State || `Record ${index + 1}`;
+                
+                html += `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <div class="result-title">${escapeHtml(titleField)}</div>
+                            <div class="result-source">${dbLabel}</div>
+                        </div>
+                        <div class="result-content">
+                `;
+                
+                // Show matching fields (limit to top 5)
+                result.matches.slice(0, 5).forEach(match => {
+                    const highlightedValue = highlightMatch(match.value, query);
+                    html += `
+                        <div class="result-field">
+                            <div class="field-name">${match.field.replace(/_/g, ' ')}</div>
+                            <div class="field-value">${highlightedValue}</div>
+                        </div>
+                    `;
+                });
+                
+                if (result.matches.length > 5) {
+                    html += `<div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">+ ${result.matches.length - 5} more matching fields</div>`;
+                }
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // Highlight search term in text
+        function highlightMatch(text, query) {
+            const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+            return escapeHtml(String(text)).replace(regex, '<span class="highlight">$1</span>');
+        }
+        
+        // Filter chips
+        document.getElementById('searchFilters').addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-chip')) {
+                // Update active state
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    chip.classList.remove('active');
+                });
+                e.target.classList.add('active');
+                
+                // Update filter
+                currentFilter = e.target.getAttribute('data-filter');
+                
+                // Re-run search if there's a query
+                const query = searchInput.value;
+                if (query && query.length >= 2) {
+                    performSearch(query);
+                }
+            }
+        });
+        
+        // Export results to CSV
+        function exportResults() {
+            if (searchResults.length === 0) {
+                alert('No results to export');
+                return;
+            }
+            
+            // Get all unique field names
+            const fields = new Set();
+            searchResults.forEach(result => {
+                Object.keys(result.row).forEach(key => {
+                    if (!key.startsWith('_')) fields.add(key);
+                });
+            });
+            
+            const fieldArray = Array.from(fields);
+            
+            // Build CSV
+            let csv = fieldArray.join(',') + '\n';
+            
+            searchResults.forEach(result => {
+                const row = fieldArray.map(field => {
+                    const value = result.row[field] || '';
+                    // Escape quotes and wrap in quotes if contains comma
+                    return value.toString().includes(',') || value.toString().includes('"') 
+                        ? `"${value.toString().replace(/"/g, '""')}"` 
+                        : value;
+                });
+                csv += row.join(',') + '\n';
+            });
+            
+            // Download
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `search_results_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // Utility functions
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+        
+        console.log('Master Research Hub Search System initialized');
+        console.log('Load your CSV files to begin searching');
+    </script>
+</body>
+</html>

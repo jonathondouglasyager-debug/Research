@@ -1,0 +1,454 @@
+{
+  "snapshot_id": "20251210_055719",
+  "timestamp": "2025-12-10T05:57:20.233049",
+  "description": "Fox News Corp investigation complete - comprehensive report with Palantir connection",
+  "file_count": 89,
+  "total_size": 496169029,
+  "files": {
+    "COMMAND_CENTER_GUIDE.md": {
+      "hash": "86a55090c774169fd782af562753c398",
+      "size": 16962,
+      "modified": "2025-12-09T18:50:33.614199"
+    },
+    "INDEX.html": {
+      "hash": "c0df3ce6a1fcab99983c831a14972928",
+      "size": 45166,
+      "modified": "2025-12-10T05:56:41.351261"
+    },
+    "INDEX_v1.html": {
+      "hash": "d0d73dfea661461533dafad6b2c619a9",
+      "size": 16013,
+      "modified": "2025-12-09T18:40:54.480469"
+    },
+    "INDEX_v2.html": {
+      "hash": "41bfc8f7aec380afc77efa063334780e",
+      "size": 20227,
+      "modified": "2025-12-09T18:42:01.562739"
+    },
+    "INDEX_v3.html": {
+      "hash": "e0eec58461f54fdacd9fb416a6426b28",
+      "size": 30384,
+      "modified": "2025-12-09T18:43:42.471548"
+    },
+    "INDEX_v4.html": {
+      "hash": "6e40b2264fbeac322895e8c79a6c3f53",
+      "size": 34185,
+      "modified": "2025-12-09T18:45:36.740579"
+    },
+    "INDEX_v5.html": {
+      "hash": "0afe084932352c5739843f13721425c5",
+      "size": 40633,
+      "modified": "2025-12-09T18:47:50.966360"
+    },
+    "Active_Investigations\\flight and weather research\\files (1).zip": {
+      "hash": "8ce9e4d9cee65fe825be4d61517ab491",
+      "size": 26342,
+      "modified": "2025-11-29T02:45:53.935924"
+    },
+    "Active_Investigations\\Flight_Tracking\\Analysis\\Flight_Tracking_Investigation.csv": {
+      "hash": "839232a6edb317f2a0d9f1acf726b8d0",
+      "size": 12142,
+      "modified": "2025-12-02T16:42:01.097157"
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_quick_reference_calendar.txt": {
+      "hash": "f66b2aa789b5da99bba631f06b0a702e",
+      "size": 28115,
+      "modified": "2025-11-29T02:42:56.947670"
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_research_database.csv": {
+      "hash": "528247a8e94758cb1bc2ac159dfb8900",
+      "size": 23821,
+      "modified": "2025-11-29T02:43:00.556797"
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_research_guide.md": {
+      "hash": "612ee3d5d9b9e93ea4db804b0ae10d4a",
+      "size": 18044,
+      "modified": "2025-11-29T02:43:00.561467"
+    },
+    "Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_timeline_calendar.md": {
+      "hash": "61da06dbafbe476d335d3f48fd3586b6",
+      "size": 25855,
+      "modified": "2025-11-29T02:42:56.931498"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\entity_database.csv": {
+      "hash": "0e39f959cb4d5766eea8893401c45f11",
+      "size": 6737,
+      "modified": "2025-12-10T05:55:41.884405"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\investigation_metadata.json": {
+      "hash": "63b60ade1b177ab1bdf3978d494d4aee",
+      "size": 723,
+      "modified": "2025-12-10T05:41:20.946141"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\investigation_overview.md": {
+      "hash": "efe6501903f6f775a290f44857fe1399",
+      "size": 1087,
+      "modified": "2025-12-10T05:41:20.944129"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\research_log.md": {
+      "hash": "4fcdd3c21b306a906e889454de7162d8",
+      "size": 280,
+      "modified": "2025-12-10T05:41:20.944129"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Analysis\\comprehensive_investigation_report.md": {
+      "hash": "96f7769231a98d8e8dfbad70b8b7ef7b",
+      "size": 19563,
+      "modified": "2025-12-10T05:55:00.327717"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Analysis\\README.md": {
+      "hash": "571898f5d5ecd5ba6724ea2639f30eec",
+      "size": 42,
+      "modified": "2025-12-10T05:41:20.945144"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Corporate_Networks\\README.md": {
+      "hash": "2fb05d294884351ad4b2d61785314033",
+      "size": 62,
+      "modified": "2025-12-10T05:41:20.945144"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Evidence\\README.md": {
+      "hash": "12254455d176dcef91a068fe69fe5a8f",
+      "size": 42,
+      "modified": "2025-12-10T05:41:20.944129"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\README.md": {
+      "hash": "fdfe57f9e028f0146eab561a56893b2b",
+      "size": 42,
+      "modified": "2025-12-10T05:41:20.945144"
+    },
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\timeline.md": {
+      "hash": "5d8f7ac9b2bbdd231ddd07ead308a90f",
+      "size": 4945,
+      "modified": "2025-12-10T05:56:15.912017"
+    },
+    "Active_Investigations\\Surveillance_Infrastructure\\rtx_timeline_autoindex_test.md": {
+      "hash": "696f26c646f0bdb27cb7904aeaa29bd8",
+      "size": 606,
+      "modified": "2025-12-10T04:01:31.065125"
+    },
+    "Active_Investigations\\Surveillance_Infrastructure\\surveillance_weather_nexus.md": {
+      "hash": "da6a180fc7b8c88aa203b248c760197b",
+      "size": 42062,
+      "modified": "2025-11-29T03:24:43.800732"
+    },
+    "Active_Investigations\\Weather_Modification\\auto_index_test.md": {
+      "hash": "d364cd9a8b613a1ba87b543ab63d72a9",
+      "size": 741,
+      "modified": "2025-12-09T18:57:29.487132"
+    },
+    "Active_Investigations\\Weather_Modification\\weather_modification_research_database.csv": {
+      "hash": "747640b777fc940866117e0d356ac4c9",
+      "size": 40026,
+      "modified": "2025-11-29T02:42:56.887101"
+    },
+    "Active_Investigations\\Weather_Modification\\Evidence_Matrix\\Atmospheric_Infrastructure_Actors.csv": {
+      "hash": "29da6516ea76373f2ff46eace7c3e1a4",
+      "size": 18357,
+      "modified": "2025-12-03T11:53:19.211708"
+    },
+    "Active_Investigations\\Weather_Modification\\Timeline\\weather_modification_timeline.md": {
+      "hash": "7708a86a11e4d8a073a7ceb4e8a949db",
+      "size": 28793,
+      "modified": "2025-11-29T02:42:56.915333"
+    },
+    "Documents and Research\\Epstein-Docs_part_1.pdf": {
+      "hash": "8733d2502cc474ecec22e3880055181a",
+      "size": 25695679,
+      "modified": "2025-12-02T18:48:40.772851"
+    },
+    "Documents and Research\\Epstein-Docs_part_10.pdf": {
+      "hash": "70f541c530fd73115449993b70793c44",
+      "size": 24701507,
+      "modified": "2025-12-02T18:48:42.260052"
+    },
+    "Documents and Research\\Epstein-Docs_part_11.pdf": {
+      "hash": "3645960ab21d68db545c6f4d4af6df5d",
+      "size": 25914075,
+      "modified": "2025-12-02T18:48:42.433929"
+    },
+    "Documents and Research\\Epstein-Docs_part_12.pdf": {
+      "hash": "257bbb0f1fbdfd21a11919d1070ca3a4",
+      "size": 25361178,
+      "modified": "2025-12-02T18:48:42.608495"
+    },
+    "Documents and Research\\Epstein-Docs_part_13.pdf": {
+      "hash": "2920ec982c739da1280f123a9074edb3",
+      "size": 25743036,
+      "modified": "2025-12-02T18:48:42.782939"
+    },
+    "Documents and Research\\Epstein-Docs_part_14.pdf": {
+      "hash": "8ce22a4fdde37bba512e0ddc3fcc2db8",
+      "size": 25345082,
+      "modified": "2025-12-02T18:48:42.969329"
+    },
+    "Documents and Research\\Epstein-Docs_part_15.pdf": {
+      "hash": "59c2faa8abc3a16f6c35e3059a45819e",
+      "size": 25930723,
+      "modified": "2025-12-02T18:48:43.134746"
+    },
+    "Documents and Research\\Epstein-Docs_part_16.pdf": {
+      "hash": "91bdba2e82fdfda5db2d8737f9446868",
+      "size": 25525634,
+      "modified": "2025-12-02T18:48:43.304788"
+    },
+    "Documents and Research\\Epstein-Docs_part_17.pdf": {
+      "hash": "6d9873b9b74cd68696c234e4666510bf",
+      "size": 25101628,
+      "modified": "2025-12-02T18:48:43.463701"
+    },
+    "Documents and Research\\Epstein-Docs_part_18.pdf": {
+      "hash": "3d91c2592449ca4163f96a95fe50559c",
+      "size": 25989314,
+      "modified": "2025-12-02T18:48:43.638600"
+    },
+    "Documents and Research\\Epstein-Docs_part_19.pdf": {
+      "hash": "560fa44ff98be06377bb3bbe05aa9fa1",
+      "size": 25965922,
+      "modified": "2025-12-02T18:48:43.813160"
+    },
+    "Documents and Research\\Epstein-Docs_part_2.pdf": {
+      "hash": "90d2aa9212998b1cd3a1063280a48f05",
+      "size": 24619615,
+      "modified": "2025-12-02T18:48:40.925446"
+    },
+    "Documents and Research\\Epstein-Docs_part_20.pdf": {
+      "hash": "c3bc81f00de0ea5ddbd5be0e0319345e",
+      "size": 4233470,
+      "modified": "2025-12-02T18:48:43.845051"
+    },
+    "Documents and Research\\Epstein-Docs_part_3.pdf": {
+      "hash": "1feaf4a99b425a62d50d9674c7d77078",
+      "size": 25169069,
+      "modified": "2025-12-02T18:48:41.085238"
+    },
+    "Documents and Research\\Epstein-Docs_part_4.pdf": {
+      "hash": "b7f39af16ade346950af194ff9cda9ad",
+      "size": 26004296,
+      "modified": "2025-12-02T18:48:41.260742"
+    },
+    "Documents and Research\\Epstein-Docs_part_5.pdf": {
+      "hash": "7f51bd79a2f1e55a9f8e97ee76fe97f1",
+      "size": 25115988,
+      "modified": "2025-12-02T18:48:41.420817"
+    },
+    "Documents and Research\\Epstein-Docs_part_6.pdf": {
+      "hash": "abd80882c544609081e7e845185c0f54",
+      "size": 25695231,
+      "modified": "2025-12-02T18:48:41.595676"
+    },
+    "Documents and Research\\Epstein-Docs_part_7.pdf": {
+      "hash": "f18dd964cce0b860ac5fd07efd6acfd9",
+      "size": 25708156,
+      "modified": "2025-12-02T18:48:41.774913"
+    },
+    "Documents and Research\\Epstein-Docs_part_8.pdf": {
+      "hash": "4320cb7a654f532b6f4c294a850dd479",
+      "size": 24508665,
+      "modified": "2025-12-02T18:48:41.927974"
+    },
+    "Documents and Research\\Epstein-Docs_part_9.pdf": {
+      "hash": "3c3bc2f0898d29038382a17861d6e000",
+      "size": 25046272,
+      "modified": "2025-12-02T18:48:42.101752"
+    },
+    "Documents and Research\\RTX Corporation_ The Complete Technology and Power Structure Investigation.pdf": {
+      "hash": "5dbfddce8d0098f048821f2af0e85c1c",
+      "size": 497672,
+      "modified": "2025-12-03T11:48:27.645910"
+    },
+    "Output\\Databases\\compass_artifact_wf-97505f4b-0692-4de5-bf9b-8de1acde77f0_text_markdown.md": {
+      "hash": "bf5cee403c28127755115289f1c93689",
+      "size": 19272,
+      "modified": "2025-12-03T11:01:17.581862"
+    },
+    "Output\\Databases\\entity_list_1764799560021.html": {
+      "hash": "a51f0c13b9cab441012e38e1505c4093",
+      "size": 19601,
+      "modified": "2025-12-03T17:06:00.478210"
+    },
+    "Output\\Databases\\Untitled Project_complete_1764799636415.json": {
+      "hash": "585e3b6c5ce71d71c5de3332172e7667",
+      "size": 6793078,
+      "modified": "2025-12-03T17:07:17.128253"
+    },
+    "Output\\Databases\\Untitled Project_entities_1764804662695.csv": {
+      "hash": "e4ccddb5a5bf3a332d8cf6232dde1deb",
+      "size": 44127,
+      "modified": "2025-12-03T18:31:02.905370"
+    },
+    "Output\\YouTube_Content\\operation-popeye-presentation.pptx": {
+      "hash": "d24e0edf3fe8828f8f9ebd575c4bb241",
+      "size": 166016,
+      "modified": "2025-12-04T13:34:16.329772"
+    },
+    "Tools_and_Systems\\Master Research Hub\\Download_Queue_Manager.md": {
+      "hash": "74fe461ead85efe6592fafae66fa6404",
+      "size": 3295,
+      "modified": "2025-12-02T18:05:35.458362"
+    },
+    "Tools_and_Systems\\Master Research Hub\\Master_Session_Index.md": {
+      "hash": "678c623b3a7685339c6c6ae8f24042bd",
+      "size": 7265,
+      "modified": "2025-12-02T18:05:19.933867"
+    },
+    "Tools_and_Systems\\Master Research Hub\\Research_Workflow_Integration_Guide.md": {
+      "hash": "cfd665f4141fd100bbde601fed23cf86",
+      "size": 14762,
+      "modified": "2025-12-02T18:05:08.695192"
+    },
+    "Tools_and_Systems\\Master Research Hub\\TEMPLATE_Research_Session.md": {
+      "hash": "4eade7dca5dcba86302be98ffe24543c",
+      "size": 4127,
+      "modified": "2025-12-02T18:05:45.377975"
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\master_research_hub_ULTIMATE.html": {
+      "hash": "1c0c8569fb812835aa88ea825578c5db",
+      "size": 47845,
+      "modified": "2025-12-01T05:07:03.968373"
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\Research_Command_Center.html": {
+      "hash": "af8d29ca616286895b0eb725fddb3df5",
+      "size": 18645,
+      "modified": "2025-12-01T03:04:16.772772"
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\Research_Dashboard_FINAL.html": {
+      "hash": "130b0c7cebbd689466ffb9b9943fb394",
+      "size": 42191,
+      "modified": "2025-11-30T04:25:12.600634"
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\research_hub_v1_21.html": {
+      "hash": "de85e1ce805d83484b09ad96b7bf094d",
+      "size": 197442,
+      "modified": "2025-12-03T18:59:09.919131"
+    },
+    "Tools_and_Systems\\Master_Research_Hub\\Shroud_Evidence_Requirements.html": {
+      "hash": "7ea59be8ee84750e9431b69ff4a17104",
+      "size": 30275,
+      "modified": "2025-12-05T18:14:02.705067"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Atmospheric_Infrastructure_Actors.csv": {
+      "hash": "29da6516ea76373f2ff46eace7c3e1a4",
+      "size": 18357,
+      "modified": "2025-12-02T16:36:35.696189"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\COMPLETE_ECOSYSTEM_GUIDE.md": {
+      "hash": "b12b65bd9ec044691116fb22d42971a1",
+      "size": 13557,
+      "modified": "2025-12-02T16:36:35.709625"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Flight_Tracking_Investigation.csv": {
+      "hash": "839232a6edb317f2a0d9f1acf726b8d0",
+      "size": 12142,
+      "modified": "2025-12-02T16:36:35.720046"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Geoengineering_Legislation.csv": {
+      "hash": "ae0950e49bf3f5d9b72929bc65196015",
+      "size": 6098,
+      "modified": "2025-12-02T16:36:35.724594"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\HOME_SETUP_GUIDE.md": {
+      "hash": "5cf71b237e4481940d0a791f380c66b8",
+      "size": 7687,
+      "modified": "2025-12-02T16:36:35.732471"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub.html": {
+      "hash": "d39422b2c0c54626c163b9765a5f4a66",
+      "size": 50550,
+      "modified": "2025-12-02T16:36:35.734258"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_PRO.html": {
+      "hash": "756674b80c3fb8c410cea8676dffc29b",
+      "size": 53703,
+      "modified": "2025-12-02T16:36:35.746933"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_SEARCH.html": {
+      "hash": "5db6c9cd16bacd02e8305d0f25ea4412",
+      "size": 26442,
+      "modified": "2025-12-02T16:36:35.749577"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_ULTIMATE (4).html": {
+      "hash": "2b69839f229eac60662267747eab7347",
+      "size": 54539,
+      "modified": "2025-12-02T16:18:34.411482"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\ULTIMATE_HUB_GUIDE.md": {
+      "hash": "578c9c1b4111a896e435ada58aabc2ce",
+      "size": 16820,
+      "modified": "2025-12-02T16:36:35.757259"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\Weather_Modification_Timeline.csv": {
+      "hash": "3ea8476c0eb027cb4af693339a0f8623",
+      "size": 11950,
+      "modified": "2025-12-02T16:36:35.766752"
+    },
+    "Tools_and_Systems\\RESEARCH HUB FOLDER\\WORKFLOW_INSTRUCTIONS.md": {
+      "hash": "6c21f5c3d6e3cb5928add4e3becb6490",
+      "size": 1130,
+      "modified": "2025-12-02T19:39:39.937141"
+    },
+    "Tools_and_Systems\\Templates\\CDC_COVID_DATA_DOWNLOAD_GUIDE.md": {
+      "hash": "3aa8979824d5caa4aebefc30b8a301ce",
+      "size": 9190,
+      "modified": "2025-12-04T06:52:18.485111"
+    },
+    "Tools_and_Systems\\Templates\\Download_Queue_Manager.md": {
+      "hash": "74fe461ead85efe6592fafae66fa6404",
+      "size": 3295,
+      "modified": "2025-12-02T18:05:35.458362"
+    },
+    "Tools_and_Systems\\Templates\\HOW-TO-USE-PRESENTATION.md": {
+      "hash": "0746430682e4aef717fe0802ff03b32c",
+      "size": 3736,
+      "modified": "2025-12-04T13:38:20.945401"
+    },
+    "Tools_and_Systems\\Templates\\Master_Session_Index.md": {
+      "hash": "678c623b3a7685339c6c6ae8f24042bd",
+      "size": 7265,
+      "modified": "2025-12-02T18:05:19.933867"
+    },
+    "Tools_and_Systems\\Templates\\Research_Workflow_Integration_Guide.md": {
+      "hash": "cfd665f4141fd100bbde601fed23cf86",
+      "size": 14762,
+      "modified": "2025-12-02T18:05:08.695192"
+    },
+    "Tools_and_Systems\\Templates\\TEMPLATE_Research_Session.md": {
+      "hash": "4eade7dca5dcba86302be98ffe24543c",
+      "size": 4127,
+      "modified": "2025-12-02T18:05:45.377975"
+    },
+    "Tools_and_Systems\\Templates\\WORKFLOW_INSTRUCTIONS.md": {
+      "hash": "6c21f5c3d6e3cb5928add4e3becb6490",
+      "size": 1130,
+      "modified": "2025-12-02T19:39:39.937141"
+    },
+    "_Automation\\duplicate_detector.py": {
+      "hash": "57bb72ecabb2344ee1bc1b86de51352a",
+      "size": 16499,
+      "modified": "2025-12-10T05:29:33.354375"
+    },
+    "_Automation\\investigation_starter.py": {
+      "hash": "d6f1345f4b1893cceabaf86698f526ff",
+      "size": 12247,
+      "modified": "2025-12-10T05:27:29.424695"
+    },
+    "_Automation\\README.md": {
+      "hash": "46491a614fc3e1d77812036949385092",
+      "size": 5351,
+      "modified": "2025-12-10T05:31:03.938762"
+    },
+    "_Automation\\smart_categorizer.py": {
+      "hash": "138f4aacc96c245ecf9bba54ff077cb8",
+      "size": 16896,
+      "modified": "2025-12-10T05:28:32.138931"
+    },
+    "_Automation\\test_automation.py": {
+      "hash": "5f574ec42ee94f87c4f380029d055faa",
+      "size": 3329,
+      "modified": "2025-12-10T05:31:20.718681"
+    },
+    "_Automation\\version_control.py": {
+      "hash": "99e855abed2caafd84adfb62b48851e4",
+      "size": 16077,
+      "modified": "2025-12-10T05:30:29.564973"
+    }
+  }
+}

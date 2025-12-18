@@ -1,0 +1,50 @@
+{
+  "system": {
+    "research_dir": "C:\\Users\\jonat\\Documents\\Research",
+    "auto_index_enabled": true,
+    "scan_interval_minutes": 60,
+    "backup_enabled": true
+  },
+  
+  "file_intelligence": {
+    "ocr_enabled": true,
+    "pdf_extraction_enabled": true,
+    "auto_categorization_enabled": true
+  },
+  
+  "database_manager": {
+    "auto_discover": true,
+    "cache_enabled": true
+  },
+  
+  "source_tracker": {
+    "auto_register_sources": true,
+    "default_citation_style": "apa",
+    "verify_on_startup": false
+  },
+  
+  "investigations": {
+    "weather_modification": {
+      "folder": "Active_Investigations\\Weather_Modification",
+      "keywords": ["weather", "cloud seeding", "geoengineering", "haarp", "atmospheric", "popeye", "enmod"]
+    },
+    "surveillance_infrastructure": {
+      "folder": "Active_Investigations\\Surveillance_Infrastructure",
+      "keywords": ["surveillance", "raytheon", "palantir", "defense contractor", "rtx", "lockheed"]
+    },
+    "flight_tracking": {
+      "folder": "Active_Investigations\\Flight_Tracking",
+      "keywords": ["flight", "aircraft", "flightradar", "c-17", "military aircraft", "adsb"]
+    },
+    "media_ownership": {
+      "folder": "Active_Investigations\\Media_Ownership",
+      "keywords": ["media", "news", "journalism", "fox", "cnn", "ownership"]
+    }
+  },
+  
+  "output": {
+    "reports_dir": "Output\\Reports",
+    "databases_dir": "Output\\Databases",
+    "youtube_content_dir": "Output\\YouTube_Content"
+  }
+}

@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Command Center - Jonathon's Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        header {
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .stat-card.investigations .stat-number { color: #4a9eff; }
+        .stat-card.files .stat-number { color: #4caf50; }
+        .stat-card.databases .stat-number { color: #ff9800; }
+        .stat-card.tools .stat-number { color: #9c27b0; }
+        
+        .search-bar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #4a9eff;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+        
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: #4a9eff;
+            border-color: #4a9eff;
+        }
+        
+        .search-stats {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .action-btn {
+            padding: 15px 20px;
+            background: rgba(74, 158, 255, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1em;
+            border: none;
+        }
+        
+        .action-btn:hover {
+            background: rgba(74, 158, 255, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .section.investigations { border-left: 4px solid #4a9eff; }
+        .section.tools { border-left: 4px solid #4caf50; }
+        .section.output { border-left: 4px solid #ff9800; }
+        .section.archive { border-left: 4px solid #9c27b0; }
+        .section.supporting { border-left: 4px solid #607d8b; }
+        .section.automation { border-left: 4px solid #e91e63; }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .section-header:hover {
+            opacity: 0.8;
+        }
+        
+        .section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section.investigations h2 { color: #4a9eff; }
+        .section.tools h2 { color: #4caf50; }
+        .section.output h2 { color: #ff9800; }
+        .section.archive h2 { color: #9c27b0; }
+        .section.supporting h2 { color: #607d8b; }
+        .section.automation h2 { color: #e91e63; }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.6em;
+            font-weight: normal;
+        }
+        
+        .toggle-icon {
+            font-size: 0.7em;
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        
+        .section-content {
+            max-height: 3000px;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .section-content.collapsed {
+            max-height: 0;
+        }
+        
+        .investigation {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .investigation:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .investigation.hidden {
+            display: none;
+        }
+        
+        .investigation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .investigation h3 {
+            font-size: 1.4em;
+            color: #6ec1ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .notes-toggle {
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+        }
+        
+        .notes-toggle:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .notes-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .notes-panel.open {
+            max-height: 300px;
+        }
+        
+        .notes-content {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #4a9eff;
+        }
+        
+        .notes-textarea {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #ffffff;
+            padding: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.95em;
+            resize: vertical;
+        }
+        
+        .notes-textarea:focus {
+            outline: none;
+            border-color: #4a9eff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 15px;
+            background: rgba(74, 158, 255, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        a:hover {
+            background: rgba(74, 158, 255, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        a.hidden {
+            display: none;
+        }
+        
+        .folder-link {
+            background: rgba(255, 193, 7, 0.3);
+        }
+        
+        .folder-link:hover {
+            background: rgba(255, 193, 7, 0.6);
+        }
+        
+        .csv-link {
+            background: rgba(76, 175, 80, 0.3);
+        }
+        
+        .csv-link:hover {
+            background: rgba(76, 175, 80, 0.6);
+        }
+        
+        .md-link {
+            background: rgba(33, 150, 243, 0.3);
+        }
+        
+        .md-link:hover {
+            background: rgba(33, 150, 243, 0.6);
+        }
+        
+        .html-link {
+            background: rgba(156, 39, 176, 0.3);
+        }
+        
+        .html-link:hover {
+            background: rgba(156, 39, 176, 0.6);
+        }
+        
+        .py-link {
+            background: rgba(255, 87, 34, 0.3);
+        }
+        
+        .py-link:hover {
+            background: rgba(255, 87, 34, 0.6);
+        }
+        
+        .other-link {
+            background: rgba(158, 158, 158, 0.3);
+        }
+        
+        .other-link:hover {
+            background: rgba(158, 158, 158, 0.6);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+        }
+        
+        .tips-section {
+            background: rgba(255, 193, 7, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .tips-section h3 {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .tips-section ul {
+            list-style-position: inside;
+            opacity: 0.9;
+        }
+        
+        .tips-section li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 RESEARCH COMMAND CENTER</h1>
+            <p class="subtitle">Jonathon's Research Index | REBUILT v6.0 | December 17, 2025</p>
+        </header>
+
+        <!-- STATS DASHBOARD -->
+        <div class="stats-dashboard">
+            <div class="stat-card investigations">
+                <span class="stat-number">7</span>
+                <span class="stat-label">Active Investigations</span>
+            </div>
+            <div class="stat-card files">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Total Files</span>
+            </div>
+            <div class="stat-card databases">
+                <span class="stat-number">12</span>
+                <span class="stat-label">CSV Databases</span>
+            </div>
+            <div class="stat-card tools">
+                <span class="stat-number">15</span>
+                <span class="stat-label">Python Tools</span>
+            </div>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div class="quick-actions">
+            <a href="file:///C:/Users/jonat/Documents/Research/MASTER_RESEARCH_INDEX.md" class="action-btn" style="background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%); font-weight: bold;">
+                📖 MASTER RESEARCH INDEX
+            </a>
+            <a href="file:///C:/Users/jonat/Documents/Research" class="action-btn">
+                📂 Open Research Root
+            </a>
+            <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations" class="action-btn">
+                🔍 Browse Investigations
+            </a>
+            <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/research_hub_v1_21.html" class="action-btn">
+                🌐 Launch Research Hub
+            </a>
+            <button onclick="location.reload()" class="action-btn">
+                🔄 Refresh Index
+            </button>
+        </div>
+
+        <!-- TIPS SECTION -->
+        <div class="tips-section">
+            <h3>💡 Quick Tips</h3>
+            <ul>
+                <li><strong>Search:</strong> Type keywords to instantly filter files</li>
+                <li><strong>Filter:</strong> Click buttons to show only specific file types</li>
+                <li><strong>Notes:</strong> Click "Notes" on any investigation to add research notes (saved in browser)</li>
+                <li><strong>Collapse:</strong> Click section headers to collapse/expand content</li>
+                <li><strong>NEW:</strong> Python automation tools now available in _Automation, _Generation, _System</li>
+            </ul>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="search-bar">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search files, folders, or investigations..." onkeyup="performSearch()">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByType('all')">All</button>
+                <button class="filter-btn" onclick="filterByType('csv')">📊 CSV</button>
+                <button class="filter-btn" onclick="filterByType('md')">📝 Markdown</button>
+                <button class="filter-btn" onclick="filterByType('html')">🌐 HTML</button>
+                <button class="filter-btn" onclick="filterByType('py')">🐍 Python</button>
+                <button class="filter-btn" onclick="filterByType('folder')">📂 Folders</button>
+            </div>
+        </div>
+
+        <div class="search-stats" id="searchStats">
+            Ready to search | Rebuilt from filesystem: December 17, 2025
+        </div>
+
+        <!-- ACTIVE INVESTIGATIONS -->
+        <div class="section investigations">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📁 ACTIVE INVESTIGATIONS <span class="badge">7 Projects</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- Weather Modification -->
+                <div class="investigation" data-keywords="weather modification geoengineering climate atmospheric">
+                    <div class="investigation-header">
+                        <h3>⚡ Weather Modification <span class="badge" style="background: rgba(76, 175, 80, 0.5);">Active</span></h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('weather-modification', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/weather_modification_research_database.csv" class="csv-link" data-type="csv">📊 Main Database</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Timeline/weather_modification_timeline.md" class="md-link" data-type="md">📅 Timeline</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Evidence_Matrix" class="folder-link" data-type="folder">📁 Evidence Matrix</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Phase_4_Analysis" class="folder-link" data-type="folder">🔬 Phase 4 Analysis (13 files)</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Legislation" class="folder-link" data-type="folder">📜 Legislation</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Weather_Modification/Primary_Sources" class="folder-link" data-type="folder">📚 Primary Sources</a>
+                    </div>
+                </div>
+
+                <!-- Flight Tracking -->
+                <div class="investigation" data-keywords="flight tracking flightradar24 aircraft aviation radar">
+                    <div class="investigation-header">
+                        <h3>✈️ Flight Tracking <span class="badge" style="background: rgba(76, 175, 80, 0.5);">Active</span></h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('flight-tracking', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_research_database.csv" class="csv-link" data-type="csv">📊 FR24 Database</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_timeline_calendar.md" class="md-link" data-type="md">📅 Timeline</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/FlightRadar24/flightradar24_research_guide.md" class="md-link" data-type="md">📖 Research Guide</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/Analysis/Flight_Tracking_Investigation.csv" class="csv-link" data-type="csv">🔍 Analysis</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Flight_Tracking/Aircraft_Sightings" class="folder-link" data-type="folder">🛩️ Sightings</a>
+                    </div>
+                </div>
+
+                <!-- Fox News Corp Investigation -->
+                <div class="investigation" data-keywords="fox news corporation media ownership journalism investigation">
+                    <div class="investigation-header">
+                        <h3>🦊 Fox News Corp Investigation <span class="badge" style="background: rgba(76, 175, 80, 0.5);">Active</span></h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('fox-news-corp', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation/investigation_overview.md" class="md-link" data-type="md">📖 Overview</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation/entity_database.csv" class="csv-link" data-type="csv">📊 Entity Database</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation/research_log.md" class="md-link" data-type="md">📝 Research Log</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation/01_MONEY_FINANCIAL_DATABASE.md" class="md-link" data-type="md">💰 Money/Financial</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation/02_HIERARCHIES_POWER_DATABASE.md" class="md-link" data-type="md">⚡ Hierarchies/Power</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Fox_News_Corp_Investigation/03_SOURCES_EVIDENCE_DATABASE.md" class="md-link" data-type="md">📚 Sources/Evidence</a>
+                    </div>
+                </div>
+
+                <!-- Surveillance Infrastructure -->
+                <div class="investigation" data-keywords="surveillance infrastructure defense contractors rtx raytheon palantir">
+                    <div class="investigation-header">
+                        <h3>👁️ Surveillance Infrastructure <span class="badge" style="background: rgba(76, 175, 80, 0.5);">Active</span></h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('surveillance-infrastructure', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/surveillance_weather_nexus.md" class="md-link" data-type="md">📝 Weather Nexus</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/rtx_timeline_autoindex_test.md" class="md-link" data-type="md">📅 RTX Timeline</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/Defense_Contractors" class="folder-link" data-type="folder">🏢 Defense Contractors</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Surveillance_Infrastructure/Corporate_Networks" class="folder-link" data-type="folder">🌐 Corporate Networks</a>
+                    </div>
+                </div>
+
+                <!-- Media Ownership -->
+                <div class="investigation" data-keywords="media ownership fox corporation journalism news">
+                    <div class="investigation-header">
+                        <h3>📺 Media Ownership <span class="badge" style="background: rgba(255, 193, 7, 0.5);">Planning</span></h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('media-ownership', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Media_Ownership" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Media_Ownership/Fox_Corporation" class="folder-link" data-type="folder">🦊 Fox Corporation</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/Media_Ownership/Independent_Journalism" class="folder-link" data-type="folder">📰 Indie Journalism</a>
+                    </div>
+                </div>
+
+                <!-- Flight & Weather Research -->
+                <div class="investigation" data-keywords="flight weather mixed research combined">
+                    <div class="investigation-header">
+                        <h3>🌪️ Flight & Weather Research</h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('flight-weather', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/flight and weather research" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/flight and weather research/files (1).zip" class="other-link" data-type="other">📦 Files Archive</a>
+                    </div>
+                </div>
+
+                <!-- COVID PCR Investigation -->
+                <div class="investigation" data-keywords="covid pcr testing accuracy infectivity systematic review public health england government">
+                    <div class="investigation-header">
+                        <h3>🔬 COVID PCR Investigation <span class="badge" style="background: rgba(255, 69, 0, 0.6);">🔥 ACTIVE - 2 STUDIES ANALYZED</span></h3>
+                        <div class="notes-toggle" onclick="toggleNotes(this)">📝 Notes</div>
+                    </div>
+                    <div class="notes-panel">
+                        <div class="notes-content">
+                            <textarea class="notes-textarea" placeholder="Add notes about this investigation..." onchange="saveNotes('covid-pcr', this.value)"></textarea>
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/COVID_PCR_Truth_Investigation" class="folder-link" data-type="folder">📂 Investigation Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/COVID_PCR_Truth_Investigation/EXECUTIVE_BRIEF.md" class="file-link" data-type="file">📄 Executive Brief</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/COVID_PCR_Truth_Investigation/PCR_Viral_Culture_Systematic_Review_Analysis.md" class="file-link" data-type="file">📄 Jefferson Systematic Review (29 studies)</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Active_Investigations/COVID_PCR_Truth_Investigation/PHE_Ct_Infectiousness_Study_Analysis.md" class="file-link" data-type="file">📄 Public Health England Study (324 samples)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOOLS AND SYSTEMS -->
+        <div class="section tools">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>🛠️ TOOLS & SYSTEMS <span class="badge">6 Categories</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- Master Research Hub (Current) -->
+                <div class="investigation" data-keywords="research hub tools interface dashboard">
+                    <h3>💻 Master Research Hub (Current)</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/research_hub_v1_21.html" class="html-link" data-type="html">🌐 Hub v1.21 ⭐</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/master_research_hub_ULTIMATE.html" class="html-link" data-type="html">🌐 Ultimate Hub</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/Research_Dashboard_FINAL.html" class="html-link" data-type="html">🌐 Dashboard</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master_Research_Hub/Research_Command_Center.html" class="html-link" data-type="html">🌐 Command Center</a>
+                    </div>
+                </div>
+
+                <!-- Research Hub Folder (Legacy) -->
+                <div class="investigation" data-keywords="research hub legacy folder guides databases">
+                    <h3>🗂️ Research Hub Folder (Legacy)</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/master_research_hub.html" class="html-link" data-type="html">🌐 Master Hub</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/Atmospheric_Infrastructure_Actors.csv" class="csv-link" data-type="csv">📊 Atmospheric Actors DB</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/Weather_Modification_Timeline.csv" class="csv-link" data-type="csv">📅 Weather Timeline DB</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/RESEARCH HUB FOLDER/ULTIMATE_HUB_GUIDE.md" class="md-link" data-type="md">📖 Ultimate Guide</a>
+                    </div>
+                </div>
+
+                <!-- Master Research Hub (Original) -->
+                <div class="investigation" data-keywords="master research hub workflow template session">
+                    <h3>📁 Master Research Hub (Original)</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub/Research_Workflow_Integration_Guide.md" class="md-link" data-type="md">📖 Workflow Guide</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub/TEMPLATE_Research_Session.md" class="md-link" data-type="md">📋 Session Template</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Master Research Hub/Download_Queue_Manager.md" class="md-link" data-type="md">📥 Download Manager</a>
+                    </div>
+                </div>
+
+                <!-- Templates -->
+                <div class="investigation" data-keywords="templates workflow instructions session guide">
+                    <h3>📋 Templates</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/TEMPLATE_Research_Session.md" class="md-link" data-type="md">📋 Session</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/WORKFLOW_INSTRUCTIONS.md" class="md-link" data-type="md">📋 Workflow</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Templates/CDC_COVID_DATA_DOWNLOAD_GUIDE.md" class="md-link" data-type="md">📊 CDC Guide</a>
+                    </div>
+                </div>
+
+                <!-- Google Sheets Automation -->
+                <div class="investigation" data-keywords="google sheets automation logistics dispatch">
+                    <h3>📊 Google Sheets Automation</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/Google_Sheets_Automation" class="folder-link" data-type="folder">📂 Folder (Ready for Files)</a>
+                    </div>
+                </div>
+
+                <!-- The Big Dashboard -->
+                <div class="investigation" data-keywords="dashboard big project">
+                    <h3>📊 The Big Dashboard</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Tools_and_Systems/the big dashboard" class="folder-link" data-type="folder">📂 Folder (Ready for Files)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PYTHON AUTOMATION SYSTEMS -->
+        <div class="section automation">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>🐍 PYTHON AUTOMATION SYSTEMS <span class="badge">15 Scripts</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- _Automation -->
+                <div class="investigation" data-keywords="automation python scripts investigation starter categorizer">
+                    <h3>🤖 _Automation</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Automation" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Automation/investigation_starter.py" class="py-link" data-type="py">🚀 Investigation Starter</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Automation/smart_categorizer.py" class="py-link" data-type="py">🧠 Smart Categorizer</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Automation/duplicate_detector.py" class="py-link" data-type="py">🔍 Duplicate Detector</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Automation/version_control.py" class="py-link" data-type="py">📦 Version Control</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Automation/README.md" class="md-link" data-type="md">📖 Documentation</a>
+                    </div>
+                </div>
+
+                <!-- _Generation -->
+                <div class="investigation" data-keywords="generation python timeline report evidence entity">
+                    <h3>⚡ _Generation</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Generation" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Generation/timeline_builder.py" class="py-link" data-type="py">📅 Timeline Builder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Generation/report_generator.py" class="py-link" data-type="py">📄 Report Generator</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Generation/evidence_chain_builder.py" class="py-link" data-type="py">🔗 Evidence Chain</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Generation/entity_network_mapper.py" class="py-link" data-type="py">🗺️ Entity Mapper</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Generation/README.md" class="md-link" data-type="md">📖 Documentation</a>
+                    </div>
+                </div>
+
+                <!-- _System -->
+                <div class="investigation" data-keywords="system python auto-index database file intelligence">
+                    <h3>🔧 _System</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System/auto_index.py" class="py-link" data-type="py">🤖 Auto-Index</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System/database_manager.py" class="py-link" data-type="py">💾 Database Manager</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System/file_intelligence.py" class="py-link" data-type="py">🧠 File Intelligence</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System/source_tracker.py" class="py-link" data-type="py">📍 Source Tracker</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System/config.json" class="other-link" data-type="other">⚙️ Config</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/_System/README.md" class="md-link" data-type="md">📖 Documentation</a>
+                    </div>
+                </div>
+
+                <!-- _Intelligence -->
+                <div class="investigation" data-keywords="intelligence ai ml analysis">
+                    <h3>🧠 _Intelligence</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/_Intelligence" class="folder-link" data-type="folder">📂 Folder (Ready for AI Tools)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OUTPUT -->
+        <div class="section output">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📤 OUTPUT <span class="badge">3 Categories</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- YouTube Content -->
+                <div class="investigation" data-keywords="youtube video content presentation">
+                    <h3>🎥 YouTube Content</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/YouTube_Content" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/YouTube_Content/operation-popeye-presentation.pptx" class="other-link" data-type="other">📊 Operation Popeye</a>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="investigation" data-keywords="databases entity list exports">
+                    <h3>💾 Databases</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases" class="folder-link" data-type="folder">📂 Open Folder</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases/entity_list_1764799560021.html" class="html-link" data-type="html">🌐 Entity List</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases/Untitled Project_entities_1764804662695.csv" class="csv-link" data-type="csv">📊 Entities CSV</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Databases/compass_artifact_wf-97505f4b-0692-4de5-bf9b-8de1acde77f0_text_markdown.md" class="md-link" data-type="md">🧭 Compass Artifact</a>
+                    </div>
+                </div>
+
+                <!-- Reports -->
+                <div class="investigation" data-keywords="reports final analysis">
+                    <h3>📄 Reports</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Output/Reports" class="folder-link" data-type="folder">📂 Folder (Ready for Reports)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARCHIVE -->
+        <div class="section archive">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📦 ARCHIVE</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="investigation" data-keywords="archive completed">
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Archive" class="folder-link" data-type="folder">📂 Folder (Ready for Completed Work)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUPPORTING DOCUMENTS -->
+        <div class="section supporting">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📚 SUPPORTING DOCUMENTS <span class="badge">21 PDFs</span></h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <!-- Epstein Documents -->
+                <div class="investigation" data-keywords="epstein documents legal court files">
+                    <h3>📄 Epstein Documents</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research" class="folder-link" data-type="folder">📂 Open Folder (21 PDFs)</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research/Epstein-Docs_part_1.pdf" class="other-link" data-type="other">📄 Part 1</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research/Epstein-Docs_part_2.pdf" class="other-link" data-type="other">📄 Part 2</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research/Epstein-Docs_part_3.pdf" class="other-link" data-type="other">📄 Part 3</a>
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research/Epstein-Docs_part_20.pdf" class="other-link" data-type="other">📄 Part 20</a>
+                    </div>
+                </div>
+
+                <!-- RTX Corporation Report -->
+                <div class="investigation" data-keywords="rtx corporation defense contractor report">
+                    <h3>🏢 RTX Corporation Report</h3>
+                    <div class="links">
+                        <a href="file:///C:/Users/jonat/Documents/Research/Documents and Research/RTX Corporation_ The Complete Technology and Power Structure Investigation.pdf" class="other-link" data-type="other">📄 Complete Investigation PDF</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Research Command Center REBUILT v6.0 | Built for systematic truth-seeking</p>
+            <p>Rebuilt from filesystem scan: December 17, 2025</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">✅ All links verified against actual filesystem</p>
+            <p style="margin-top: 5px; font-size: 0.85em;">🆕 Added: Fox News Corp Investigation, Python Automation Systems</p>
+            <p style="margin-top: 5px; font-size: 0.85em;">🗑️ Removed: COVID PCR phantom files (folder ready for content)</p>
+        </footer>
+    </div>
+
+    <script>
+        let activeFilter = 'all';
+
+        // Load saved notes on page load
+        window.onload = function() {
+            loadAllNotes();
+        };
+
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            content.classList.toggle('collapsed');
+            icon.classList.toggle('collapsed');
+        }
+
+        function toggleNotes(button) {
+            const investigation = button.closest('.investigation');
+            const notesPanel = investigation.querySelector('.notes-panel');
+            notesPanel.classList.toggle('open');
+        }
+
+        function saveNotes(investigationId, content) {
+            localStorage.setItem('research-notes-' + investigationId, content);
+        }
+
+        function loadAllNotes() {
+            const textareas = document.querySelectorAll('.notes-textarea');
+            const investigations = [
+                'weather-modification', 
+                'flight-tracking', 
+                'fox-news-corp',
+                'surveillance-infrastructure', 
+                'media-ownership', 
+                'flight-weather', 
+                'covid-pcr'
+            ];
+            textareas.forEach((textarea, index) => {
+                if (investigations[index]) {
+                    const saved = localStorage.getItem('research-notes-' + investigations[index]);
+                    if (saved) {
+                        textarea.value = saved;
+                    }
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const investigations = document.querySelectorAll('.investigation');
+            const links = document.querySelectorAll('.links a');
+            let visibleCount = 0;
+
+            // If search is empty, show all based on active filter
+            if (searchTerm === '') {
+                filterByType(activeFilter);
+                document.getElementById('searchStats').textContent = 'Ready to search | Rebuilt from filesystem: December 17, 2025';
+                return;
+            }
+
+            // Hide all investigations first
+            investigations.forEach(inv => {
+                inv.classList.add('hidden');
+            });
+
+            // Search through investigations and links
+            investigations.forEach(inv => {
+                const keywords = inv.getAttribute('data-keywords') || '';
+                const text = inv.textContent.toLowerCase();
+                const hasMatch = keywords.includes(searchTerm) || text.includes(searchTerm);
+
+                if (hasMatch) {
+                    inv.classList.remove('hidden');
+                    visibleCount++;
+
+                    // Show/highlight matching links within this investigation
+                    const invLinks = inv.querySelectorAll('.links a');
+                    invLinks.forEach(link => {
+                        const linkText = link.textContent.toLowerCase();
+                        if (linkText.includes(searchTerm)) {
+                            link.classList.remove('hidden');
+                        }
+                    });
+                }
+            });
+
+            // Update stats
+            document.getElementById('searchStats').textContent = `Found ${visibleCount} matching investigation${visibleCount !== 1 ? 's' : ''}`;
+
+            // Expand all sections that have visible content
+            document.querySelectorAll('.section-content').forEach(content => {
+                const hasVisible = content.querySelector('.investigation:not(.hidden)');
+                if (hasVisible && content.classList.contains('collapsed')) {
+                    content.classList.remove('collapsed');
+                    const icon = content.previousElementSibling.querySelector('.toggle-icon');
+                    if (icon) icon.classList.remove('collapsed');
+                }
+            });
+        }
+
+        function filterByType(type) {
+            activeFilter = type;
+            const links = document.querySelectorAll('.links a');
+            const investigations = document.querySelectorAll('.investigation');
+            const sections = document.querySelectorAll('.section');
+            
+            // Reset active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Set active button
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(type) || 
+                    (type === 'all' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Clear search
+            document.getElementById('searchInput').value = '';
+
+            if (type === 'all') {
+                links.forEach(link => link.classList.remove('hidden'));
+                investigations.forEach(inv => inv.classList.remove('hidden'));
+                sections.forEach(section => section.style.display = 'block');
+                document.getElementById('searchStats').textContent = 'Showing all | 150+ files tracked';
+                return;
+            }
+
+            // Filter by file type
+            investigations.forEach(inv => inv.classList.add('hidden'));
+            
+            links.forEach(link => {
+                const linkType = link.getAttribute('data-type');
+                if (linkType === type) {
+                    link.classList.remove('hidden');
+                    // Show parent investigation
+                    let parent = link.closest('.investigation');
+                    if (parent) parent.classList.remove('hidden');
+                } else {
+                    link.classList.add('hidden');
+                }
+            });
+
+            const typeName = type.toUpperCase();
+            document.getElementById('searchStats').textContent = `Showing ${typeName} files only`;
+
+            // Hide sections with no visible investigations
+            sections.forEach(section => {
+                const hasVisible = section.querySelector('.investigation:not(.hidden)');
+                section.style.display = hasVisible ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+</html>

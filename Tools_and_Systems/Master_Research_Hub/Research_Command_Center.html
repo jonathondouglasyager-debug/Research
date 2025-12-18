@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Command Center - Multi-Project Hub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --navy: #1a2332;
+            --slate: #2d3e50;
+            --blue: #4a90a4;
+            --amber: #d4a574;
+            --gray: #8b95a1;
+            --white: #fefdfb;
+            --red: #c7594f;
+            --green: #6b9080;
+            --purple: #8b7a99;
+            --orange: #d17842;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--slate) 0%, var(--navy) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--amber);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .quick-stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--amber);
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-desc {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, var(--slate) 0%, var(--navy) 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid var(--navy);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+        }
+
+        .project-card:hover {
+            border-color: var(--amber);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--amber);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-tools {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .tool-badge {
+            padding: 0.5rem 1rem;
+            background: var(--navy);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--gray);
+            transition: all 0.3s ease;
+        }
+
+        .tool-badge:hover {
+            background: var(--amber);
+            color: var(--navy);
+            border-color: var(--amber);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--slate);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--blue);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tool-card:hover {
+            border-left-color: var(--amber);
+            transform: translateX(4px);
+        }
+
+        .tool-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+        }
+
+        .status-active { background: var(--green); color: white; }
+        .status-new { background: var(--amber); color: var(--navy); }
+
+        .methodology-box {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .methodology-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .methodology-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .methodology-item {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .footer {
+            background: var(--slate);
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--navy);
+            margin-top: 4rem;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--amber);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🎯 RESEARCH COMMAND CENTER</h1>
+        <div class="tagline">Truth-Seeking Methodology • Multi-Project Investigation Hub</div>
+        
+        <div class="quick-stats">
+            <div class="quick-stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Active Projects</div>
+            </div>
+            <div class="quick-stat">
+                <div class="stat-number">171</div>
+                <div class="stat-label">Actors Tracked</div>
+            </div>
+            <div class="quick-stat">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Integrated Tools</div>
+            </div>
+            <div class="quick-stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Truth-Focused</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Truth-Seeking Methodology -->
+        <div class="methodology-box">
+            <div class="methodology-title">⚡ Operating Principles - Truth-Seeking Methodology</div>
+            <div class="methodology-list">
+                <div class="methodology-item">✅ Brutal Clarity in Questions</div>
+                <div class="methodology-item">📊 Primary Sources First</div>
+                <div class="methodology-item">🔍 Active Disconfirmation</div>
+                <div class="methodology-item">⚖️ Source Quality > Quantity</div>
+                <div class="methodology-item">🔗 Connect Dots Explicitly</div>
+                <div class="methodology-item">📚 Database Everything</div>
+                <div class="methodology-item">🎯 Systematic Skepticism</div>
+                <div class="methodology-item">✋ Permission to Be Wrong</div>
+            </div>
+        </div>
+
+        <!-- Active Projects -->
+        <section class="section">
+            <div class="section-header">
+                <h2>🗂️ Active Research Projects</h2>
+                <p class="section-desc">Click any project to open its investigation dashboard</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card" onclick="window.open('Geoengineering_Investigation_COMPLETE.html')">
+                    <div class="project-icon">🌐</div>
+                    <div class="project-title">
+                        Geoengineering Investigation
+                        <span class="status-badge status-active">Active</span>
+                    </div>
+                    <div class="project-desc">
+                        Comprehensive investigation tracking weather modification infrastructure, defense contractors, and state legislation. Complete database with 171 actors, 26 state bills, and network analysis.
+                    </div>
+                    <div class="project-meta">
+                        <span>📅 Started: Nov 2025</span>
+                        <span>🏷️ 171 actors</span>
+                        <span>📜 26 bills</span>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-badge">Actor Database</span>
+                        <span class="tool-badge">Legislation Tracker</span>
+                        <span class="tool-badge">Pattern Analysis</span>
+                        <span class="tool-badge">Export Tools</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="window.open('Research_Dashboard_FINAL.html')">
+                    <div class="project-icon">🔬</div>
+                    <div class="project-title">
+                        General Research Dashboard
+                        <span class="status-badge status-active">Active</span>
+                    </div>
+                    <div class="project-desc">
+                        Universal research workspace with evidence matrix, timeline builder, concept mapping, and glossary integration. File drop capability for CSV, markdown, and documents.
+                    </div>
+                    <div class="project-meta">
+                        <span>📅 Created: Nov 2025</span>
+                        <span>🎨 6 integrated tabs</span>
+                        <span>📂 File import ready</span>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-badge">Evidence Matrix</span>
+                        <span class="tool-badge">Timeline</span>
+                        <span class="tool-badge">Concept Map</span>
+                        <span class="tool-badge">Glossary</span>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="alert('Create new project by uploading research files to any dashboard')">
+                    <div class="project-icon">➕</div>
+                    <div class="project-title">
+                        Start New Project
+                        <span class="status-badge status-new">New</span>
+                    </div>
+                    <div class="project-desc">
+                        Begin a new investigation using Truth-Seeking Methodology. Upload research files to automatically create project structure with evidence tracking and cross-references.
+                    </div>
+                    <div class="project-meta">
+                        <span>🚀 Quick Start</span>
+                        <span>📁 File-based init</span>
+                        <span>🔗 Auto-linking</span>
+                    </div>
+                    <div class="project-tools">
+                        <span class="tool-badge">Auto-Setup</span>
+                        <span class="tool-badge">Template</span>
+                        <span class="tool-badge">Integration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialized Tools -->
+        <section class="section">
+            <div class="section-header">
+                <h2>🛠️ Specialized Investigation Tools</h2>
+                <p class="section-desc">Advanced tools for deep analysis and cross-referencing</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.open('Knowledge_Graph_Enhanced.html')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🕸️</div>
+                    <div class="tool-title">Interactive Knowledge Graph</div>
+                    <div class="tool-desc">Visual network mapping with drag-and-drop nodes, connection strength indicators, and click-through entity exploration.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Timeline_Integrated.html')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+                    <div class="tool-title">Chronological Timeline</div>
+                    <div class="tool-desc">Interactive timeline spanning 1987-2025 with patents, facilities, contracts, and legislation plotted chronologically.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('CrossReference_System.html')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔗</div>
+                    <div class="tool-title">Cross-Reference Hub</div>
+                    <div class="tool-desc">Click any actor to see all related legislation, programs, contracts, and technologies with connection strength ratings.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Source_Library.html')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+                    <div class="tool-title">Source Library</div>
+                    <div class="tool-desc">Centralized research document repository with claim tracking, citation tools, and full-text search.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Truth-Seeking_Glossary.md')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📖</div>
+                    <div class="tool-title">Technical Glossary</div>
+                    <div class="tool-desc">Living document with jargon definitions, cross-references, and usage context. Updated with each research session.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Truth-Seeking_Methodology.md')">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚖️</div>
+                    <div class="tool-title">Methodology Framework</div>
+                    <div class="tool-desc">Complete Truth-Seeking Methodology documentation with investigation protocols and operating principles.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="section">
+            <div class="section-header">
+                <h2>⚡ Quick Actions</h2>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.open('Geoengineering_Investigation_COMPLETE.html#actors')">
+                    <div class="tool-title">🔍 Search All Actors</div>
+                    <div class="tool-desc">Search across 171 tracked actors with filter by category, status, and integration points.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Geoengineering_Investigation_COMPLETE.html#legislation')">
+                    <div class="tool-title">📜 Browse Legislation</div>
+                    <div class="tool-desc">Explore 26 state bills with status filtering (enacted, in committee, failed).</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Geoengineering_Investigation_COMPLETE.html#patterns')">
+                    <div class="tool-title">🎯 Run Pattern Analysis</div>
+                    <div class="tool-desc">Automated detection of multi-state organizations, military integrations, and coordination patterns.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Geoengineering_Investigation_COMPLETE.html#export')">
+                    <div class="tool-title">💾 Export Data</div>
+                    <div class="tool-desc">Download actors or legislation databases as CSV for spreadsheet analysis or presentations.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation -->
+        <section class="section">
+            <div class="section-header">
+                <h2>📋 System Documentation</h2>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card" onclick="window.open('Geoengineering_System_Guide.md')">
+                    <div class="tool-title">📘 Geoengineering System Guide</div>
+                    <div class="tool-desc">Complete documentation for geoengineering investigation dashboard with usage instructions and data structure.</div>
+                </div>
+
+                <div class="tool-card" onclick="window.open('Dashboard_User_Guide.md')">
+                    <div class="tool-title">📗 Dashboard User Guide</div>
+                    <div class="tool-desc">Instructions for using the general research dashboard with file import workflows.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p style="color: var(--gray); margin-bottom: 1rem;">
+            <strong style="color: var(--white);">Core Principle:</strong> We only seek truth. We only tell truth.
+        </p>
+        <p style="color: var(--gray); font-size: 0.9rem;">
+            All dashboards work offline • No external dependencies • Full data privacy
+        </p>
+    </div>
+</body>
+</html>

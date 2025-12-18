@@ -1,0 +1,13 @@
+{
+  "snapshots": [
+    {
+      "id": "20251210_055719",
+      "timestamp": "2025-12-10T05:57:20.233049",
+      "description": "Fox News Corp investigation complete - comprehensive report with Palantir connection",
+      "file_count": 89,
+      "total_size_mb": 473.18365955352783
+    }
+  ],
+  "current_snapshot": "20251210_055719",
+  "total_snapshots": 1
+}

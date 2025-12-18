@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Research Hub ULTIMATE - Truth-Seeking Command Center</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.1/tesseract.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #131921;
+            --bg-elevated: #1a2332;
+            --accent-primary: #00ff9f;
+            --accent-secondary: #00d9ff;
+            --accent-warning: #ff6b35;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #525965;
+            --border-color: #30363d;
+            --success: #3fb950;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Matrix Background */
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        /* Main Layout */
+        .app-container {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: 100vh;
+            gap: 0;
+        }
+        
+        /* Left Sidebar - Navigation */
+        .left-sidebar {
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .hub-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .hub-title {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hub-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-section {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-section-title {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .nav-item {
+            padding: 0.75rem 1rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+        
+        .nav-item.active {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+            font-weight: 700;
+        }
+        
+        .badge {
+            background: var(--accent-secondary);
+            color: var(--bg-primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        /* Center Area - Main Content */
+        .center-area {
+            background: var(--bg-primary);
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        /* File Drop Zone */
+        .drop-zone {
+            border: 3px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: var(--bg-elevated);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .drop-zone:hover, .drop-zone.drag-over {
+            border-color: var(--accent-primary);
+            background: rgba(0, 255, 159, 0.05);
+        }
+        
+        .drop-zone-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .drop-zone-text {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .drop-zone-subtext {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* File Processing Status */
+        .file-processing {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .processing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .processing-filename {
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .processing-status {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width 0.3s;
+        }
+        
+        .processing-log {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-height: 100px;
+            overflow-y: auto;
+            font-family: 'Courier Prime', monospace;
+        }
+        
+        /* Completed Files Results */
+        .results-section {
+            margin-bottom: 2rem;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .results-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .clear-results {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .clear-results:hover {
+            border-color: var(--accent-warning);
+            color: var(--accent-warning);
+        }
+        
+        .result-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+        
+        .result-card:hover {
+            border-color: var(--accent-primary);
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .result-filename {
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-size: 1rem;
+        }
+        
+        .result-type {
+            padding: 0.3rem 0.8rem;
+            background: var(--accent-secondary);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .result-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        .result-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .result-data-item {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .result-data-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-data-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .result-list {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .result-list-item {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .result-list-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+        
+        /* Button Styles */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: transparent;
+        }
+        
+        /* Matrix Toggle (Hidden until hover) */
+        .matrix-toggle-zone {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 2000;
+            cursor: pointer;
+        }
+        
+        .matrix-toggle-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 120px;
+        }
+        
+        .matrix-toggle-zone:hover .matrix-toggle-button {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: all;
+        }
+        
+        .matrix-toggle-button.active {
+            border-color: var(--accent-primary);
+            background: rgba(0, 255, 159, 0.1);
+        }
+        
+        .toggle-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .toggle-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .matrix-toggle-button.active .toggle-label {
+            color: var(--accent-primary);
+        }
+        
+        /* Matrix background states */
+        #matrix-bg {
+            transition: opacity 0.5s;
+        }
+        
+        #matrix-bg.hidden {
+            opacity: 0 !important;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .left-sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 280px;
+                height: 100vh;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 1000;
+            }
+            
+            .left-sidebar.open {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-bg"></canvas>
+    
+    <!-- Hidden Matrix Toggle (appears on hover) -->
+    <div class="matrix-toggle-zone">
+        <div class="matrix-toggle-button active" id="matrixToggle">
+            <div class="toggle-icon">🟢</div>
+            <div class="toggle-label">Matrix</div>
+        </div>
+    </div>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // Main App Component
+        function App() {
+            const [currentView, setCurrentView] = useState('overview');
+            const [databases, setDatabases] = useState({});
+            const [processingFiles, setProcessingFiles] = useState([]);
+            const [completedFiles, setCompletedFiles] = useState([]);
+            const [stats, setStats] = useState({
+                totalRecords: 0,
+                databases: 0,
+                pdfsProcessed: 0,
+                entitiesTracked: 0
+            });
+            
+            // Handle file drop
+            const handleFileDrop = async (files) => {
+                for (const file of files) {
+                    const fileId = Date.now() + Math.random();
+                    
+                    setProcessingFiles(prev => [...prev, {
+                        id: fileId,
+                        name: file.name,
+                        type: file.type,
+                        status: 'processing',
+                        progress: 0,
+                        logs: []
+                    }]);
+                    
+                    // Process based on file type
+                    if (file.type === 'application/pdf') {
+                        await processPDF(file, fileId);
+                    } else if (file.type === 'text/csv') {
+                        await processCSV(file, fileId);
+                    } else if (file.type.startsWith('image/')) {
+                        await processImage(file, fileId);
+                    } else if (file.name.endsWith('.zip') || file.type === 'application/zip' || file.type === 'application/x-zip-compressed') {
+                        await processZip(file, fileId);
+                    } else {
+                        updateProcessing(fileId, 0, `Unsupported file type: ${file.type}`);
+                        setTimeout(() => {
+                            setProcessingFiles(prev => prev.filter(f => f.id !== fileId));
+                        }, 2000);
+                    }
+                }
+            };
+            
+            // Process PDF
+            const processPDF = async (file, fileId) => {
+                updateProcessing(fileId, 10, 'Loading PDF...');
+                
+                try {
+                    // Load PDF
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                    
+                    updateProcessing(fileId, 30, `Extracting text from ${pdf.numPages} pages...`);
+                    
+                    let fullText = '';
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const textContent = await page.getTextContent();
+                        const pageText = textContent.items.map(item => item.str).join(' ');
+                        fullText += pageText + '\n\n';
+                        
+                        updateProcessing(fileId, 30 + (50 * i / pdf.numPages), `Processed page ${i}/${pdf.numPages}...`);
+                    }
+                    
+                    updateProcessing(fileId, 80, 'Analyzing entities...');
+                    
+                    // Simple entity extraction
+                    const entities = extractEntities(fullText);
+                    const dates = extractDates(fullText);
+                    
+                    updateProcessing(fileId, 100, `Complete! Found ${entities.length} entities, ${dates.length} dates.`);
+                    
+                    // Save results
+                    const results = {
+                        id: fileId,
+                        name: file.name,
+                        type: 'PDF',
+                        timestamp: new Date().toLocaleString(),
+                        entities: entities.slice(0, 20),
+                        dates: dates.slice(0, 10),
+                        entityCount: entities.length,
+                        dateCount: dates.length,
+                        pageCount: pdf.numPages
+                    };
+                    
+                    setCompletedFiles(prev => [results, ...prev]);
+                    
+                    // Update stats
+                    setStats(prev => ({
+                        ...prev,
+                        pdfsProcessed: prev.pdfsProcessed + 1,
+                        entitiesTracked: prev.entitiesTracked + entities.length
+                    }));
+                    
+                    setTimeout(() => {
+                        setProcessingFiles(prev => prev.filter(f => f.id !== fileId));
+                    }, 3000);
+                    
+                } catch (error) {
+                    updateProcessing(fileId, 0, `Error: ${error.message}`);
+                }
+            };
+            
+            // Process CSV
+            const processCSV = async (file, fileId) => {
+                updateProcessing(fileId, 10, 'Loading CSV...');
+                
+                try {
+                    const text = await file.text();
+                    
+                    Papa.parse(text, {
+                        header: true,
+                        complete: (results) => {
+                            updateProcessing(fileId, 50, `Parsed ${results.data.length} rows...`);
+                            
+                            const dbName = file.name.replace('.csv', '');
+                            setDatabases(prev => ({
+                                ...prev,
+                                [dbName]: results.data
+                            }));
+                            
+                            updateProcessing(fileId, 100, `Database "${dbName}" loaded with ${results.data.length} records!`);
+                            
+                            // Save results
+                            const csvResults = {
+                                id: fileId,
+                                name: file.name,
+                                type: 'CSV',
+                                timestamp: new Date().toLocaleString(),
+                                recordCount: results.data.length,
+                                columns: Object.keys(results.data[0] || {}),
+                                dbName: dbName
+                            };
+                            
+                            setCompletedFiles(prev => [csvResults, ...prev]);
+                            
+                            // Update stats
+                            setStats(prev => ({
+                                ...prev,
+                                databases: Object.keys(databases).length + 1,
+                                totalRecords: prev.totalRecords + results.data.length
+                            }));
+                            
+                            setTimeout(() => {
+                                setProcessingFiles(prev => prev.filter(f => f.id !== fileId));
+                            }, 3000);
+                        }
+                    });
+                } catch (error) {
+                    updateProcessing(fileId, 0, `Error: ${error.message}`);
+                }
+            };
+            
+            // Process Zip File
+            const processZip = async (file, fileId) => {
+                updateProcessing(fileId, 10, 'Loading zip file...');
+                
+                try {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const zip = await JSZip.loadAsync(arrayBuffer);
+                    
+                    const fileList = Object.keys(zip.files);
+                    updateProcessing(fileId, 30, `Found ${fileList.length} files in zip...`);
+                    
+                    let processedCount = 0;
+                    const extractedFiles = [];
+                    
+                    for (const filename of fileList) {
+                        const zipEntry = zip.files[filename];
+                        
+                        // Skip directories
+                        if (zipEntry.dir) continue;
+                        
+                        updateProcessing(fileId, 30 + (processedCount / fileList.length * 60), `Extracting: ${filename}...`);
+                        
+                        try {
+                            // Determine file type and process
+                            if (filename.endsWith('.pdf')) {
+                                const blob = await zipEntry.async('blob');
+                                const newFile = new File([blob], filename, { type: 'application/pdf' });
+                                await handleFileDrop([newFile]);
+                                extractedFiles.push({ name: filename, type: 'PDF', status: 'queued' });
+                            } else if (filename.endsWith('.csv')) {
+                                const blob = await zipEntry.async('blob');
+                                const newFile = new File([blob], filename, { type: 'text/csv' });
+                                await handleFileDrop([newFile]);
+                                extractedFiles.push({ name: filename, type: 'CSV', status: 'queued' });
+                            } else if (filename.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
+                                const blob = await zipEntry.async('blob');
+                                const mimeType = filename.endsWith('.png') ? 'image/png' : 'image/jpeg';
+                                const newFile = new File([blob], filename, { type: mimeType });
+                                await handleFileDrop([newFile]);
+                                extractedFiles.push({ name: filename, type: 'Image', status: 'queued' });
+                            } else {
+                                extractedFiles.push({ name: filename, type: 'Skipped', status: 'unsupported' });
+                            }
+                        } catch (error) {
+                            extractedFiles.push({ name: filename, type: 'Error', status: error.message });
+                        }
+                        
+                        processedCount++;
+                    }
+                    
+                    updateProcessing(fileId, 100, `Zip extracted! Processed ${extractedFiles.length} files.`);
+                    
+                    // Save results
+                    const zipResults = {
+                        id: fileId,
+                        name: file.name,
+                        type: 'ZIP',
+                        timestamp: new Date().toLocaleString(),
+                        filesExtracted: extractedFiles.length,
+                        fileList: extractedFiles
+                    };
+                    
+                    setCompletedFiles(prev => [zipResults, ...prev]);
+                    
+                    setTimeout(() => {
+                        setProcessingFiles(prev => prev.filter(f => f.id !== fileId));
+                    }, 3000);
+                    
+                } catch (error) {
+                    updateProcessing(fileId, 0, `Error: ${error.message}`);
+                }
+            };
+            
+            // Process Image (OCR)
+            const processImage = async (file, fileId) => {
+                updateProcessing(fileId, 10, 'Loading image...');
+                
+                try {
+                    const imageUrl = URL.createObjectURL(file);
+                    
+                    updateProcessing(fileId, 30, 'Running OCR...');
+                    
+                    const { data: { text } } = await Tesseract.recognize(imageUrl, 'eng', {
+                        logger: m => {
+                            if (m.status === 'recognizing text') {
+                                updateProcessing(fileId, 30 + (m.progress * 60), `OCR: ${Math.round(m.progress * 100)}%`);
+                            }
+                        }
+                    });
+                    
+                    updateProcessing(fileId, 100, `OCR complete! Extracted ${text.length} characters.`);
+                    
+                    // Save results
+                    const imageResults = {
+                        id: fileId,
+                        name: file.name,
+                        type: 'Image OCR',
+                        timestamp: new Date().toLocaleString(),
+                        characterCount: text.length,
+                        textPreview: text.substring(0, 200) + (text.length > 200 ? '...' : '')
+                    };
+                    
+                    setCompletedFiles(prev => [imageResults, ...prev]);
+                    
+                    setTimeout(() => {
+                        setProcessingFiles(prev => prev.filter(f => f.id !== fileId));
+                    }, 3000);
+                    
+                } catch (error) {
+                    updateProcessing(fileId, 0, `Error: ${error.message}`);
+                }
+            };
+            
+            const updateProcessing = (fileId, progress, log) => {
+                setProcessingFiles(prev => prev.map(f => 
+                    f.id === fileId 
+                        ? { ...f, progress, logs: [...f.logs, log] }
+                        : f
+                ));
+            };
+            
+            // Extract entities (simple regex-based)
+            const extractEntities = (text) => {
+                const entityPatterns = [
+                    /\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b/g, // Multi-word caps (names)
+                    /\b[A-Z]{2,}\b/g // Acronyms
+                ];
+                
+                const entities = new Set();
+                entityPatterns.forEach(pattern => {
+                    const matches = text.match(pattern) || [];
+                    matches.forEach(m => entities.add(m));
+                });
+                
+                return Array.from(entities).slice(0, 50);
+            };
+            
+            // Extract dates
+            const extractDates = (text) => {
+                const datePatterns = [
+                    /\b\d{4}\b/g, // Years
+                    /\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/g, // MM/DD/YYYY
+                    /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+\d{4}\b/g
+                ];
+                
+                const dates = new Set();
+                datePatterns.forEach(pattern => {
+                    const matches = text.match(pattern) || [];
+                    matches.forEach(m => dates.add(m));
+                });
+                
+                return Array.from(dates).slice(0, 20);
+            };
+            
+            // Drop zone handlers
+            const handleDragOver = (e) => {
+                e.preventDefault();
+                e.currentTarget.classList.add('drag-over');
+            };
+            
+            const handleDragLeave = (e) => {
+                e.currentTarget.classList.remove('drag-over');
+            };
+            
+            const handleDrop = (e) => {
+                e.preventDefault();
+                e.currentTarget.classList.remove('drag-over');
+                const files = Array.from(e.dataTransfer.files);
+                handleFileDrop(files);
+            };
+            
+            const handleFileInput = (e) => {
+                const files = Array.from(e.target.files);
+                handleFileDrop(files);
+            };
+            
+            return (
+                <div className="app-container">
+                        {/* Left Sidebar - Navigation */}
+                        <div className="left-sidebar">
+                            <div className="hub-header">
+                                <div className="hub-title">⚡ TRUTH HUB</div>
+                                <div className="hub-subtitle">File Processing Command Center</div>
+                            </div>
+                            
+                            <div className="nav-section">
+                                <div className="nav-section-title">▸ Main Views</div>
+                                <div className="nav-item active" onClick={() => setCurrentView('overview')}>
+                                    <span>📊 Overview</span>
+                                </div>
+                                <div className="nav-item" onClick={() => setCurrentView('databases')}>
+                                    <span>🗄️ Databases</span>
+                                    <span className="badge">{Object.keys(databases).length}</span>
+                                </div>
+                                <div className="nav-item" onClick={() => setCurrentView('files')}>
+                                    <span>📁 Files</span>
+                                    <span className="badge">{processingFiles.length}</span>
+                                </div>
+                            </div>
+                            
+                            <div className="nav-section">
+                                <div className="nav-section-title">▸ Quick Links</div>
+                                <div className="nav-item" onClick={() => window.open('master_research_hub_PRO.html', '_blank')}>
+                                    <span>🚀 PRO Search</span>
+                                </div>
+                                <div className="nav-item">
+                                    <span>🕸️ Network View</span>
+                                </div>
+                                <div className="nav-item">
+                                    <span>📈 Analytics</span>
+                                </div>
+                            </div>
+                            
+                            <div className="nav-section">
+                                <div className="nav-section-title">▸ System Status</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>
+                                    <div>✅ OCR: Ready</div>
+                                    <div>✅ CSV: Ready</div>
+                                    <div>✅ PDF: Ready</div>
+                                    <div>✅ Processing: Active</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {/* Center Area - Main Content */}
+                        <div className="center-area">
+                            {/* File Drop Zone */}
+                            <div 
+                                className="drop-zone"
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onDrop={handleDrop}
+                                onClick={() => document.getElementById('fileInput').click()}
+                            >
+                                <div className="drop-zone-icon">📦</div>
+                                <div className="drop-zone-text">Drop Files Here</div>
+                                <div className="drop-zone-subtext">
+                                    PDFs • CSVs • Images (JPG, PNG) • ZIP Files
+                                </div>
+                                <input 
+                                    type="file" 
+                                    id="fileInput" 
+                                    multiple 
+                                    style={{ display: 'none' }}
+                                    accept=".pdf,.csv,image/*,.zip"
+                                    onChange={handleFileInput}
+                                />
+                            </div>
+                            
+                            {/* Processing Files */}
+                            {processingFiles.map(file => (
+                                <div key={file.id} className="file-processing">
+                                    <div className="processing-header">
+                                        <div className="processing-filename">{file.name}</div>
+                                        <div className="processing-status">{file.status}</div>
+                                    </div>
+                                    <div className="progress-bar">
+                                        <div className="progress-fill" style={{ width: `${file.progress}%` }}></div>
+                                    </div>
+                                    <div className="processing-log">
+                                        {file.logs.map((log, idx) => (
+                                            <div key={idx}>&gt; {log}</div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                            
+                            {/* Completed Files Results */}
+                            {completedFiles.length > 0 && (
+                                <div className="results-section">
+                                    <div className="results-header">
+                                        <div className="results-title">📊 Processing Results ({completedFiles.length})</div>
+                                        <button className="clear-results" onClick={() => setCompletedFiles([])}>
+                                            Clear All
+                                        </button>
+                                    </div>
+                                    
+                                    {completedFiles.map(result => (
+                                        <div key={result.id} className="result-card">
+                                            <div className="result-header">
+                                                <div className="result-filename">{result.name}</div>
+                                                <div className="result-type">{result.type}</div>
+                                            </div>
+                                            <div className="result-meta">Processed: {result.timestamp}</div>
+                                            
+                                            {result.type === 'PDF' && (
+                                                <>
+                                                    <div className="result-data">
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Entities Found</div>
+                                                            <div className="result-data-value">{result.entityCount}</div>
+                                                        </div>
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Dates Found</div>
+                                                            <div className="result-data-value">{result.dateCount}</div>
+                                                        </div>
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Pages</div>
+                                                            <div className="result-data-value">{result.pageCount}</div>
+                                                        </div>
+                                                    </div>
+                                                    {result.entities && result.entities.length > 0 && (
+                                                        <div>
+                                                            <div className="result-data-label" style={{ marginBottom: '0.5rem' }}>Top Entities:</div>
+                                                            <div className="result-list">
+                                                                {result.entities.map((entity, idx) => (
+                                                                    <div key={idx} className="result-list-item">• {entity}</div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+                                            
+                                            {result.type === 'CSV' && (
+                                                <>
+                                                    <div className="result-data">
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Records</div>
+                                                            <div className="result-data-value">{result.recordCount}</div>
+                                                        </div>
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Columns</div>
+                                                            <div className="result-data-value">{result.columns.length}</div>
+                                                        </div>
+                                                    </div>
+                                                    {result.columns && result.columns.length > 0 && (
+                                                        <div>
+                                                            <div className="result-data-label" style={{ marginBottom: '0.5rem' }}>Columns:</div>
+                                                            <div className="result-list">
+                                                                {result.columns.map((col, idx) => (
+                                                                    <div key={idx} className="result-list-item">• {col}</div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+                                            
+                                            {result.type === 'Image OCR' && (
+                                                <>
+                                                    <div className="result-data">
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Characters</div>
+                                                            <div className="result-data-value">{result.characterCount}</div>
+                                                        </div>
+                                                    </div>
+                                                    {result.textPreview && (
+                                                        <div>
+                                                            <div className="result-data-label" style={{ marginBottom: '0.5rem' }}>Text Preview:</div>
+                                                            <div className="result-list">
+                                                                <div className="result-list-item">{result.textPreview}</div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+                                            
+                                            {result.type === 'ZIP' && (
+                                                <>
+                                                    <div className="result-data">
+                                                        <div className="result-data-item">
+                                                            <div className="result-data-label">Files Extracted</div>
+                                                            <div className="result-data-value">{result.filesExtracted}</div>
+                                                        </div>
+                                                    </div>
+                                                    {result.fileList && result.fileList.length > 0 && (
+                                                        <div>
+                                                            <div className="result-data-label" style={{ marginBottom: '0.5rem' }}>Extracted Files:</div>
+                                                            <div className="result-list">
+                                                                {result.fileList.map((file, idx) => (
+                                                                    <div key={idx} className="result-list-item">
+                                                                        • {file.name} ({file.type}) - {file.status}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            
+                            {/* Stats Grid */}
+                            <div className="stats-grid">
+                                <div className="stat-card">
+                                    <div className="stat-label">Total Records</div>
+                                    <div className="stat-value">
+                                        {Object.values(databases).reduce((sum, db) => sum + db.length, 0)}
+                                    </div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-label">Databases</div>
+                                    <div className="stat-value">{Object.keys(databases).length}</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-label">Files Processed</div>
+                                    <div className="stat-value">{stats.pdfsProcessed}</div>
+                                </div>
+                                <div className="stat-card">
+                                    <div className="stat-label">Entities Tracked</div>
+                                    <div className="stat-value">{stats.entitiesTracked}</div>
+                                </div>
+                            </div>
+                            
+                            {/* Current View Content */}
+                            <div style={{ marginTop: '2rem' }}>
+                                {currentView === 'overview' && (
+                                    <div>
+                                        <h2 style={{ color: 'var(--accent-primary)', marginBottom: '1rem' }}>
+                                            Welcome to Your Research Hub
+                                        </h2>
+                                        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8 }}>
+                                            This is your integrated truth-seeking command center. Drop files on the zone above 
+                                            and watch as they're automatically processed with entity extraction, date analysis, 
+                                            and OCR for scanned documents. Results are instantly available for export.
+                                        </p>
+                                        <div style={{ marginTop: '2rem' }}>
+                                            <h3 style={{ color: 'var(--accent-secondary)', marginBottom: '1rem' }}>
+                                                What You Can Do:
+                                            </h3>
+                                            <ul style={{ color: 'var(--text-secondary)', lineHeight: 2 }}>
+                                                <li>📄 Drop PDFs → Auto-extract entities, dates, and organizations</li>
+                                                <li>📊 Drop CSVs → Instant database loading</li>
+                                                <li>🖼️ Drop Images → OCR text extraction</li>
+                                                <li>📦 Drop ZIP files → Batch process multiple files at once</li>
+                                                <li>🔍 Export Results → CSV format for PRO Search</li>
+                                                <li>🕸️ Visualize Networks → See connections</li>
+                                                <li>📈 Track Progress → Real-time processing stats</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )}
+                                
+                                {currentView === 'databases' && (
+                                    <div>
+                                        <h2 style={{ color: 'var(--accent-primary)', marginBottom: '1rem' }}>
+                                            Loaded Databases
+                                        </h2>
+                                        {Object.keys(databases).length === 0 ? (
+                                            <p style={{ color: 'var(--text-muted)' }}>
+                                                No databases loaded yet. Drop CSV files to get started!
+                                            </p>
+                                        ) : (
+                                            Object.entries(databases).map(([name, data]) => (
+                                                <div key={name} className="stat-card" style={{ marginBottom: '1rem' }}>
+                                                    <div className="stat-label">{name}</div>
+                                                    <div className="stat-value" style={{ fontSize: '1.5rem' }}>
+                                                        {data.length} records
+                                                    </div>
+                                                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+                                                        Columns: {Object.keys(data[0] || {}).length}
+                                                    </div>
+                                                </div>
+                                            ))
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+            );
+        }
+
+        // Render App
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    
+    <script>
+        // Setup PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        
+        // Matrix Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const matrixToggle = document.getElementById('matrixToggle');
+            const matrixBg = document.getElementById('matrix-bg');
+            let matrixEnabled = true;
+            
+            matrixToggle.addEventListener('click', function() {
+                matrixEnabled = !matrixEnabled;
+                
+                if (matrixEnabled) {
+                    matrixBg.classList.remove('hidden');
+                    matrixToggle.classList.add('active');
+                    matrixToggle.querySelector('.toggle-icon').textContent = '🟢';
+                } else {
+                    matrixBg.classList.add('hidden');
+                    matrixToggle.classList.remove('active');
+                    matrixToggle.querySelector('.toggle-icon').textContent = '⚫';
+                }
+            });
+            
+            // Matrix Rain Animation
+            const canvas = matrixBg;
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノ';
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+            
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.random() * -100;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(10, 14, 20, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ff9f';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 50); // Slower (20 FPS)
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        });
+    </script>
+</body>
+</html>

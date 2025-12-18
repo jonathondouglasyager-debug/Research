@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth-Seeking Research Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --slate: #2d3e50;
+            --blue: #4a90a4;
+            --amber: #d4a574;
+            --cream: #f5f1e8;
+            --gray: #8b95a1;
+            --light: #e8e4db;
+            --white: #fefdfb;
+            --red: #c7594f;
+            --green: #6b9080;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            border-bottom: 3px solid var(--navy);
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        /* Drop Zone */
+        .drop-zone-container {
+            position: fixed;
+            top: 80px;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .drop-zone {
+            background: var(--white);
+            border: 3px dashed var(--blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.1);
+            min-width: 250px;
+        }
+
+        .drop-zone:hover {
+            border-color: var(--amber);
+            background: var(--cream);
+            transform: scale(1.02);
+        }
+
+        .drop-zone.drag-over {
+            border-color: var(--green);
+            background: rgba(107, 144, 128, 0.1);
+            border-style: solid;
+            transform: scale(1.05);
+        }
+
+        .drop-zone-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .drop-zone-text {
+            font-weight: 500;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .drop-zone-hint {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--navy);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(26, 35, 50, 0.3);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .toast.success {
+            background: var(--green);
+        }
+
+        .toast.error {
+            background: var(--red);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--light);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            color: var(--navy);
+            background: rgba(74, 144, 164, 0.05);
+        }
+
+        .tab.active {
+            color: var(--navy);
+            border-bottom-color: var(--amber);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(26, 35, 50, 0.08);
+            border-left: 4px solid var(--blue);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--navy);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--slate) 0%, var(--navy) 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.15);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--amber);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th {
+            background: var(--slate);
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 1rem 0.75rem;
+            border-bottom: 1px solid var(--light);
+            font-size: 0.9rem;
+        }
+
+        tr:hover {
+            background: rgba(74, 144, 164, 0.03);
+        }
+
+        .status-true { color: var(--green); font-weight: 600; }
+        .status-false { color: var(--red); font-weight: 600; }
+        .status-misleading { color: var(--amber); font-weight: 600; }
+
+        .confidence-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bar {
+            flex: 1;
+            height: 8px;
+            background: var(--light);
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 100px;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--amber));
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--amber);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--blue);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-event {
+            color: var(--slate);
+            font-size: 0.95rem;
+        }
+
+        .concept-map {
+            position: relative;
+            min-height: 500px;
+            background: linear-gradient(135deg, #f5f1e8 0%, #e8e4db 100%);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .node {
+            position: absolute;
+            background: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--blue);
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(26, 35, 50, 0.15);
+            border-color: var(--amber);
+        }
+
+        .node.central {
+            background: linear-gradient(135deg, var(--slate), var(--navy));
+            color: white;
+            font-size: 1.1rem;
+            border-color: var(--amber);
+        }
+
+        .question-list {
+            list-style: none;
+        }
+
+        .question-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--cream);
+            border-left: 4px solid var(--blue);
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.active { background: var(--blue); color: white; }
+        .badge.completed { background: var(--green); color: white; }
+        .badge.pending { background: var(--gray); color: white; }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--light);
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        .glossary-term {
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--amber);
+            box-shadow: 0 2px 6px rgba(26, 35, 50, 0.05);
+        }
+
+        .term-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .term-definition {
+            color: var(--slate);
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .term-meta {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .reference-item {
+            padding: 1rem;
+            background: var(--cream);
+            border-left: 4px solid var(--green);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reference-info {
+            flex: 1;
+        }
+
+        .reference-name {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+
+        .reference-meta {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .reference-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        button {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        button:hover {
+            background: var(--slate);
+            transform: translateY(-2px);
+        }
+
+        button.small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        button.danger {
+            background: var(--red);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 35, 50, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--slate);
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--light);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .input-group textarea {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .close-btn {
+            background: var(--gray);
+        }
+
+        .close-btn:hover {
+            background: var(--red);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .drop-zone-container {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Truth-Seeking Research Dashboard</h1>
+            <p class="subtitle">Systematic investigation • Evidence-based analysis • Living knowledge base</p>
+        </header>
+
+        <!-- Drop Zone -->
+        <div class="drop-zone-container">
+            <div class="drop-zone" id="drop-zone">
+                <div class="drop-zone-icon">📁</div>
+                <div class="drop-zone-text">Drop Files Here</div>
+                <div class="drop-zone-hint">CSV • Markdown • PDF • Text</div>
+            </div>
+            <input type="file" id="file-input" class="file-input" multiple accept=".csv,.md,.txt,.pdf,.docx">
+        </div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <span id="toast-message"></span>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('overview')">Overview</button>
+            <button class="tab" onclick="switchTab('evidence')">Evidence Matrix</button>
+            <button class="tab" onclick="switchTab('timeline')">Timeline</button>
+            <button class="tab" onclick="switchTab('concepts')">Concept Map</button>
+            <button class="tab" onclick="switchTab('glossary')">Glossary</button>
+            <button class="tab" onclick="switchTab('references')">References</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-total">5</div>
+                    <div class="stat-label">Evidence Collected</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-confirmed">3</div>
+                    <div class="stat-label">Claims Confirmed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-refuted">2</div>
+                    <div class="stat-label">Claims Refuted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-confidence">87%</div>
+                    <div class="stat-label">Avg Confidence</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Active Research Questions</h2>
+                <ul class="question-list">
+                    <li class="question-item">
+                        <span>Did ancient Greeks lack words for blue?</span>
+                        <span class="badge completed">completed</span>
+                    </li>
+                    <li class="question-item">
+                        <span>Does language determine perception?</span>
+                        <span class="badge completed">completed</span>
+                    </li>
+                    <li class="question-item">
+                        <span>Can quantum observation affect reality?</span>
+                        <span class="badge active">active</span>
+                    </li>
+                    <li class="question-item">
+                        <span>What is the role of neural oscillations?</span>
+                        <span class="badge pending">pending</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>📊 Current Project: Blue Color Perception</h2>
+                <p style="margin-bottom: 1rem; color: var(--slate)">
+                    Investigating the claim that "blue isn't a real color" through the linguistic argument.
+                    Status: <strong>Evidence collection complete</strong>
+                </p>
+                <div class="confidence-bar">
+                    <span style="font-weight: 500; min-width: 120px">Overall Confidence:</span>
+                    <div class="bar" style="flex: 1; max-width: 300px;">
+                        <div class="bar-fill" style="width: 87%"></div>
+                    </div>
+                    <span style="font-weight: 600; color: var(--amber)">87%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evidence Tab -->
+        <div id="evidence" class="tab-content">
+            <div class="section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem">
+                    <h2 style="margin: 0">📋 Evidence Matrix</h2>
+                    <button onclick="openAddModal()">+ Add Evidence</button>
+                </div>
+                <table id="evidence-table">
+                    <thead>
+                        <tr>
+                            <th>Claim</th>
+                            <th>Source</th>
+                            <th>Finding</th>
+                            <th>Status</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evidence-body">
+                        <tr>
+                            <td style="font-weight: 500">Ancient Greeks had no word for blue</td>
+                            <td style="color: var(--gray); font-size: 0.85rem">Gladstone (1858), Homer's epics</td>
+                            <td>Kyanos meant 'dark' not 'blue'; Homer used 'wine-dark sea'</td>
+                            <td class="status-true">TRUE</td>
+                            <td>
+                                <div class="confidence-bar">
+                                    <div class="bar"><div class="bar-fill" style="width: 85%"></div></div>
+                                    <span style="font-size: 0.85rem; font-weight: 600">85%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500">Greeks couldn't SEE blue</td>
+                            <td style="color: var(--gray); font-size: 0.85rem">Popular misinterpretation</td>
+                            <td>Gladstone meant they categorized by light/dark, not hue</td>
+                            <td class="status-false">FALSE</td>
+                            <td>
+                                <div class="confidence-bar">
+                                    <div class="bar"><div class="bar-fill" style="width: 95%"></div></div>
+                                    <span style="font-size: 0.85rem; font-weight: 600">95%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500">Languages evolve color terms in order</td>
+                            <td style="color: var(--gray); font-size: 0.85rem">Berlin & Kay (1969)</td>
+                            <td>Blue typically 6th term after black/white/red/yellow/green</td>
+                            <td class="status-true">TRUE</td>
+                            <td>
+                                <div class="confidence-bar">
+                                    <div class="bar"><div class="bar-fill" style="width: 80%"></div></div>
+                                    <span style="font-size: 0.85rem; font-weight: 600">80%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500">Himba can't distinguish blue from green</td>
+                            <td style="color: var(--gray); font-size: 0.85rem">BBC Documentary (2011)</td>
+                            <td>Fabricated dramatization - never published research</td>
+                            <td class="status-false">FALSE</td>
+                            <td>
+                                <div class="confidence-bar">
+                                    <div class="bar"><div class="bar-fill" style="width: 100%"></div></div>
+                                    <span style="font-size: 0.85rem; font-weight: 600">100%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500">Language influences perception</td>
+                            <td style="color: var(--gray); font-size: 0.85rem">Meta-analyses, probabilistic models</td>
+                            <td>Affects speed of discrimination, memory under uncertainty</td>
+                            <td class="status-true">TRUE</td>
+                            <td>
+                                <div class="confidence-bar">
+                                    <div class="bar"><div class="bar-fill" style="width: 75%"></div></div>
+                                    <span style="font-size: 0.85rem; font-weight: 600">75%</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Timeline Tab -->
+        <div id="timeline" class="tab-content">
+            <div class="section">
+                <h2>📅 Research Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1858</div>
+                        <div class="timeline-event">Gladstone notices Homer lacks blue terminology</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1969</div>
+                        <div class="timeline-event">Berlin & Kay propose universal color term sequence</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2005</div>
+                        <div class="timeline-event">Himba research shows subtle linguistic effects</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2011</div>
+                        <div class="timeline-event">BBC creates dramatized 'experiment' presentation</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-event">Researchers publicly debunk BBC version</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concept Map Tab -->
+        <div id="concepts" class="tab-content">
+            <div class="section">
+                <h2>🗺️ Concept Map</h2>
+                <div class="concept-map">
+                    <div class="node central" style="top: 45%; left: 45%; transform: translate(-50%, -50%)">
+                        Linguistic Relativity
+                    </div>
+                    <div class="node" style="top: 10%; left: 15%">Berlin & Kay</div>
+                    <div class="node" style="top: 10%; left: 70%">Sapir-Whorf</div>
+                    <div class="node" style="top: 75%; left: 10%">Categorical Perception</div>
+                    <div class="node" style="top: 75%; left: 65%">Neural Oscillations</div>
+                    <div class="node" style="top: 50%; left: 3%">Homer's Wine-Dark Sea</div>
+                    <div class="node" style="top: 35%; left: 85%">Wave-Particle Duality</div>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--gray); font-size: 0.9rem; font-style: italic">
+                    Interactive concept map showing relationships between key ideas. Hover over nodes for emphasis.
+                </p>
+            </div>
+        </div>
+
+        <!-- Glossary Tab -->
+        <div id="glossary" class="tab-content">
+            <div class="section">
+                <h2>📚 Glossary Search</h2>
+                <input type="text" class="search-box" id="glossary-search" placeholder="Search glossary terms..." onkeyup="filterGlossary()">
+                <div id="glossary-results">
+                    <div class="glossary-term">
+                        <div class="term-name">Linguistic Relativity</div>
+                        <div class="term-definition">The theory that language influences (but doesn't determine) how we think and perceive</div>
+                        <div class="term-meta">Related: Sapir-Whorf Hypothesis, Categorical Perception • First encountered: Blue color research - Nov 30, 2024</div>
+                    </div>
+                    <div class="glossary-term">
+                        <div class="term-name">Categorical Perception</div>
+                        <div class="term-definition">When we perceive continuous spectra (like color) as discrete categories, making between-category differences easier to detect</div>
+                        <div class="term-meta">Related: Linguistic Relativity, Neural Oscillations • First encountered: Blue color research - Nov 30, 2024</div>
+                    </div>
+                    <div class="glossary-term">
+                        <div class="term-name">Wave Function</div>
+                        <div class="term-definition">Mathematical description of a quantum system's state, representing all possible configurations before measurement</div>
+                        <div class="term-meta">Related: Eigenvalues, Decoherence • First encountered: Quantum frequency discussion - Nov 30, 2024</div>
+                    </div>
+                    <div class="glossary-term">
+                        <div class="term-name">Decoherence</div>
+                        <div class="term-definition">When a quantum system loses its wave-like properties through interaction with environment</div>
+                        <div class="term-meta">Related: Observer Effect, Wave Function Collapse • First encountered: Quantum frequency discussion - Nov 30, 2024</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; color: var(--gray); font-size: 0.9rem">
+                    <strong>Total terms:</strong> <span id="glossary-count">4</span> • <strong>Full glossary:</strong> Truth-Seeking_Glossary.md
+                </p>
+            </div>
+        </div>
+
+        <!-- References Tab -->
+        <div id="references" class="tab-content">
+            <div class="section">
+                <h2>📚 Reference Library</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--gray)">
+                    Upload documents (PDF, TXT, DOCX) to build your reference library
+                </p>
+                <div id="references-list">
+                    <p style="text-align: center; color: var(--gray); padding: 2rem">
+                        No references uploaded yet. Drop files in the zone above to get started.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Evidence Modal -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 1.5rem">Add New Evidence</h2>
+            <form onsubmit="addEvidence(event)">
+                <div class="input-group">
+                    <label>Claim</label>
+                    <input type="text" id="new-claim" required>
+                </div>
+                <div class="input-group">
+                    <label>Source</label>
+                    <input type="text" id="new-source" required>
+                </div>
+                <div class="input-group">
+                    <label>Finding</label>
+                    <textarea id="new-finding" required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Status</label>
+                    <select id="new-status">
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                        <option value="MISLEADING">MISLEADING</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Confidence: <span id="confidence-value">50</span>%</label>
+                    <input type="range" id="new-confidence" min="0" max="100" value="50" oninput="updateConfidenceLabel(this.value)">
+                </div>
+                <div class="button-group">
+                    <button type="submit">Add Evidence</button>
+                    <button type="button" class="close-btn" onclick="closeAddModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Storage for uploaded files
+        let references = [];
+
+        // Tab switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Drop Zone functionality
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        // File handling
+        function handleFiles(files) {
+            for (let file of files) {
+                const extension = file.name.split('.').pop().toLowerCase();
+                
+                if (extension === 'csv') {
+                    handleCSV(file);
+                } else if (extension === 'md') {
+                    handleMarkdown(file);
+                } else if (['txt', 'pdf', 'docx'].includes(extension)) {
+                    handleReference(file);
+                } else {
+                    showToast(`Unsupported file type: ${extension}`, 'error');
+                }
+            }
+        }
+
+        // CSV Handler (Evidence import)
+        function handleCSV(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                const lines = text.split('\n');
+                let imported = 0;
+                
+                // Skip header row
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    const parts = line.split(',').map(p => p.trim());
+                    if (parts.length >= 5) {
+                        addEvidenceFromData(parts[0], parts[1], parts[2], parts[3], parts[4]);
+                        imported++;
+                    }
+                }
+                
+                showToast(`Imported ${imported} evidence entries from CSV`);
+                switchTab('evidence');
+            };
+            reader.readAsText(file);
+        }
+
+        // Markdown Handler (Glossary import)
+        function handleMarkdown(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const text = e.target.result;
+                
+                // Simple markdown parser for glossary terms
+                const termMatches = text.match(/###\s+(.+?)\n\n\*\*Definition:\*\*\s+(.+?)\n/g);
+                
+                if (termMatches) {
+                    termMatches.forEach(match => {
+                        const nameMatch = match.match(/###\s+(.+?)\n/);
+                        const defMatch = match.match(/\*\*Definition:\*\*\s+(.+?)\n/);
+                        
+                        if (nameMatch && defMatch) {
+                            addGlossaryTerm(nameMatch[1], defMatch[1]);
+                        }
+                    });
+                    
+                    showToast(`Imported ${termMatches.length} glossary terms`);
+                    switchTab('glossary');
+                } else {
+                    showToast('No glossary terms found in markdown file', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        // Reference Handler (Documents)
+        function handleReference(file) {
+            const reference = {
+                name: file.name,
+                type: file.name.split('.').pop().toUpperCase(),
+                size: formatFileSize(file.size),
+                date: new Date().toLocaleDateString(),
+                file: file
+            };
+            
+            references.push(reference);
+            displayReferences();
+            showToast(`Added ${file.name} to references`);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function displayReferences() {
+            const container = document.getElementById('references-list');
+            
+            if (references.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--gray); padding: 2rem">No references uploaded yet.</p>';
+                return;
+            }
+            
+            container.innerHTML = references.map((ref, index) => `
+                <div class="reference-item">
+                    <div class="reference-info">
+                        <div class="reference-name">${ref.name}</div>
+                        <div class="reference-meta">${ref.type} • ${ref.size} • Added ${ref.date}</div>
+                    </div>
+                    <div class="reference-actions">
+                        <button class="small danger" onclick="removeReference(${index})">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function removeReference(index) {
+            references.splice(index, 1);
+            displayReferences();
+            showToast('Reference removed');
+        }
+
+        // Helper: Add evidence from parsed data
+        function addEvidenceFromData(claim, source, finding, status, confidence) {
+            const tbody = document.getElementById('evidence-body');
+            const row = tbody.insertRow();
+            
+            row.innerHTML = `
+                <td style="font-weight: 500">${claim}</td>
+                <td style="color: var(--gray); font-size: 0.85rem">${source}</td>
+                <td>${finding}</td>
+                <td class="status-${status.toLowerCase()}">${status}</td>
+                <td>
+                    <div class="confidence-bar">
+                        <div class="bar"><div class="bar-fill" style="width: ${confidence}%"></div></div>
+                        <span style="font-size: 0.85rem; font-weight: 600">${confidence}%</span>
+                    </div>
+                </td>
+            `;
+            
+            updateStats();
+        }
+
+        // Helper: Add glossary term
+        function addGlossaryTerm(name, definition) {
+            const container = document.getElementById('glossary-results');
+            const term = document.createElement('div');
+            term.className = 'glossary-term';
+            term.innerHTML = `
+                <div class="term-name">${name}</div>
+                <div class="term-definition">${definition}</div>
+                <div class="term-meta">Imported from file • ${new Date().toLocaleDateString()}</div>
+            `;
+            container.appendChild(term);
+            
+            // Update count
+            const count = document.querySelectorAll('.glossary-term').length;
+            document.getElementById('glossary-count').textContent = count;
+        }
+
+        // Modal functions
+        function openAddModal() {
+            document.getElementById('add-modal').classList.add('active');
+        }
+
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.remove('active');
+            document.querySelector('form').reset();
+            document.getElementById('confidence-value').textContent = '50';
+        }
+
+        function updateConfidenceLabel(value) {
+            document.getElementById('confidence-value').textContent = value;
+        }
+
+        // Add evidence
+        function addEvidence(event) {
+            event.preventDefault();
+            
+            const claim = document.getElementById('new-claim').value;
+            const source = document.getElementById('new-source').value;
+            const finding = document.getElementById('new-finding').value;
+            const status = document.getElementById('new-status').value;
+            const confidence = document.getElementById('new-confidence').value;
+            
+            addEvidenceFromData(claim, source, finding, status, confidence);
+            
+            closeAddModal();
+            showToast('Evidence added successfully');
+            switchTab('evidence');
+        }
+
+        // Update statistics
+        function updateStats() {
+            const rows = document.querySelectorAll('#evidence-body tr');
+            let total = rows.length;
+            let confirmed = 0;
+            let refuted = 0;
+            let totalConfidence = 0;
+            
+            rows.forEach(row => {
+                const status = row.querySelector('td:nth-child(4)').textContent;
+                if (status === 'TRUE') confirmed++;
+                if (status === 'FALSE') refuted++;
+                
+                const confText = row.querySelector('td:nth-child(5) span').textContent;
+                totalConfidence += parseInt(confText);
+            });
+            
+            const avgConfidence = Math.round(totalConfidence / total);
+            
+            document.getElementById('stat-total').textContent = total;
+            document.getElementById('stat-confirmed').textContent = confirmed;
+            document.getElementById('stat-refuted').textContent = refuted;
+            document.getElementById('stat-confidence').textContent = avgConfidence + '%';
+        }
+
+        // Glossary search
+        function filterGlossary() {
+            const searchText = document.getElementById('glossary-search').value.toLowerCase();
+            const terms = document.querySelectorAll('.glossary-term');
+            
+            terms.forEach(term => {
+                const name = term.querySelector('.term-name').textContent.toLowerCase();
+                const def = term.querySelector('.term-definition').textContent.toLowerCase();
+                
+                if (name.includes(searchText) || def.includes(searchText)) {
+                    term.style.display = 'block';
+                } else {
+                    term.style.display = 'none';
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('add-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAddModal();
+            }
+        });
+    </script>
+</body>
+</html>

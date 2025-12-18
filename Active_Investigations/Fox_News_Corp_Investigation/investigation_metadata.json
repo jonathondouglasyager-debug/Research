@@ -1,0 +1,13 @@
+{
+  "name": "Fox_News_Corp_Investigation",
+  "description": "Comprehensive investigation into Fox News corporate structure, ownership, financial networks, hierarchies, and connections",
+  "created_date": "2025-12-10T05:41:20.945825",
+  "status": "active",
+  "folder_path": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation",
+  "files_created": [
+    "Active_Investigations\\Fox_News_Corp_Investigation\\investigation_overview.md",
+    "Active_Investigations\\Fox_News_Corp_Investigation\\entity_database.csv",
+    "Active_Investigations\\Fox_News_Corp_Investigation\\research_log.md",
+    "Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\timeline.md"
+  ]
+}

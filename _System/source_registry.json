@@ -1,0 +1,1085 @@
+{
+  "sources": {
+    "efb71872f2a3": {
+      "id": "efb71872f2a3",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\COMMAND_CENTER_GUIDE.md",
+      "filename": "COMMAND_CENTER_GUIDE.md",
+      "registered_date": "2025-12-10T05:05:39.598753",
+      "type": "md",
+      "metadata": {
+        "title": "COMMAND_CENTER_GUIDE.md",
+        "type": "document"
+      },
+      "size_bytes": 16962,
+      "modified_date": "2025-12-09T18:50:33.614199"
+    },
+    "b1cf7ef61fb0": {
+      "id": "b1cf7ef61fb0",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\INDEX.html",
+      "filename": "INDEX.html",
+      "registered_date": "2025-12-10T05:06:27.689811",
+      "type": "html",
+      "metadata": {
+        "title": "INDEX.html",
+        "type": "web"
+      },
+      "size_bytes": 45165,
+      "modified_date": "2025-12-10T05:06:27.688851"
+    },
+    "9a02450efa88": {
+      "id": "9a02450efa88",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\INDEX_v1.html",
+      "filename": "INDEX_v1.html",
+      "registered_date": "2025-12-10T05:06:27.717332",
+      "type": "html",
+      "metadata": {
+        "title": "INDEX_v1.html",
+        "type": "web"
+      },
+      "size_bytes": 16013,
+      "modified_date": "2025-12-09T18:40:54.480469"
+    },
+    "95e6bbf2c2bd": {
+      "id": "95e6bbf2c2bd",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\INDEX_v2.html",
+      "filename": "INDEX_v2.html",
+      "registered_date": "2025-12-10T05:06:27.744071",
+      "type": "html",
+      "metadata": {
+        "title": "INDEX_v2.html",
+        "type": "web"
+      },
+      "size_bytes": 20227,
+      "modified_date": "2025-12-09T18:42:01.562739"
+    },
+    "da65e8ce3185": {
+      "id": "da65e8ce3185",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\INDEX_v3.html",
+      "filename": "INDEX_v3.html",
+      "registered_date": "2025-12-10T05:06:27.770478",
+      "type": "html",
+      "metadata": {
+        "title": "INDEX_v3.html",
+        "type": "web"
+      },
+      "size_bytes": 30384,
+      "modified_date": "2025-12-09T18:43:42.471548"
+    },
+    "8a356543299d": {
+      "id": "8a356543299d",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\INDEX_v4.html",
+      "filename": "INDEX_v4.html",
+      "registered_date": "2025-12-10T05:06:27.800202",
+      "type": "html",
+      "metadata": {
+        "title": "INDEX_v4.html",
+        "type": "web"
+      },
+      "size_bytes": 34185,
+      "modified_date": "2025-12-09T18:45:36.740579"
+    },
+    "31e864f30293": {
+      "id": "31e864f30293",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\INDEX_v5.html",
+      "filename": "INDEX_v5.html",
+      "registered_date": "2025-12-10T05:06:27.827363",
+      "type": "html",
+      "metadata": {
+        "title": "INDEX_v5.html",
+        "type": "web"
+      },
+      "size_bytes": 40633,
+      "modified_date": "2025-12-09T18:47:50.966360"
+    },
+    "90a2a078c97c": {
+      "id": "90a2a078c97c",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_1.pdf",
+      "filename": "Epstein-Docs_part_1.pdf",
+      "registered_date": "2025-12-10T05:06:31.052548",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_1.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25695679,
+      "modified_date": "2025-12-02T18:48:40.772851"
+    },
+    "8b064d09b2cc": {
+      "id": "8b064d09b2cc",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_10.pdf",
+      "filename": "Epstein-Docs_part_10.pdf",
+      "registered_date": "2025-12-10T05:06:58.460492",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_10.pdf",
+        "type": "document"
+      },
+      "size_bytes": 24701507,
+      "modified_date": "2025-12-02T18:48:42.260052"
+    },
+    "9f2a24891c98": {
+      "id": "9f2a24891c98",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_11.pdf",
+      "filename": "Epstein-Docs_part_11.pdf",
+      "registered_date": "2025-12-10T05:07:07.990952",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_11.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25914075,
+      "modified_date": "2025-12-02T18:48:42.433929"
+    },
+    "abd874e8f330": {
+      "id": "abd874e8f330",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_12.pdf",
+      "filename": "Epstein-Docs_part_12.pdf",
+      "registered_date": "2025-12-10T05:07:08.396033",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_12.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25361178,
+      "modified_date": "2025-12-02T18:48:42.608495"
+    },
+    "5e34b3cac68d": {
+      "id": "5e34b3cac68d",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_13.pdf",
+      "filename": "Epstein-Docs_part_13.pdf",
+      "registered_date": "2025-12-10T05:07:08.695219",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_13.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25743036,
+      "modified_date": "2025-12-02T18:48:42.782939"
+    },
+    "cc017e1995a6": {
+      "id": "cc017e1995a6",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_14.pdf",
+      "filename": "Epstein-Docs_part_14.pdf",
+      "registered_date": "2025-12-10T05:07:08.903257",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_14.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25345082,
+      "modified_date": "2025-12-02T18:48:42.969329"
+    },
+    "30071b209550": {
+      "id": "30071b209550",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_15.pdf",
+      "filename": "Epstein-Docs_part_15.pdf",
+      "registered_date": "2025-12-10T05:07:09.058923",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_15.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25930723,
+      "modified_date": "2025-12-02T18:48:43.134746"
+    },
+    "b79b444c3a7b": {
+      "id": "b79b444c3a7b",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_16.pdf",
+      "filename": "Epstein-Docs_part_16.pdf",
+      "registered_date": "2025-12-10T05:07:09.200161",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_16.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25525634,
+      "modified_date": "2025-12-02T18:48:43.304788"
+    },
+    "302ef3a806d8": {
+      "id": "302ef3a806d8",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_17.pdf",
+      "filename": "Epstein-Docs_part_17.pdf",
+      "registered_date": "2025-12-10T05:07:09.396852",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_17.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25101628,
+      "modified_date": "2025-12-02T18:48:43.463701"
+    },
+    "8bf4a9483624": {
+      "id": "8bf4a9483624",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_18.pdf",
+      "filename": "Epstein-Docs_part_18.pdf",
+      "registered_date": "2025-12-10T05:07:09.932250",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_18.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25989314,
+      "modified_date": "2025-12-02T18:48:43.638600"
+    },
+    "6f9f61d135bb": {
+      "id": "6f9f61d135bb",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_19.pdf",
+      "filename": "Epstein-Docs_part_19.pdf",
+      "registered_date": "2025-12-10T05:07:11.363038",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_19.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25965922,
+      "modified_date": "2025-12-02T18:48:43.813160"
+    },
+    "2ec4ded9a86b": {
+      "id": "2ec4ded9a86b",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_2.pdf",
+      "filename": "Epstein-Docs_part_2.pdf",
+      "registered_date": "2025-12-10T05:07:14.985019",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_2.pdf",
+        "type": "document"
+      },
+      "size_bytes": 24619615,
+      "modified_date": "2025-12-02T18:48:40.925446"
+    },
+    "e6e190cb3acf": {
+      "id": "e6e190cb3acf",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_20.pdf",
+      "filename": "Epstein-Docs_part_20.pdf",
+      "registered_date": "2025-12-10T05:07:15.092650",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_20.pdf",
+        "type": "document"
+      },
+      "size_bytes": 4233470,
+      "modified_date": "2025-12-02T18:48:43.845051"
+    },
+    "1642317fb9ec": {
+      "id": "1642317fb9ec",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_3.pdf",
+      "filename": "Epstein-Docs_part_3.pdf",
+      "registered_date": "2025-12-10T05:07:15.718047",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_3.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25169069,
+      "modified_date": "2025-12-02T18:48:41.085238"
+    },
+    "61df80595f24": {
+      "id": "61df80595f24",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_4.pdf",
+      "filename": "Epstein-Docs_part_4.pdf",
+      "registered_date": "2025-12-10T05:07:15.843220",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_4.pdf",
+        "type": "document"
+      },
+      "size_bytes": 26004296,
+      "modified_date": "2025-12-02T18:48:41.260742"
+    },
+    "afaec65079a6": {
+      "id": "afaec65079a6",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_5.pdf",
+      "filename": "Epstein-Docs_part_5.pdf",
+      "registered_date": "2025-12-10T05:07:15.962006",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_5.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25115988,
+      "modified_date": "2025-12-02T18:48:41.420817"
+    },
+    "47d4d786e7e3": {
+      "id": "47d4d786e7e3",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_6.pdf",
+      "filename": "Epstein-Docs_part_6.pdf",
+      "registered_date": "2025-12-10T05:07:16.074150",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_6.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25695231,
+      "modified_date": "2025-12-02T18:48:41.595676"
+    },
+    "10c763b7a3d1": {
+      "id": "10c763b7a3d1",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_7.pdf",
+      "filename": "Epstein-Docs_part_7.pdf",
+      "registered_date": "2025-12-10T05:07:17.173639",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_7.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25708156,
+      "modified_date": "2025-12-02T18:48:41.774913"
+    },
+    "78fe90fe09ad": {
+      "id": "78fe90fe09ad",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_8.pdf",
+      "filename": "Epstein-Docs_part_8.pdf",
+      "registered_date": "2025-12-10T05:07:19.790019",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_8.pdf",
+        "type": "document"
+      },
+      "size_bytes": 24508665,
+      "modified_date": "2025-12-02T18:48:41.927974"
+    },
+    "734a525d430d": {
+      "id": "734a525d430d",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\Epstein-Docs_part_9.pdf",
+      "filename": "Epstein-Docs_part_9.pdf",
+      "registered_date": "2025-12-10T05:07:36.979759",
+      "type": "pdf",
+      "metadata": {
+        "title": "Epstein-Docs_part_9.pdf",
+        "type": "document"
+      },
+      "size_bytes": 25046272,
+      "modified_date": "2025-12-02T18:48:42.101752"
+    },
+    "39b53a5e656f": {
+      "id": "39b53a5e656f",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Documents and Research\\RTX Corporation_ The Complete Technology and Power Structure Investigation.pdf",
+      "filename": "RTX Corporation_ The Complete Technology and Power Structure Investigation.pdf",
+      "registered_date": "2025-12-10T05:07:37.348671",
+      "type": "pdf",
+      "metadata": {
+        "title": "RTX Corporation_ The Complete Technology and Power Structure Investigation.pdf",
+        "type": "document"
+      },
+      "size_bytes": 497672,
+      "modified_date": "2025-12-03T11:48:27.645910"
+    },
+    "68d95891dbd5": {
+      "id": "68d95891dbd5",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master Research Hub\\Download_Queue_Manager.md",
+      "filename": "Download_Queue_Manager.md",
+      "registered_date": "2025-12-10T05:07:37.387874",
+      "type": "md",
+      "metadata": {
+        "title": "Download_Queue_Manager.md",
+        "type": "document"
+      },
+      "size_bytes": 3295,
+      "modified_date": "2025-12-02T18:05:35.458362"
+    },
+    "3a142abe70a8": {
+      "id": "3a142abe70a8",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master Research Hub\\Master_Session_Index.md",
+      "filename": "Master_Session_Index.md",
+      "registered_date": "2025-12-10T05:07:37.423796",
+      "type": "md",
+      "metadata": {
+        "title": "Master_Session_Index.md",
+        "type": "document"
+      },
+      "size_bytes": 7265,
+      "modified_date": "2025-12-02T18:05:19.933867"
+    },
+    "cbffe7741e3a": {
+      "id": "cbffe7741e3a",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master Research Hub\\Research_Workflow_Integration_Guide.md",
+      "filename": "Research_Workflow_Integration_Guide.md",
+      "registered_date": "2025-12-10T05:07:37.466079",
+      "type": "md",
+      "metadata": {
+        "title": "Research_Workflow_Integration_Guide.md",
+        "type": "document"
+      },
+      "size_bytes": 14762,
+      "modified_date": "2025-12-02T18:05:08.695192"
+    },
+    "ca97adf33305": {
+      "id": "ca97adf33305",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master Research Hub\\TEMPLATE_Research_Session.md",
+      "filename": "TEMPLATE_Research_Session.md",
+      "registered_date": "2025-12-10T05:07:37.502198",
+      "type": "md",
+      "metadata": {
+        "title": "TEMPLATE_Research_Session.md",
+        "type": "document"
+      },
+      "size_bytes": 4127,
+      "modified_date": "2025-12-02T18:05:45.377975"
+    },
+    "0960c0c86e92": {
+      "id": "0960c0c86e92",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master_Research_Hub\\master_research_hub_ULTIMATE.html",
+      "filename": "master_research_hub_ULTIMATE.html",
+      "registered_date": "2025-12-10T05:07:37.528385",
+      "type": "html",
+      "metadata": {
+        "title": "master_research_hub_ULTIMATE.html",
+        "type": "web"
+      },
+      "size_bytes": 47845,
+      "modified_date": "2025-12-01T05:07:03.968373"
+    },
+    "90fbf9a6eb2d": {
+      "id": "90fbf9a6eb2d",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master_Research_Hub\\Research_Command_Center.html",
+      "filename": "Research_Command_Center.html",
+      "registered_date": "2025-12-10T05:07:37.553772",
+      "type": "html",
+      "metadata": {
+        "title": "Research_Command_Center.html",
+        "type": "web"
+      },
+      "size_bytes": 18645,
+      "modified_date": "2025-12-01T03:04:16.772772"
+    },
+    "9714e0ae7c62": {
+      "id": "9714e0ae7c62",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master_Research_Hub\\Research_Dashboard_FINAL.html",
+      "filename": "Research_Dashboard_FINAL.html",
+      "registered_date": "2025-12-10T05:07:37.580263",
+      "type": "html",
+      "metadata": {
+        "title": "Research_Dashboard_FINAL.html",
+        "type": "web"
+      },
+      "size_bytes": 42191,
+      "modified_date": "2025-11-30T04:25:12.600634"
+    },
+    "e2c6fa096201": {
+      "id": "e2c6fa096201",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master_Research_Hub\\research_hub_v1_21.html",
+      "filename": "research_hub_v1_21.html",
+      "registered_date": "2025-12-10T05:07:37.604956",
+      "type": "html",
+      "metadata": {
+        "title": "research_hub_v1_21.html",
+        "type": "web"
+      },
+      "size_bytes": 197442,
+      "modified_date": "2025-12-03T18:59:09.919131"
+    },
+    "9c974d4ad63a": {
+      "id": "9c974d4ad63a",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Master_Research_Hub\\Shroud_Evidence_Requirements.html",
+      "filename": "Shroud_Evidence_Requirements.html",
+      "registered_date": "2025-12-10T05:07:37.631535",
+      "type": "html",
+      "metadata": {
+        "title": "Shroud_Evidence_Requirements.html",
+        "type": "web"
+      },
+      "size_bytes": 30275,
+      "modified_date": "2025-12-05T18:14:02.705067"
+    },
+    "95dfce6f4e3c": {
+      "id": "95dfce6f4e3c",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\Atmospheric_Infrastructure_Actors.csv",
+      "filename": "Atmospheric_Infrastructure_Actors.csv",
+      "registered_date": "2025-12-10T05:07:37.655722",
+      "type": "csv",
+      "metadata": {
+        "title": "Atmospheric_Infrastructure_Actors.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 18357,
+      "modified_date": "2025-12-02T16:36:35.696189"
+    },
+    "da948d036429": {
+      "id": "da948d036429",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\COMPLETE_ECOSYSTEM_GUIDE.md",
+      "filename": "COMPLETE_ECOSYSTEM_GUIDE.md",
+      "registered_date": "2025-12-10T05:07:37.695980",
+      "type": "md",
+      "metadata": {
+        "title": "COMPLETE_ECOSYSTEM_GUIDE.md",
+        "type": "document"
+      },
+      "size_bytes": 13557,
+      "modified_date": "2025-12-02T16:36:35.709625"
+    },
+    "768df564b56d": {
+      "id": "768df564b56d",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\Flight_Tracking_Investigation.csv",
+      "filename": "Flight_Tracking_Investigation.csv",
+      "registered_date": "2025-12-10T05:07:37.721733",
+      "type": "csv",
+      "metadata": {
+        "title": "Flight_Tracking_Investigation.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 12142,
+      "modified_date": "2025-12-02T16:36:35.720046"
+    },
+    "728c44373153": {
+      "id": "728c44373153",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\Geoengineering_Legislation.csv",
+      "filename": "Geoengineering_Legislation.csv",
+      "registered_date": "2025-12-10T05:07:37.747626",
+      "type": "csv",
+      "metadata": {
+        "title": "Geoengineering_Legislation.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 6098,
+      "modified_date": "2025-12-02T16:36:35.724594"
+    },
+    "e0e8618e1fa8": {
+      "id": "e0e8618e1fa8",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\HOME_SETUP_GUIDE.md",
+      "filename": "HOME_SETUP_GUIDE.md",
+      "registered_date": "2025-12-10T05:07:37.787655",
+      "type": "md",
+      "metadata": {
+        "title": "HOME_SETUP_GUIDE.md",
+        "type": "document"
+      },
+      "size_bytes": 7687,
+      "modified_date": "2025-12-02T16:36:35.732471"
+    },
+    "53fd4a831728": {
+      "id": "53fd4a831728",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub.html",
+      "filename": "master_research_hub.html",
+      "registered_date": "2025-12-10T05:07:37.813655",
+      "type": "html",
+      "metadata": {
+        "title": "master_research_hub.html",
+        "type": "web"
+      },
+      "size_bytes": 50550,
+      "modified_date": "2025-12-02T16:36:35.734258"
+    },
+    "5f380227d70a": {
+      "id": "5f380227d70a",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_PRO.html",
+      "filename": "master_research_hub_PRO.html",
+      "registered_date": "2025-12-10T05:07:37.838660",
+      "type": "html",
+      "metadata": {
+        "title": "master_research_hub_PRO.html",
+        "type": "web"
+      },
+      "size_bytes": 53703,
+      "modified_date": "2025-12-02T16:36:35.746933"
+    },
+    "72212703c791": {
+      "id": "72212703c791",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_SEARCH.html",
+      "filename": "master_research_hub_SEARCH.html",
+      "registered_date": "2025-12-10T05:07:37.863361",
+      "type": "html",
+      "metadata": {
+        "title": "master_research_hub_SEARCH.html",
+        "type": "web"
+      },
+      "size_bytes": 26442,
+      "modified_date": "2025-12-02T16:36:35.749577"
+    },
+    "fddaf5efee00": {
+      "id": "fddaf5efee00",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\master_research_hub_ULTIMATE (4).html",
+      "filename": "master_research_hub_ULTIMATE (4).html",
+      "registered_date": "2025-12-10T05:07:37.884841",
+      "type": "html",
+      "metadata": {
+        "title": "master_research_hub_ULTIMATE (4).html",
+        "type": "web"
+      },
+      "size_bytes": 54539,
+      "modified_date": "2025-12-02T16:18:34.411482"
+    },
+    "61db463c37d3": {
+      "id": "61db463c37d3",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\ULTIMATE_HUB_GUIDE.md",
+      "filename": "ULTIMATE_HUB_GUIDE.md",
+      "registered_date": "2025-12-10T05:07:37.916033",
+      "type": "md",
+      "metadata": {
+        "title": "ULTIMATE_HUB_GUIDE.md",
+        "type": "document"
+      },
+      "size_bytes": 16820,
+      "modified_date": "2025-12-02T16:36:35.757259"
+    },
+    "48ed8d924dcd": {
+      "id": "48ed8d924dcd",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\Weather_Modification_Timeline.csv",
+      "filename": "Weather_Modification_Timeline.csv",
+      "registered_date": "2025-12-10T05:07:37.936209",
+      "type": "csv",
+      "metadata": {
+        "title": "Weather_Modification_Timeline.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 11950,
+      "modified_date": "2025-12-02T16:36:35.766752"
+    },
+    "8744273e5c86": {
+      "id": "8744273e5c86",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\RESEARCH HUB FOLDER\\WORKFLOW_INSTRUCTIONS.md",
+      "filename": "WORKFLOW_INSTRUCTIONS.md",
+      "registered_date": "2025-12-10T05:07:37.964890",
+      "type": "md",
+      "metadata": {
+        "title": "WORKFLOW_INSTRUCTIONS.md",
+        "type": "document"
+      },
+      "size_bytes": 1130,
+      "modified_date": "2025-12-02T19:39:39.937141"
+    },
+    "2e1fd64fcb6c": {
+      "id": "2e1fd64fcb6c",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\CDC_COVID_DATA_DOWNLOAD_GUIDE.md",
+      "filename": "CDC_COVID_DATA_DOWNLOAD_GUIDE.md",
+      "registered_date": "2025-12-10T05:07:38.001267",
+      "type": "md",
+      "metadata": {
+        "title": "CDC_COVID_DATA_DOWNLOAD_GUIDE.md",
+        "type": "document"
+      },
+      "size_bytes": 9190,
+      "modified_date": "2025-12-04T06:52:18.485111"
+    },
+    "94d6ab0e8673": {
+      "id": "94d6ab0e8673",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\Download_Queue_Manager.md",
+      "filename": "Download_Queue_Manager.md",
+      "registered_date": "2025-12-10T05:07:38.025949",
+      "type": "md",
+      "metadata": {
+        "title": "Download_Queue_Manager.md",
+        "type": "document"
+      },
+      "size_bytes": 3295,
+      "modified_date": "2025-12-02T18:05:35.458362"
+    },
+    "56a19706f9eb": {
+      "id": "56a19706f9eb",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\HOW-TO-USE-PRESENTATION.md",
+      "filename": "HOW-TO-USE-PRESENTATION.md",
+      "registered_date": "2025-12-10T05:07:38.055579",
+      "type": "md",
+      "metadata": {
+        "title": "HOW-TO-USE-PRESENTATION.md",
+        "type": "document"
+      },
+      "size_bytes": 3736,
+      "modified_date": "2025-12-04T13:38:20.945401"
+    },
+    "468fc5957c1d": {
+      "id": "468fc5957c1d",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\Master_Session_Index.md",
+      "filename": "Master_Session_Index.md",
+      "registered_date": "2025-12-10T05:07:38.078478",
+      "type": "md",
+      "metadata": {
+        "title": "Master_Session_Index.md",
+        "type": "document"
+      },
+      "size_bytes": 7265,
+      "modified_date": "2025-12-02T18:05:19.933867"
+    },
+    "e7c79a05e8bb": {
+      "id": "e7c79a05e8bb",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\Research_Workflow_Integration_Guide.md",
+      "filename": "Research_Workflow_Integration_Guide.md",
+      "registered_date": "2025-12-10T05:07:38.110857",
+      "type": "md",
+      "metadata": {
+        "title": "Research_Workflow_Integration_Guide.md",
+        "type": "document"
+      },
+      "size_bytes": 14762,
+      "modified_date": "2025-12-02T18:05:08.695192"
+    },
+    "cc3043b2dd51": {
+      "id": "cc3043b2dd51",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\TEMPLATE_Research_Session.md",
+      "filename": "TEMPLATE_Research_Session.md",
+      "registered_date": "2025-12-10T05:07:38.134357",
+      "type": "md",
+      "metadata": {
+        "title": "TEMPLATE_Research_Session.md",
+        "type": "document"
+      },
+      "size_bytes": 4127,
+      "modified_date": "2025-12-02T18:05:45.377975"
+    },
+    "c0cb4601e10b": {
+      "id": "c0cb4601e10b",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Tools_and_Systems\\Templates\\WORKFLOW_INSTRUCTIONS.md",
+      "filename": "WORKFLOW_INSTRUCTIONS.md",
+      "registered_date": "2025-12-10T05:07:38.157230",
+      "type": "md",
+      "metadata": {
+        "title": "WORKFLOW_INSTRUCTIONS.md",
+        "type": "document"
+      },
+      "size_bytes": 1130,
+      "modified_date": "2025-12-02T19:39:39.937141"
+    },
+    "e3be759a6457": {
+      "id": "e3be759a6457",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Output\\Databases\\compass_artifact_wf-97505f4b-0692-4de5-bf9b-8de1acde77f0_text_markdown.md",
+      "filename": "compass_artifact_wf-97505f4b-0692-4de5-bf9b-8de1acde77f0_text_markdown.md",
+      "registered_date": "2025-12-10T05:07:38.188387",
+      "type": "md",
+      "metadata": {
+        "title": "compass_artifact_wf-97505f4b-0692-4de5-bf9b-8de1acde77f0_text_markdown.md",
+        "type": "document"
+      },
+      "size_bytes": 19272,
+      "modified_date": "2025-12-03T11:01:17.581862"
+    },
+    "8ce15070603b": {
+      "id": "8ce15070603b",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Output\\Databases\\entity_list_1764799560021.html",
+      "filename": "entity_list_1764799560021.html",
+      "registered_date": "2025-12-10T05:07:38.209407",
+      "type": "html",
+      "metadata": {
+        "title": "entity_list_1764799560021.html",
+        "type": "web"
+      },
+      "size_bytes": 19601,
+      "modified_date": "2025-12-03T17:06:00.478210"
+    },
+    "3934270e6450": {
+      "id": "3934270e6450",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Output\\Databases\\Untitled Project_complete_1764799636415.json",
+      "filename": "Untitled Project_complete_1764799636415.json",
+      "registered_date": "2025-12-10T05:07:38.229207",
+      "type": "json",
+      "metadata": {
+        "title": "Untitled Project_complete_1764799636415.json",
+        "type": "web"
+      },
+      "size_bytes": 6793078,
+      "modified_date": "2025-12-03T17:07:17.128253"
+    },
+    "1112438a1ae9": {
+      "id": "1112438a1ae9",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Output\\Databases\\Untitled Project_entities_1764804662695.csv",
+      "filename": "Untitled Project_entities_1764804662695.csv",
+      "registered_date": "2025-12-10T05:07:38.249703",
+      "type": "csv",
+      "metadata": {
+        "title": "Untitled Project_entities_1764804662695.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 44127,
+      "modified_date": "2025-12-03T18:31:02.905370"
+    },
+    "b2fda020c9dd": {
+      "id": "b2fda020c9dd",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Output\\YouTube_Content\\operation-popeye-presentation.pptx",
+      "filename": "operation-popeye-presentation.pptx",
+      "registered_date": "2025-12-10T05:07:38.270201",
+      "type": "pptx",
+      "metadata": {
+        "title": "operation-popeye-presentation.pptx",
+        "type": "unknown"
+      },
+      "size_bytes": 166016,
+      "modified_date": "2025-12-04T13:34:16.329772"
+    },
+    "f2a056c317d4": {
+      "id": "f2a056c317d4",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\flight and weather research\\files (1).zip",
+      "filename": "files (1).zip",
+      "registered_date": "2025-12-10T05:07:38.290681",
+      "type": "zip",
+      "metadata": {
+        "title": "files (1).zip",
+        "type": "archive"
+      },
+      "size_bytes": 26342,
+      "modified_date": "2025-11-29T02:45:53.935924"
+    },
+    "35a3fa80d321": {
+      "id": "35a3fa80d321",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Surveillance_Infrastructure\\rtx_timeline_autoindex_test.md",
+      "filename": "rtx_timeline_autoindex_test.md",
+      "registered_date": "2025-12-10T05:07:38.314711",
+      "type": "md",
+      "metadata": {
+        "title": "rtx_timeline_autoindex_test.md",
+        "type": "document"
+      },
+      "size_bytes": 606,
+      "modified_date": "2025-12-10T04:01:31.065125"
+    },
+    "eb3f8854d91f": {
+      "id": "eb3f8854d91f",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Surveillance_Infrastructure\\surveillance_weather_nexus.md",
+      "filename": "surveillance_weather_nexus.md",
+      "registered_date": "2025-12-10T05:07:38.351047",
+      "type": "md",
+      "metadata": {
+        "title": "surveillance_weather_nexus.md",
+        "type": "document"
+      },
+      "size_bytes": 42062,
+      "modified_date": "2025-11-29T03:24:43.800732"
+    },
+    "405c7e8c536b": {
+      "id": "405c7e8c536b",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Weather_Modification\\auto_index_test.md",
+      "filename": "auto_index_test.md",
+      "registered_date": "2025-12-10T05:07:38.372808",
+      "type": "md",
+      "metadata": {
+        "title": "auto_index_test.md",
+        "type": "document"
+      },
+      "size_bytes": 741,
+      "modified_date": "2025-12-09T18:57:29.487132"
+    },
+    "9afe37b01079": {
+      "id": "9afe37b01079",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Weather_Modification\\weather_modification_research_database.csv",
+      "filename": "weather_modification_research_database.csv",
+      "registered_date": "2025-12-10T05:07:38.393310",
+      "type": "csv",
+      "metadata": {
+        "title": "weather_modification_research_database.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 40026,
+      "modified_date": "2025-11-29T02:42:56.887101"
+    },
+    "da001f969fbd": {
+      "id": "da001f969fbd",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Weather_Modification\\Evidence_Matrix\\Atmospheric_Infrastructure_Actors.csv",
+      "filename": "Atmospheric_Infrastructure_Actors.csv",
+      "registered_date": "2025-12-10T05:07:38.413452",
+      "type": "csv",
+      "metadata": {
+        "title": "Atmospheric_Infrastructure_Actors.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 18357,
+      "modified_date": "2025-12-03T11:53:19.211708"
+    },
+    "3f3522324ca6": {
+      "id": "3f3522324ca6",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Weather_Modification\\Timeline\\weather_modification_timeline.md",
+      "filename": "weather_modification_timeline.md",
+      "registered_date": "2025-12-10T05:07:38.447043",
+      "type": "md",
+      "metadata": {
+        "title": "weather_modification_timeline.md",
+        "type": "document"
+      },
+      "size_bytes": 28793,
+      "modified_date": "2025-11-29T02:42:56.915333"
+    },
+    "87d08e9a6bdf": {
+      "id": "87d08e9a6bdf",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Flight_Tracking\\Analysis\\Flight_Tracking_Investigation.csv",
+      "filename": "Flight_Tracking_Investigation.csv",
+      "registered_date": "2025-12-10T05:07:38.467930",
+      "type": "csv",
+      "metadata": {
+        "title": "Flight_Tracking_Investigation.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 12142,
+      "modified_date": "2025-12-02T16:42:01.097157"
+    },
+    "a8bd5bef69f7": {
+      "id": "a8bd5bef69f7",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_quick_reference_calendar.txt",
+      "filename": "flightradar24_quick_reference_calendar.txt",
+      "registered_date": "2025-12-10T05:07:38.498298",
+      "type": "txt",
+      "metadata": {
+        "title": "flightradar24_quick_reference_calendar.txt",
+        "type": "document"
+      },
+      "size_bytes": 28115,
+      "modified_date": "2025-11-29T02:42:56.947670"
+    },
+    "16316e9d8264": {
+      "id": "16316e9d8264",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_research_database.csv",
+      "filename": "flightradar24_research_database.csv",
+      "registered_date": "2025-12-10T05:07:38.518407",
+      "type": "csv",
+      "metadata": {
+        "title": "flightradar24_research_database.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 23821,
+      "modified_date": "2025-11-29T02:43:00.556797"
+    },
+    "9669eba9b8ed": {
+      "id": "9669eba9b8ed",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_research_guide.md",
+      "filename": "flightradar24_research_guide.md",
+      "registered_date": "2025-12-10T05:07:38.550129",
+      "type": "md",
+      "metadata": {
+        "title": "flightradar24_research_guide.md",
+        "type": "document"
+      },
+      "size_bytes": 18044,
+      "modified_date": "2025-11-29T02:43:00.561467"
+    },
+    "a0b8661e68c3": {
+      "id": "a0b8661e68c3",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Flight_Tracking\\FlightRadar24\\flightradar24_timeline_calendar.md",
+      "filename": "flightradar24_timeline_calendar.md",
+      "registered_date": "2025-12-10T05:07:38.584237",
+      "type": "md",
+      "metadata": {
+        "title": "flightradar24_timeline_calendar.md",
+        "type": "document"
+      },
+      "size_bytes": 25855,
+      "modified_date": "2025-11-29T02:42:56.931498"
+    },
+    "5265d3fa89cb": {
+      "id": "5265d3fa89cb",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\entity_database.csv",
+      "filename": "entity_database.csv",
+      "registered_date": "2025-12-10T05:56:41.016950",
+      "type": "csv",
+      "metadata": {
+        "title": "entity_database.csv",
+        "type": "spreadsheet"
+      },
+      "size_bytes": 6737,
+      "modified_date": "2025-12-10T05:55:41.884405"
+    },
+    "fa47c31fdb11": {
+      "id": "fa47c31fdb11",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\investigation_metadata.json",
+      "filename": "investigation_metadata.json",
+      "registered_date": "2025-12-10T05:56:41.044973",
+      "type": "json",
+      "metadata": {
+        "title": "investigation_metadata.json",
+        "type": "web"
+      },
+      "size_bytes": 723,
+      "modified_date": "2025-12-10T05:41:20.946141"
+    },
+    "b9704bbca3cd": {
+      "id": "b9704bbca3cd",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\investigation_overview.md",
+      "filename": "investigation_overview.md",
+      "registered_date": "2025-12-10T05:56:41.082424",
+      "type": "md",
+      "metadata": {
+        "title": "investigation_overview.md",
+        "type": "document"
+      },
+      "size_bytes": 1087,
+      "modified_date": "2025-12-10T05:41:20.944129"
+    },
+    "68b24fcbb8a9": {
+      "id": "68b24fcbb8a9",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\research_log.md",
+      "filename": "research_log.md",
+      "registered_date": "2025-12-10T05:56:41.118848",
+      "type": "md",
+      "metadata": {
+        "title": "research_log.md",
+        "type": "document"
+      },
+      "size_bytes": 280,
+      "modified_date": "2025-12-10T05:41:20.944129"
+    },
+    "ed60fc8c9a6f": {
+      "id": "ed60fc8c9a6f",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\Analysis\\comprehensive_investigation_report.md",
+      "filename": "comprehensive_investigation_report.md",
+      "registered_date": "2025-12-10T05:56:41.151245",
+      "type": "md",
+      "metadata": {
+        "title": "comprehensive_investigation_report.md",
+        "type": "document"
+      },
+      "size_bytes": 19563,
+      "modified_date": "2025-12-10T05:55:00.327717"
+    },
+    "8fd0183aba9e": {
+      "id": "8fd0183aba9e",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\Analysis\\README.md",
+      "filename": "README.md",
+      "registered_date": "2025-12-10T05:56:41.187688",
+      "type": "md",
+      "metadata": {
+        "title": "README.md",
+        "type": "document"
+      },
+      "size_bytes": 42,
+      "modified_date": "2025-12-10T05:41:20.945144"
+    },
+    "2844d3d38def": {
+      "id": "2844d3d38def",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\Corporate_Networks\\README.md",
+      "filename": "README.md",
+      "registered_date": "2025-12-10T05:56:41.223837",
+      "type": "md",
+      "metadata": {
+        "title": "README.md",
+        "type": "document"
+      },
+      "size_bytes": 62,
+      "modified_date": "2025-12-10T05:41:20.945144"
+    },
+    "c158fc9e1a82": {
+      "id": "c158fc9e1a82",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\Evidence\\README.md",
+      "filename": "README.md",
+      "registered_date": "2025-12-10T05:56:41.259465",
+      "type": "md",
+      "metadata": {
+        "title": "README.md",
+        "type": "document"
+      },
+      "size_bytes": 42,
+      "modified_date": "2025-12-10T05:41:20.944129"
+    },
+    "467d7bef201a": {
+      "id": "467d7bef201a",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\README.md",
+      "filename": "README.md",
+      "registered_date": "2025-12-10T05:56:41.293619",
+      "type": "md",
+      "metadata": {
+        "title": "README.md",
+        "type": "document"
+      },
+      "size_bytes": 42,
+      "modified_date": "2025-12-10T05:41:20.945144"
+    },
+    "e30a01667cca": {
+      "id": "e30a01667cca",
+      "filepath": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\Fox_News_Corp_Investigation\\Timeline\\timeline.md",
+      "filename": "timeline.md",
+      "registered_date": "2025-12-10T05:56:41.323655",
+      "type": "md",
+      "metadata": {
+        "title": "timeline.md",
+        "type": "document"
+      },
+      "size_bytes": 4945,
+      "modified_date": "2025-12-10T05:56:15.912017"
+    }
+  },
+  "claims": {},
+  "chains": {}
+}

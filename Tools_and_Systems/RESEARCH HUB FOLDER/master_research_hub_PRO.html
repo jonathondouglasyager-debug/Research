@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Research Hub Pro - Advanced Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+        
+        :root {
+            --bg-primary: #0a0e14;
+            --bg-secondary: #131921;
+            --bg-elevated: #1a2332;
+            --accent-primary: #00d9ff;
+            --accent-secondary: #ff6b35;
+            --accent-warning: #ffd93d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #525965;
+            --border-color: #30363d;
+            --success: #3fb950;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            animation: gridScroll 20s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes gridScroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-elevated) 100%);
+            border-bottom: 2px solid var(--accent-primary);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .pro-badge {
+            background: var(--accent-warning);
+            color: var(--bg-primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .header-meta {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .main-content {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Sidebar */
+        .layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        
+        .sidebar {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .sidebar-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sidebar-item {
+            padding: 0.6rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sidebar-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(3px);
+        }
+        
+        .sidebar-item .delete-btn {
+            color: var(--accent-secondary);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .sidebar-item:hover .delete-btn {
+            opacity: 1;
+        }
+        
+        /* Main Search Area */
+        .search-area {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .search-box-container {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        #globalSearch {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        #globalSearch:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        
+        .search-help {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Advanced Options */
+        .advanced-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-group {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+        
+        .option-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        
+        .checkbox-label input {
+            cursor: pointer;
+        }
+        
+        .date-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+        
+        input[type="date"] {
+            padding: 0.5rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+        }
+        
+        /* Fuzzy Toggle */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .toggle {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            background: var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .toggle.active {
+            background: var(--accent-primary);
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            transition: left 0.3s;
+        }
+        
+        .toggle.active .toggle-slider {
+            left: 22px;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: transparent;
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        /* Filters */
+        .filter-chips {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-chip {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .filter-chip:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+        
+        .filter-chip.active {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+            font-weight: bold;
+        }
+        
+        /* Results */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .results-count {
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .view-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        
+        .view-btn.active {
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+        }
+        
+        .result-item {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .result-item:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .result-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .result-source {
+            background: var(--accent-secondary);
+            color: var(--bg-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .result-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .result-field {
+            margin-bottom: 0.5rem;
+        }
+        
+        .field-name {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .field-value {
+            color: var(--text-primary);
+            margin-top: 0.2rem;
+        }
+        
+        .highlight {
+            background: rgba(0, 217, 255, 0.3);
+            color: var(--accent-primary);
+            font-weight: bold;
+            padding: 0 2px;
+        }
+        
+        /* Network View */
+        #networkView {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            height: 600px;
+            display: none;
+            position: relative;
+        }
+        
+        #networkView.active {
+            display: block;
+        }
+        
+        #networkCanvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        
+        .network-legend {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(26, 35, 50, 0.9);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .network-legend h4 {
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.8rem;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        /* File Upload */
+        .file-upload-area {
+            background: var(--bg-secondary);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-input-label {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .file-input-label:hover {
+            background: var(--accent-secondary);
+            transform: scale(1.05);
+        }
+        
+        .loaded-files {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        
+        .loaded-file-badge {
+            padding: 0.5rem 1rem;
+            background: var(--success);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: var(--accent-primary);
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+            
+            .advanced-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>⚡ RESEARCH HUB PRO<span class="pro-badge">ULTIMATE</span></h1>
+            <div class="header-meta">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="systemStatus">Ready</span>
+                </div>
+                <div id="dateTime"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="file-upload-area">
+            <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">Load Your Research Databases</h3>
+            <label for="csvFiles" class="file-input-label">
+                📁 Choose CSV Files
+            </label>
+            <input type="file" id="csvFiles" class="file-input" multiple accept=".csv">
+            <div class="loaded-files" id="loadedFiles"></div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 1rem;">Processing CSV files...</p>
+        </div>
+
+        <div class="layout" style="display: none;" id="mainLayout">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">⭐ Saved Searches</div>
+                    <div id="savedSearches">
+                        <div style="color: var(--text-muted); font-size: 0.8rem; text-align: center;">No saved searches</div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <div class="sidebar-title">🕒 Search History</div>
+                    <div id="searchHistory">
+                        <div style="color: var(--text-muted); font-size: 0.8rem; text-align: center;">No history yet</div>
+                    </div>
+                </div>
+            </aside>
+
+            <main>
+                <div class="search-area">
+                    <div class="search-box-container">
+                        <input type="text" id="globalSearch" placeholder="Enter search query... (use AND, OR, NOT for boolean)">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="search-help">
+                        💡 <strong>Boolean:</strong> "Raytheon AND Palantir" | "Tennessee OR Florida" | "weather NOT modification"
+                    </div>
+
+                    <div class="advanced-options">
+                        <div class="option-group">
+                            <div class="option-label">Search In Fields</div>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="field-filter" value="all" checked>
+                                    <span>All Fields</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="field-filter" value="Entity_Name">
+                                    <span>Entity Names</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="field-filter" value="Description">
+                                    <span>Descriptions</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="field-filter" value="Notes">
+                                    <span>Notes</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <div class="option-label">Date Range Filter</div>
+                            <div class="date-inputs">
+                                <input type="date" id="dateFrom" placeholder="From">
+                                <input type="date" id="dateTo" placeholder="To">
+                            </div>
+                            <div style="margin-top: 0.5rem;">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="enableFuzzy">
+                                    <span>Fuzzy Matching (typo-tolerant)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-chips">
+                        <div class="filter-chip active" data-filter="all">All Databases</div>
+                        <div class="filter-chip" data-filter="geoengineering">Geoengineering</div>
+                        <div class="filter-chip" data-filter="actors">Actors</div>
+                        <div class="filter-chip" data-filter="timeline">Timeline</div>
+                        <div class="filter-chip" data-filter="flight">Flight Tracking</div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn" onclick="performSearch()">🔍 Search</button>
+                        <button class="btn btn-success" onclick="saveCurrentSearch()">💾 Save Search</button>
+                        <button class="btn btn-secondary" onclick="clearFilters()">🔄 Clear All</button>
+                        <button class="btn btn-secondary" onclick="exportResults()">📥 Export CSV</button>
+                    </div>
+                </div>
+
+                <div class="results-header" style="display: none;" id="resultsHeader">
+                    <div class="results-count" id="resultsCount">0 results</div>
+                    <div class="view-toggle">
+                        <div class="view-btn active" onclick="switchView('list')">📋 List</div>
+                        <div class="view-btn" onclick="switchView('network')">🕸️ Network</div>
+                    </div>
+                </div>
+
+                <div id="resultsView">
+                    <div id="listView"></div>
+                    <div id="networkView">
+                        <svg id="networkCanvas"></svg>
+                        <div class="network-legend">
+                            <h4>Legend</h4>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--accent-primary);"></div>
+                                <span>Primary Entity</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--accent-secondary);"></div>
+                                <span>Connected Entity</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--accent-warning);"></div>
+                                <span>Event/Date</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Global data
+        let allData = [];
+        let currentFilter = 'all';
+        let searchResults = [];
+        let searchHistory = [];
+        let savedSearches = [];
+        
+        // Load saved data from localStorage
+        function loadSavedData() {
+            const savedHistory = localStorage.getItem('searchHistory');
+            const savedQueries = localStorage.getItem('savedSearches');
+            
+            if (savedHistory) {
+                searchHistory = JSON.parse(savedHistory);
+                updateHistoryUI();
+            }
+            
+            if (savedQueries) {
+                savedSearches = JSON.parse(savedQueries);
+                updateSavedSearchesUI();
+            }
+        }
+        
+        // Update date/time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('dateTime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+        
+        // File upload handling
+        document.getElementById('csvFiles').addEventListener('change', async (e) => {
+            const files = Array.from(e.target.files);
+            if (files.length === 0) return;
+            
+            document.getElementById('loading').classList.add('active');
+            allData = [];
+            
+            for (const file of files) {
+                await parseCSV(file);
+            }
+            
+            document.getElementById('loading').classList.remove('active');
+            document.getElementById('mainLayout').style.display = 'grid';
+            document.getElementById('systemStatus').textContent = `${allData.length} records loaded`;
+            
+            const loadedFilesDiv = document.getElementById('loadedFiles');
+            loadedFilesDiv.innerHTML = files.map(f => 
+                `<div class="loaded-file-badge">${f.name}</div>`
+            ).join('');
+            
+            loadSavedData();
+        });
+        
+        // Parse CSV
+        function parseCSV(file) {
+            return new Promise((resolve) => {
+                Papa.parse(file, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: function(results) {
+                        let dbType = 'unknown';
+                        const filename = file.name.toLowerCase();
+                        
+                        if (filename.includes('geoengineering') || filename.includes('legislation')) {
+                            dbType = 'geoengineering';
+                        } else if (filename.includes('actor') || filename.includes('infrastructure')) {
+                            dbType = 'actors';
+                        } else if (filename.includes('timeline') || filename.includes('weather_mod')) {
+                            dbType = 'timeline';
+                        } else if (filename.includes('flight')) {
+                            dbType = 'flight';
+                        }
+                        
+                        results.data.forEach(row => {
+                            row._source = file.name;
+                            row._dbType = dbType;
+                            allData.push(row);
+                        });
+                        
+                        resolve();
+                    }
+                });
+            });
+        }
+        
+        // Levenshtein distance for fuzzy matching
+        function levenshteinDistance(a, b) {
+            const matrix = [];
+            
+            for (let i = 0; i <= b.length; i++) {
+                matrix[i] = [i];
+            }
+            
+            for (let j = 0; j <= a.length; j++) {
+                matrix[0][j] = j;
+            }
+            
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(
+                            matrix[i - 1][j - 1] + 1,
+                            matrix[i][j - 1] + 1,
+                            matrix[i - 1][j] + 1
+                        );
+                    }
+                }
+            }
+            
+            return matrix[b.length][a.length];
+        }
+        
+        // Boolean query parser
+        function parseBooleanQuery(query) {
+            const andRegex = /\sAND\s/gi;
+            const orRegex = /\sOR\s/gi;
+            const notRegex = /\sNOT\s/gi;
+            
+            if (andRegex.test(query)) {
+                return {
+                    type: 'AND',
+                    terms: query.split(andRegex).map(t => t.trim().toLowerCase())
+                };
+            } else if (orRegex.test(query)) {
+                return {
+                    type: 'OR',
+                    terms: query.split(orRegex).map(t => t.trim().toLowerCase())
+                };
+            } else if (notRegex.test(query)) {
+                const parts = query.split(notRegex);
+                return {
+                    type: 'NOT',
+                    include: parts[0].trim().toLowerCase(),
+                    exclude: parts[1].trim().toLowerCase()
+                };
+            }
+            
+            return {
+                type: 'SIMPLE',
+                term: query.trim().toLowerCase()
+            };
+        }
+        
+        // Check if text matches query with fuzzy option
+        function matchesQuery(text, query, fuzzy = false) {
+            const textLower = String(text).toLowerCase();
+            const queryLower = query.toLowerCase();
+            
+            if (fuzzy) {
+                const distance = levenshteinDistance(queryLower, textLower);
+                const threshold = Math.max(2, Math.floor(queryLower.length * 0.2));
+                return distance <= threshold || textLower.includes(queryLower);
+            }
+            
+            return textLower.includes(queryLower);
+        }
+        
+        // Perform search
+        function performSearch() {
+            const query = document.getElementById('globalSearch').value;
+            if (!query || query.length < 2) {
+                alert('Please enter at least 2 characters to search');
+                return;
+            }
+            
+            // Add to history
+            addToHistory(query);
+            
+            const fuzzyEnabled = document.getElementById('enableFuzzy').checked;
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            
+            // Get field filters
+            const fieldFilters = Array.from(document.querySelectorAll('.field-filter:checked'))
+                .map(cb => cb.value);
+            const allFields = fieldFilters.includes('all');
+            
+            // Parse boolean query
+            const parsedQuery = parseBooleanQuery(query);
+            
+            searchResults = [];
+            
+            allData.forEach(row => {
+                // Check database filter
+                if (currentFilter !== 'all' && row._dbType !== currentFilter) {
+                    return;
+                }
+                
+                // Check date filter
+                if (dateFrom || dateTo) {
+                    const rowDate = extractDate(row);
+                    if (rowDate) {
+                        if (dateFrom && rowDate < new Date(dateFrom)) return;
+                        if (dateTo && rowDate > new Date(dateTo)) return;
+                    }
+                }
+                
+                // Search logic based on query type
+                let matches = [];
+                
+                for (const [key, value] of Object.entries(row)) {
+                    if (key.startsWith('_')) continue;
+                    if (!allFields && !fieldFilters.includes(key)) continue;
+                    
+                    const stringValue = String(value);
+                    let matched = false;
+                    
+                    if (parsedQuery.type === 'AND') {
+                        matched = parsedQuery.terms.every(term => 
+                            matchesQuery(stringValue, term, fuzzyEnabled)
+                        );
+                    } else if (parsedQuery.type === 'OR') {
+                        matched = parsedQuery.terms.some(term => 
+                            matchesQuery(stringValue, term, fuzzyEnabled)
+                        );
+                    } else if (parsedQuery.type === 'NOT') {
+                        matched = matchesQuery(stringValue, parsedQuery.include, fuzzyEnabled) &&
+                                !matchesQuery(stringValue, parsedQuery.exclude, fuzzyEnabled);
+                    } else {
+                        matched = matchesQuery(stringValue, parsedQuery.term, fuzzyEnabled);
+                    }
+                    
+                    if (matched) {
+                        matches.push({ field: key, value: value });
+                    }
+                }
+                
+                if (matches.length > 0) {
+                    searchResults.push({ row, matches });
+                }
+            });
+            
+            displayResults(searchResults, query);
+            updateNetworkView(searchResults);
+        }
+        
+        // Extract date from row
+        function extractDate(row) {
+            const dateFields = ['Year', 'Date', 'Date_Year', 'updated_at'];
+            for (const field of dateFields) {
+                if (row[field]) {
+                    const parsed = new Date(row[field]);
+                    if (!isNaN(parsed.getTime())) {
+                        return parsed;
+                    }
+                }
+            }
+            return null;
+        }
+        
+        // Display results
+        function displayResults(results, query) {
+            const resultsDiv = document.getElementById('listView');
+            const headerDiv = document.getElementById('resultsHeader');
+            const countDiv = document.getElementById('resultsCount');
+            
+            headerDiv.style.display = 'flex';
+            countDiv.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found`;
+            
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--text-muted);">No results found. Try adjusting your filters or search terms.</div>';
+                return;
+            }
+            
+            const dbLabels = {
+                'geoengineering': 'Geoengineering Legislation',
+                'actors': 'Infrastructure Actors',
+                'timeline': 'Weather Modification Timeline',
+                'flight': 'Flight Tracking',
+                'unknown': 'Unknown Database'
+            };
+            
+            let html = '';
+            
+            results.forEach((result, index) => {
+                const dbType = result.row._dbType;
+                const dbLabel = dbLabels[dbType] || 'Unknown';
+                
+                const titleField = result.row.Entity_Name || result.row.Event || result.row.Bill_Number || 
+                                  result.row.Entity_Event || result.row.State || `Record ${index + 1}`;
+                
+                html += `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <div class="result-title">${escapeHtml(titleField)}</div>
+                            <div class="result-source">${dbLabel}</div>
+                        </div>
+                        <div class="result-content">
+                `;
+                
+                result.matches.slice(0, 5).forEach(match => {
+                    const highlightedValue = highlightMatch(match.value, query);
+                    html += `
+                        <div class="result-field">
+                            <div class="field-name">${match.field.replace(/_/g, ' ')}</div>
+                            <div class="field-value">${highlightedValue}</div>
+                        </div>
+                    `;
+                });
+                
+                if (result.matches.length > 5) {
+                    html += `<div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.5rem;">+ ${result.matches.length - 5} more matching fields</div>`;
+                }
+                
+                html += `</div></div>`;
+            });
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        // Highlight match
+        function highlightMatch(text, query) {
+            const parsedQuery = parseBooleanQuery(query);
+            let terms = [];
+            
+            if (parsedQuery.type === 'AND' || parsedQuery.type === 'OR') {
+                terms = parsedQuery.terms;
+            } else if (parsedQuery.type === 'NOT') {
+                terms = [parsedQuery.include];
+            } else {
+                terms = [parsedQuery.term];
+            }
+            
+            let result = escapeHtml(String(text));
+            terms.forEach(term => {
+                const regex = new RegExp(`(${escapeRegex(term)})`, 'gi');
+                result = result.replace(regex, '<span class="highlight">$1</span>');
+            });
+            
+            return result;
+        }
+        
+        // Update network visualization
+        function updateNetworkView(results) {
+            if (results.length === 0) return;
+            
+            const svg = d3.select('#networkCanvas');
+            svg.selectAll('*').remove();
+            
+            const width = document.getElementById('networkView').clientWidth;
+            const height = 600;
+            
+            // Extract unique entities and connections
+            const nodes = new Map();
+            const links = [];
+            
+            results.forEach((result, idx) => {
+                const mainEntity = result.row.Entity_Name || result.row.Event || result.row.State || `Entity${idx}`;
+                
+                if (!nodes.has(mainEntity)) {
+                    nodes.set(mainEntity, {
+                        id: mainEntity,
+                        group: result.row._dbType,
+                        size: 1
+                    });
+                } else {
+                    nodes.get(mainEntity).size++;
+                }
+                
+                // Extract connections
+                const connectionsField = result.row.Key_Connections || result.row.Actors || result.row.Connection_to_Research || '';
+                if (connectionsField) {
+                    const connected = String(connectionsField).split(',').map(c => c.trim()).slice(0, 3);
+                    connected.forEach(conn => {
+                        if (conn && conn.length > 2) {
+                            if (!nodes.has(conn)) {
+                                nodes.set(conn, {
+                                    id: conn,
+                                    group: 'connection',
+                                    size: 1
+                                });
+                            }
+                            links.push({
+                                source: mainEntity,
+                                target: conn
+                            });
+                        }
+                    });
+                }
+            });
+            
+            const nodeArray = Array.from(nodes.values());
+            
+            // Color scale
+            const color = d3.scaleOrdinal()
+                .domain(['geoengineering', 'actors', 'timeline', 'flight', 'connection'])
+                .range(['#00d9ff', '#ff6b35', '#ffd93d', '#3fb950', '#8b949e']);
+            
+            // Force simulation
+            const simulation = d3.forceSimulation(nodeArray)
+                .force('link', d3.forceLink(links).id(d => d.id).distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(d => Math.sqrt(d.size) * 10 + 10));
+            
+            // Links
+            const link = svg.append('g')
+                .selectAll('line')
+                .data(links)
+                .enter().append('line')
+                .attr('stroke', '#30363d')
+                .attr('stroke-width', 2)
+                .attr('stroke-opacity', 0.6);
+            
+            // Nodes
+            const node = svg.append('g')
+                .selectAll('circle')
+                .data(nodeArray)
+                .enter().append('circle')
+                .attr('r', d => Math.sqrt(d.size) * 10 + 5)
+                .attr('fill', d => color(d.group))
+                .attr('stroke', '#0a0e14')
+                .attr('stroke-width', 2)
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended));
+            
+            // Labels
+            const label = svg.append('g')
+                .selectAll('text')
+                .data(nodeArray)
+                .enter().append('text')
+                .text(d => d.id.length > 15 ? d.id.substring(0, 15) + '...' : d.id)
+                .attr('font-size', 10)
+                .attr('fill', '#e6edf3')
+                .attr('text-anchor', 'middle')
+                .attr('dy', '.35em');
+            
+            // Tooltips
+            node.append('title')
+                .text(d => `${d.id} (${d.size} mentions)`);
+            
+            simulation.on('tick', () => {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+                
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+                
+                label
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+            
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+        
+        // Switch view
+        function switchView(view) {
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (view === 'list') {
+                document.getElementById('listView').style.display = 'block';
+                document.getElementById('networkView').classList.remove('active');
+            } else {
+                document.getElementById('listView').style.display = 'none';
+                document.getElementById('networkView').classList.add('active');
+            }
+        }
+        
+        // Save current search
+        function saveCurrentSearch() {
+            const query = document.getElementById('globalSearch').value;
+            if (!query) {
+                alert('Enter a search query first');
+                return;
+            }
+            
+            const name = prompt('Name this search:', query);
+            if (!name) return;
+            
+            const search = {
+                name: name,
+                query: query,
+                filters: {
+                    database: currentFilter,
+                    fuzzy: document.getElementById('enableFuzzy').checked,
+                    dateFrom: document.getElementById('dateFrom').value,
+                    dateTo: document.getElementById('dateTo').value
+                },
+                timestamp: new Date().toISOString()
+            };
+            
+            savedSearches.unshift(search);
+            if (savedSearches.length > 10) savedSearches = savedSearches.slice(0, 10);
+            
+            localStorage.setItem('savedSearches', JSON.stringify(savedSearches));
+            updateSavedSearchesUI();
+        }
+        
+        // Add to history
+        function addToHistory(query) {
+            const entry = {
+                query: query,
+                timestamp: new Date().toISOString(),
+                resultCount: searchResults.length
+            };
+            
+            searchHistory.unshift(entry);
+            if (searchHistory.length > 20) searchHistory = searchHistory.slice(0, 20);
+            
+            localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+            updateHistoryUI();
+        }
+        
+        // Update saved searches UI
+        function updateSavedSearchesUI() {
+            const container = document.getElementById('savedSearches');
+            
+            if (savedSearches.length === 0) {
+                container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.8rem; text-align: center;">No saved searches</div>';
+                return;
+            }
+            
+            container.innerHTML = savedSearches.map((search, idx) => `
+                <div class="sidebar-item" onclick="loadSavedSearch(${idx})">
+                    <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${search.name}</span>
+                    <span class="delete-btn" onclick="event.stopPropagation(); deleteSavedSearch(${idx})">🗑️</span>
+                </div>
+            `).join('');
+        }
+        
+        // Update history UI
+        function updateHistoryUI() {
+            const container = document.getElementById('searchHistory');
+            
+            if (searchHistory.length === 0) {
+                container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.8rem; text-align: center;">No history yet</div>';
+                return;
+            }
+            
+            container.innerHTML = searchHistory.slice(0, 10).map((entry, idx) => `
+                <div class="sidebar-item" onclick="loadHistorySearch(${idx})">
+                    <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${entry.query}</span>
+                </div>
+            `).join('');
+        }
+        
+        // Load saved search
+        function loadSavedSearch(idx) {
+            const search = savedSearches[idx];
+            document.getElementById('globalSearch').value = search.query;
+            currentFilter = search.filters.database;
+            document.getElementById('enableFuzzy').checked = search.filters.fuzzy;
+            document.getElementById('dateFrom').value = search.filters.dateFrom || '';
+            document.getElementById('dateTo').value = search.filters.dateTo || '';
+            
+            // Update filter chips
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.toggle('active', chip.getAttribute('data-filter') === currentFilter);
+            });
+            
+            performSearch();
+        }
+        
+        // Load history search
+        function loadHistorySearch(idx) {
+            const entry = searchHistory[idx];
+            document.getElementById('globalSearch').value = entry.query;
+            performSearch();
+        }
+        
+        // Delete saved search
+        function deleteSavedSearch(idx) {
+            savedSearches.splice(idx, 1);
+            localStorage.setItem('savedSearches', JSON.stringify(savedSearches));
+            updateSavedSearchesUI();
+        }
+        
+        // Clear filters
+        function clearFilters() {
+            document.getElementById('globalSearch').value = '';
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            document.getElementById('enableFuzzy').checked = false;
+            document.querySelectorAll('.field-filter').forEach(cb => {
+                cb.checked = cb.value === 'all';
+            });
+            currentFilter = 'all';
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.toggle('active', chip.getAttribute('data-filter') === 'all');
+            });
+            document.getElementById('resultsHeader').style.display = 'none';
+            document.getElementById('listView').innerHTML = '';
+        }
+        
+        // Export results
+        function exportResults() {
+            if (searchResults.length === 0) {
+                alert('No results to export');
+                return;
+            }
+            
+            const fields = new Set();
+            searchResults.forEach(result => {
+                Object.keys(result.row).forEach(key => {
+                    if (!key.startsWith('_')) fields.add(key);
+                });
+            });
+            
+            const fieldArray = Array.from(fields);
+            let csv = fieldArray.join(',') + '\n';
+            
+            searchResults.forEach(result => {
+                const row = fieldArray.map(field => {
+                    const value = result.row[field] || '';
+                    return value.toString().includes(',') || value.toString().includes('"') 
+                        ? `"${value.toString().replace(/"/g, '""')}"` 
+                        : value;
+                });
+                csv += row.join(',') + '\n';
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `search_results_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // Filter chips
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                currentFilter = chip.getAttribute('data-filter');
+            });
+        });
+        
+        // Field filter "all" checkbox
+        document.querySelector('.field-filter[value="all"]').addEventListener('change', (e) => {
+            const allChecked = e.target.checked;
+            document.querySelectorAll('.field-filter:not([value="all"])').forEach(cb => {
+                cb.checked = !allChecked;
+                cb.disabled = allChecked;
+            });
+        });
+        
+        // Other field filters
+        document.querySelectorAll('.field-filter:not([value="all"])').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const allCheckbox = document.querySelector('.field-filter[value="all"]');
+                const anyChecked = Array.from(document.querySelectorAll('.field-filter:not([value="all"])')).some(c => c.checked);
+                allCheckbox.checked = !anyChecked;
+            });
+        });
+        
+        // Search on Enter
+        document.getElementById('globalSearch').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Utility functions
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+        
+        console.log('Master Research Hub Pro initialized');
+        console.log('Ultimate search system ready');
+    </script>
+</body>
+</html>
