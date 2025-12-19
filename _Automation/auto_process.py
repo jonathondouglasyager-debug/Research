@@ -87,9 +87,13 @@ class AutoProcessor:
         cmd2 = 'python _System\\integration_controller.py run'
         commands.append(('Integrate Findings (Full Circle)', cmd2))
 
-        # Command 3: Sync to GitHub
-        cmd3 = 'python _Automation\\organize_and_sync.py'
-        commands.append(('Sync to GitHub', cmd3))
+        # Command 3: Generate consolidated report
+        cmd3 = f'python _System\\consolidate_findings.py --investigation "{investigation}"'
+        commands.append(('Generate Consolidated Report', cmd3))
+
+        # Command 4: Sync to GitHub
+        cmd4 = 'python _Automation\\organize_and_sync.py'
+        commands.append(('Sync to GitHub', cmd4))
 
         return commands
 

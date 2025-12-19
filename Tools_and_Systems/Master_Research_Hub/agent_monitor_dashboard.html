@@ -231,7 +231,7 @@
         async function loadAgentData() {
             try {
                 // Load agent manager state
-                const stateResponse = await fetch('../../_System/agent_manager_state.json');
+                const stateResponse = await fetch('file:///C:/Users/jonat/Documents/Research/_System/agent_manager_state.json');
 
                 if (!stateResponse.ok) {
                     throw new Error('Agent manager state file not found. No agents have been spawned yet.');

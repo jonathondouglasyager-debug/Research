@@ -63,6 +63,12 @@ Integration Controller Runs
   ├─ Timeline events extracted
   └─ Glossary terms identified
   ↓
+Consolidated Report Generated
+  ├─ All agent findings combined
+  ├─ Executive summary created
+  ├─ Next steps suggested
+  └─ Beautiful HTML report saved
+  ↓
 Git Auto-Commits Everything
   ↓
 GitHub Sync (automatic backup)
@@ -109,8 +115,23 @@ Your findings here...
 
 ---
 
-## 🔍 Monitor Your Agents
+## 🔍 View Your Results
 
+### Consolidated Research Report (Recommended)
+After processing completes, open your consolidated report:
+```
+Active_Investigations\{Investigation_Name}\Consolidated_Research_Report.html
+```
+
+Shows:
+- All agent findings in one place
+- Entities discovered across all agents
+- Timeline of events
+- Glossary of terms
+- Recommended next research steps
+- All sources referenced
+
+### Monitor Agents in Real-Time
 ```cmd
 # Open in browser:
 start Tools_and_Systems\Master_Research_Hub\agent_monitor_dashboard.html
@@ -123,6 +144,11 @@ Shows:
 - Completed agents
 - Pending integrations
 - Real-time updates every 5 seconds
+
+### View Raw Data
+- **Entity Database:** `Active_Investigations\{Investigation}\entity_database.csv`
+- **Agent Findings:** `Active_Investigations\{Investigation}\Agent_Findings\{agent_id}\summary.md`
+- **Live Dashboard:** `research_dashboard.html` (auto-generated)
 
 ---
 
