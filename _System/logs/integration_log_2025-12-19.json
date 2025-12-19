@@ -1,0 +1,80 @@
+{
+  "date": "2025-12-19",
+  "integrations": [
+    {
+      "agent_id": "web_research_20251219_010810_709",
+      "investigation": "COVID_PCR_Truth_Investigation",
+      "timestamp": "2025-12-19T01:08:26.558894",
+      "entities": {
+        "total_new": 12,
+        "added": 10,
+        "merged": 2,
+        "skipped": 0,
+        "details": [
+          {
+            "action": "added",
+            "entity_name": "Investigate"
+          },
+          {
+            "action": "added",
+            "entity_name": "Roche"
+          },
+          {
+            "action": "added",
+            "entity_name": "Abbott"
+          },
+          {
+            "action": "added",
+            "entity_name": "Qiagen"
+          },
+          {
+            "action": "added",
+            "entity_name": "This"
+          },
+          {
+            "action": "added",
+            "entity_name": "Agent"
+          },
+          {
+            "action": "added",
+            "entity_name": "Provide"
+          },
+          {
+            "action": "added",
+            "entity_name": "Sample Entities\n\nExample Corporation"
+          },
+          {
+            "action": "merged",
+            "entity_name": "Corporation",
+            "matched_with": "Investigate",
+            "confidence": 0.95
+          },
+          {
+            "action": "added",
+            "entity_name": "Institution"
+          },
+          {
+            "action": "added",
+            "entity_name": "Sample Technology"
+          },
+          {
+            "action": "merged",
+            "entity_name": "Technology",
+            "matched_with": "Sample Technology",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "glossary": {
+        "status": "no_terms"
+      },
+      "timeline": {
+        "status": "pending_phase2",
+        "count": 2
+      },
+      "network": {
+        "status": "pending_phase2"
+      }
+    }
+  ]
+}
