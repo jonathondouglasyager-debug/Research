@@ -51,6 +51,8 @@ class AutoProcessor:
                 for line in content.split('\n'):
                     if 'Investigation:' in line:
                         inv = line.split('Investigation:')[1].strip()
+                        # Clean markdown bold/italic markers only (** and *)
+                        inv = inv.replace('**', '').replace('*', '').strip()
                         return inv
 
             # Check for investigation mentions in content
