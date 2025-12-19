@@ -129,9 +129,9 @@
     "cross_references": []
   },
   "integration_status": {
-    "entities_integrated": false,
+    "entities_integrated": true,
     "glossary_integrated": false,
     "timeline_integrated": false,
-    "integrated_at": null
+    "integrated_at": "2025-12-19T01:39:35.165764"
   }
 }
