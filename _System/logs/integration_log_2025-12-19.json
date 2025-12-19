@@ -399,6 +399,89 @@
       "network": {
         "status": "pending_phase2"
       }
+    },
+    {
+      "agent_id": "web_research_20251219_013934_561",
+      "investigation": "COVID_PCR_Truth_Investigation",
+      "timestamp": "2025-12-19T01:39:34.926435",
+      "entities": {
+        "total_new": 10,
+        "added": 0,
+        "merged": 10,
+        "skipped": 0,
+        "details": [
+          {
+            "action": "merged",
+            "entity_name": "Trace",
+            "matched_with": "Trace",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Emergency Use Authorizations",
+            "matched_with": "Emergency Use Authorizations",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "This",
+            "matched_with": "This",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Agent",
+            "matched_with": "Agent",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Provide",
+            "matched_with": "Provide",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Sample Entities\n\nExample Corporation",
+            "matched_with": "Sample Entities\n\nExample Corporation",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Corporation",
+            "matched_with": "Investigate",
+            "confidence": 0.95
+          },
+          {
+            "action": "merged",
+            "entity_name": "Institution",
+            "matched_with": "Institution",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Sample Technology",
+            "matched_with": "Sample Technology",
+            "confidence": 1.0
+          },
+          {
+            "action": "merged",
+            "entity_name": "Technology",
+            "matched_with": "Sample Technology",
+            "confidence": 0.95
+          }
+        ]
+      },
+      "glossary": {
+        "status": "no_terms"
+      },
+      "timeline": {
+        "status": "pending_phase2",
+        "count": 2
+      },
+      "network": {
+        "status": "pending_phase2"
+      }
     }
   ]
 }
