@@ -1,0 +1,164 @@
+{
+  "agent_id": "web_research_20251219_013934_558",
+  "question": "Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+  "parent_investigation": "COVID_PCR_Truth_Investigation",
+  "execution": {
+    "started": "2025-12-19T01:39:34.559418",
+    "completed": "2025-12-19T01:39:34.560300",
+    "status": "completed"
+  },
+  "findings": {
+    "summary": "Web search tools not available - generated placeholder research",
+    "entities_discovered": [
+      {
+        "name": "Investigate",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Roche",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Abbott",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Qiagen",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "This",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Agent",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Provide",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Sample Entities\n\nExample Corporation",
+        "type": "Corporation",
+        "role": "Mentioned 1 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Corporation",
+        "type": "Corporation",
+        "role": "Mentioned 1 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Institution",
+        "type": "Organization",
+        "role": "Mentioned 1 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Sample Technology",
+        "type": "Organization",
+        "role": "Mentioned 1 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      },
+      {
+        "name": "Technology",
+        "type": "Organization",
+        "role": "Mentioned 2 times in research",
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "connections": "",
+        "first_mentioned": "2025-12-19",
+        "source": "Agent web_research_20251219_013934_558"
+      }
+    ],
+    "glossary_terms": [],
+    "timeline_events": [
+      {
+        "date": "2025-12-19",
+        "title": "sample entity\nSample Technology (Technology): Technology-related sample entity\n\n## Sample Timeline\n\n",
+        "description": "sample entity\nSample Technology (Technology): Technology-related sample entity\n\n## Sample Timeline\n\n2025-12-19: Agent created and initialized\n2025-12-19: Mock research result generated\n\n---\n\n*This mock result a",
+        "event_type": "discovery",
+        "entities_involved": [],
+        "sources": [
+          {
+            "source_id": "web_research_20251219_013934_558",
+            "citation": "Research Agent web_research_20251219_013934_558",
+            "reliability": "automated"
+          }
+        ],
+        "created_by": "web_research_20251219_013934_558"
+      },
+      {
+        "date": "2025-12-19",
+        "title": "y): Technology-related sample entity\n\n## Sample Timeline\n\n2025-12-19: Agent created and initialized\n",
+        "description": "y): Technology-related sample entity\n\n## Sample Timeline\n\n2025-12-19: Agent created and initialized\n2025-12-19: Mock research result generated\n\n---\n\n*This mock result allows the integration pipeline to be teste",
+        "event_type": "discovery",
+        "entities_involved": [],
+        "sources": [
+          {
+            "source_id": "web_research_20251219_013934_558",
+            "citation": "Research Agent web_research_20251219_013934_558",
+            "reliability": "automated"
+          }
+        ],
+        "created_by": "web_research_20251219_013934_558"
+      }
+    ],
+    "sources": [],
+    "cross_references": []
+  },
+  "integration_status": {
+    "entities_integrated": true,
+    "glossary_integrated": false,
+    "timeline_integrated": false,
+    "integrated_at": "2025-12-19T01:39:34.819849"
+  }
+}

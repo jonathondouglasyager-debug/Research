@@ -47,9 +47,57 @@
       "started": "2025-12-19T01:08:10.718307",
       "completed": "2025-12-19T01:08:10.719748",
       "findings_path": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\COVID_PCR_Truth_Investigation\\Agent_Findings\\web_research_20251219_010810_717\\findings.json"
+    },
+    "web_research_20251219_013934_558": {
+      "agent_id": "web_research_20251219_013934_558",
+      "question": "Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+      "investigation": "COVID_PCR_Truth_Investigation",
+      "agent_type": "web_research",
+      "created": "2025-12-19T01:39:34.558622",
+      "status": "completed",
+      "run_async": false,
+      "started": "2025-12-19T01:39:34.559045",
+      "completed": "2025-12-19T01:39:34.561438",
+      "findings_path": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\COVID_PCR_Truth_Investigation\\Agent_Findings\\web_research_20251219_013934_558\\findings.json"
+    },
+    "web_research_20251219_013934_561": {
+      "agent_id": "web_research_20251219_013934_561",
+      "question": "Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+      "investigation": "COVID_PCR_Truth_Investigation",
+      "agent_type": "web_research",
+      "created": "2025-12-19T01:39:34.562019",
+      "status": "completed",
+      "run_async": false,
+      "started": "2025-12-19T01:39:34.562364",
+      "completed": "2025-12-19T01:39:34.563979",
+      "findings_path": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\COVID_PCR_Truth_Investigation\\Agent_Findings\\web_research_20251219_013934_561\\findings.json"
+    },
+    "web_research_20251219_013934_564": {
+      "agent_id": "web_research_20251219_013934_564",
+      "question": "Map the diagnostic testing industry consolidation from 2019-2025",
+      "investigation": "COVID_PCR_Truth_Investigation",
+      "agent_type": "web_research",
+      "created": "2025-12-19T01:39:34.564608",
+      "status": "completed",
+      "run_async": false,
+      "started": "2025-12-19T01:39:34.565059",
+      "completed": "2025-12-19T01:39:34.566642",
+      "findings_path": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\COVID_PCR_Truth_Investigation\\Agent_Findings\\web_research_20251219_013934_564\\findings.json"
+    },
+    "web_research_20251219_013934_567": {
+      "agent_id": "web_research_20251219_013934_567",
+      "question": "Research conflicts of interest in CDC/FDA PCR testing guidelines development",
+      "investigation": "COVID_PCR_Truth_Investigation",
+      "agent_type": "web_research",
+      "created": "2025-12-19T01:39:34.567223",
+      "status": "completed",
+      "run_async": false,
+      "started": "2025-12-19T01:39:34.567609",
+      "completed": "2025-12-19T01:39:34.569185",
+      "findings_path": "C:\\Users\\jonat\\Documents\\Research\\Active_Investigations\\COVID_PCR_Truth_Investigation\\Agent_Findings\\web_research_20251219_013934_567\\findings.json"
     }
   },
-  "total_spawned": 4,
-  "total_completed": 4,
+  "total_spawned": 8,
+  "total_completed": 8,
   "total_failed": 0
 }
