@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Agent Monitor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e14 0%, #1a2332 100%);
+            color: #e6edf3;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #00d9ff;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #00ff9f;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #8b95a1;
+            font-size: 0.9em;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            color: #00d9ff;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .agent-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid;
+        }
+
+        .agent-card.pending { border-left-color: #ffa500; }
+        .agent-card.running { border-left-color: #00d9ff; }
+        .agent-card.completed { border-left-color: #00ff9f; }
+        .agent-card.failed { border-left-color: #ff6b35; }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .agent-id {
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            color: #00d9ff;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-badge.pending { background: #ffa500; color: #000; }
+        .status-badge.running { background: #00d9ff; color: #000; }
+        .status-badge.completed { background: #00ff9f; color: #000; }
+        .status-badge.failed { background: #ff6b35; color: #fff; }
+
+        .agent-question {
+            color: #e6edf3;
+            margin: 10px 0;
+            font-style: italic;
+        }
+
+        .agent-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #8b95a1;
+        }
+
+        .meta-item span {
+            color: #00d9ff;
+            font-weight: bold;
+        }
+
+        .no-agents {
+            text-align: center;
+            padding: 40px;
+            color: #8b95a1;
+            font-style: italic;
+        }
+
+        .refresh-info {
+            text-align: center;
+            color: #8b95a1;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+
+        .refresh-btn {
+            background: #00d9ff;
+            color: #0a0e14;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .refresh-btn:hover {
+            background: #00ff9f;
+        }
+
+        .error-message {
+            background: rgba(255, 107, 53, 0.2);
+            border: 1px solid #ff6b35;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            color: #ff6b35;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Research Agent Monitor</h1>
+            <p>Real-time monitoring of autonomous research agents</p>
+        </header>
+
+        <div class="stats-grid" id="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number" style="color: #00d9ff;" id="stat-total">-</span>
+                <span class="stat-label">Total Agents</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" style="color: #00ff9f;" id="stat-completed">-</span>
+                <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" style="color: #ffa500;" id="stat-running">-</span>
+                <span class="stat-label">Running</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" style="color: #ff6b35;" id="stat-failed">-</span>
+                <span class="stat-label">Failed</span>
+            </div>
+        </div>
+
+        <button class="refresh-btn" onclick="loadAgentData()">🔄 Refresh Now</button>
+
+        <div class="section">
+            <h2>🔄 Running Agents</h2>
+            <div id="running-agents"></div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Recently Completed</h2>
+            <div id="completed-agents"></div>
+        </div>
+
+        <div class="section">
+            <h2>⏸ Pending Agents</h2>
+            <div id="pending-agents"></div>
+        </div>
+
+        <div class="refresh-info" id="last-update">
+            Loading data...
+        </div>
+    </div>
+
+    <script>
+        let autoRefresh = true;
+        let refreshInterval = 5000; // 5 seconds
+
+        async function loadAgentData() {
+            try {
+                // Load agent manager state
+                const stateResponse = await fetch('../../_System/agent_manager_state.json');
+
+                if (!stateResponse.ok) {
+                    throw new Error('Agent manager state file not found. No agents have been spawned yet.');
+                }
+
+                const state = await stateResponse.json();
+
+                // Update stats
+                document.getElementById('stat-total').textContent = state.total_spawned || 0;
+                document.getElementById('stat-completed').textContent = state.total_completed || 0;
+
+                // Calculate running and failed from agents
+                const agents = Object.values(state.agents || {});
+                const running = agents.filter(a => a.status === 'running').length;
+                const failed = agents.filter(a => a.status === 'failed').length;
+
+                document.getElementById('stat-running').textContent = running;
+                document.getElementById('stat-failed').textContent = failed;
+
+                // Display agents by status
+                displayAgents(agents.filter(a => a.status === 'running'), 'running-agents');
+                displayAgents(agents.filter(a => a.status === 'completed').slice(0, 10), 'completed-agents');
+                displayAgents(agents.filter(a => a.status === 'pending'), 'pending-agents');
+
+                // Update timestamp
+                const now = new Date().toLocaleString();
+                document.getElementById('last-update').textContent = `Last updated: ${now} | Auto-refresh every ${refreshInterval/1000}s`;
+
+            } catch (error) {
+                console.error('Error loading agent data:', error);
+                document.getElementById('running-agents').innerHTML = `
+                    <div class="error-message">
+                        ${error.message}<br><br>
+                        Make sure you've spawned at least one research agent first.
+                    </div>
+                `;
+            }
+        }
+
+        function displayAgents(agents, containerId) {
+            const container = document.getElementById(containerId);
+
+            if (agents.length === 0) {
+                container.innerHTML = '<div class="no-agents">No agents in this category</div>';
+                return;
+            }
+
+            const html = agents.map(agent => `
+                <div class="agent-card ${agent.status}">
+                    <div class="agent-header">
+                        <span class="agent-id">${agent.agent_id}</span>
+                        <span class="status-badge ${agent.status}">${agent.status}</span>
+                    </div>
+                    <div class="agent-question">"${agent.question}"</div>
+                    <div class="agent-meta">
+                        <div class="meta-item">Investigation: <span>${agent.investigation}</span></div>
+                        <div class="meta-item">Type: <span>${agent.agent_type}</span></div>
+                        <div class="meta-item">Created: <span>${new Date(agent.created).toLocaleString()}</span></div>
+                        ${agent.started ? `<div class="meta-item">Started: <span>${new Date(agent.started).toLocaleString()}</span></div>` : ''}
+                        ${agent.completed ? `<div class="meta-item">Completed: <span>${new Date(agent.completed).toLocaleString()}</span></div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        }
+
+        // Initial load
+        loadAgentData();
+
+        // Auto-refresh
+        if (autoRefresh) {
+            setInterval(loadAgentData, refreshInterval);
+        }
+    </script>
+</body>
+</html>
