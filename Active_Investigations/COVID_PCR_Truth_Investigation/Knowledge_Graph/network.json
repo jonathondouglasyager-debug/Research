@@ -52,96 +52,96 @@
       "name": "This",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956549",
-      "last_updated": "2025-12-20T18:49:05.283080",
+      "last_updated": "2025-12-20T18:49:05.411255",
       "degree": 0
     },
     "Agent": {
       "name": "Agent",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956574",
-      "last_updated": "2025-12-20T18:49:05.283084",
+      "last_updated": "2025-12-20T18:49:05.411269",
       "degree": 0
     },
     "Provide": {
       "name": "Provide",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956579",
-      "last_updated": "2025-12-20T18:49:05.283086",
+      "last_updated": "2025-12-20T18:49:05.411272",
       "degree": 0
     },
     "Sample Entities\n\nExample Corporation": {
       "name": "Sample Entities\n\nExample Corporation",
       "type": "Corporation",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956584",
-      "last_updated": "2025-12-20T18:49:05.283089",
+      "last_updated": "2025-12-20T18:49:05.411274",
       "degree": 0
     },
     "Corporation": {
       "name": "Corporation",
       "type": "Corporation",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956588",
-      "last_updated": "2025-12-20T18:49:05.283091",
+      "last_updated": "2025-12-20T18:49:05.411276",
       "degree": 0
     },
     "Institution": {
       "name": "Institution",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956592",
-      "last_updated": "2025-12-20T18:49:05.283093",
+      "last_updated": "2025-12-20T18:49:05.411278",
       "degree": 0
     },
     "Sample Technology": {
       "name": "Sample Technology",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956597",
-      "last_updated": "2025-12-20T18:49:05.283095",
+      "last_updated": "2025-12-20T18:49:05.411280",
       "degree": 0
     },
     "Technology": {
       "name": "Technology",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_578"
+        "source": "Agent web_research_20251220_184904_581"
       },
       "first_seen": "2025-12-20T18:49:04.956600",
-      "last_updated": "2025-12-20T18:49:05.283097",
+      "last_updated": "2025-12-20T18:49:05.411282",
       "degree": 0
     },
     "Trace": {
@@ -179,12 +179,24 @@
       "first_seen": "2025-12-20T18:49:05.283070",
       "last_updated": "2025-12-20T18:49:05.283076",
       "degree": 0
+    },
+    "Research": {
+      "name": "Research",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Research conflicts of interest in CDC/FDA PCR testing guidelines development",
+        "role": "Mentioned 3 times in research",
+        "source": "Agent web_research_20251220_184904_581"
+      },
+      "first_seen": "2025-12-20T18:49:05.411245",
+      "last_updated": "2025-12-20T18:49:05.411251",
+      "degree": 0
     }
   },
   "edges": [],
   "metadata": {
     "investigation": "COVID_PCR_Truth_Investigation",
-    "total_nodes": 15,
+    "total_nodes": 16,
     "total_edges": 0,
     "most_connected": [
       [
@@ -228,6 +240,6 @@
         0
       ]
     ],
-    "last_updated": "2025-12-20T18:49:05.283115"
+    "last_updated": "2025-12-20T18:49:05.411300"
   }
 }
