@@ -17,6 +17,7 @@ from entity_integrator import EntityIntegrator
 from glossary_integrator import GlossaryIntegrator
 from timeline_integrator import TimelineIntegrator
 from network_integrator import NetworkIntegrator
+from cross_reference_engine import CrossReferenceEngine
 from agent_manager import AgentManager
 
 
@@ -182,6 +183,13 @@ class IntegrationController:
             network_stats = network_integrator.integrate_relationships(entities)
             integration_report['network'] = network_stats
             print(f"[INTEGRATION] Network: {network_stats['new_nodes']} new nodes, {network_stats['new_edges']} new edges")
+
+            # 5. CROSS-REFERENCE UPDATE
+            print("[INTEGRATION] Updating cross-references...")
+            xref_engine = CrossReferenceEngine()
+            xref_stats = xref_engine.update_from_agent_findings(str(findings_file))
+            integration_report['cross_references'] = xref_stats
+            print(f"[INTEGRATION] Cross-refs: {xref_stats.get('entities_added', 0)} new entities, {xref_stats.get('new_co_occurrences', 0)} new connections")
 
             # UPDATE INTEGRATION STATUS
             findings['integration_status']['entities_integrated'] = True

@@ -16,6 +16,7 @@ from typing import List, Dict, Optional
 sys.path.append(str(Path(__file__).parent))
 
 from agents.web_research_agent import WebResearchAgent
+from agents.document_analysis_agent import DocumentAnalysisAgent
 
 
 class AgentManager:
@@ -106,15 +107,17 @@ class AgentManager:
         return questions
 
     def spawn_agent(self, question: str, investigation: str,
-                    agent_type: str = "web_research", run_async: bool = True) -> str:
+                    agent_type: str = "web_research", run_async: bool = True,
+                    document_path: str = None) -> str:
         """
         Create new research agent and optionally run in background
 
         Args:
             question: Research question
             investigation: Investigation name
-            agent_type: Type of agent (currently only 'web_research')
+            agent_type: Type of agent ('web_research' or 'document_analysis')
             run_async: Run in background thread
+            document_path: Path to document (for document_analysis agents)
 
         Returns:
             agent_id
@@ -127,6 +130,8 @@ class AgentManager:
         print(f"  Question: {question}")
         print(f"  Investigation: {investigation}")
         print(f"  Type: {agent_type}")
+        if document_path:
+            print(f"  Document: {document_path}")
 
         # Create agent based on type
         if agent_type == "web_research":
@@ -134,6 +139,16 @@ class AgentManager:
                 agent_id=agent_id,
                 question=question,
                 investigation=investigation,
+                research_dir=str(self.research_dir)
+            )
+        elif agent_type == "document_analysis":
+            if not document_path:
+                raise ValueError("document_path required for document_analysis agents")
+            agent = DocumentAnalysisAgent(
+                agent_id=agent_id,
+                question=question,
+                investigation=investigation,
+                document_path=document_path,
                 research_dir=str(self.research_dir)
             )
         else:
@@ -309,6 +324,43 @@ class AgentManager:
         print(f"\n[AGENT MANAGER] Spawned {len(agent_ids)} agents")
         return agent_ids
 
+    def process_document_file(self, document_path: str, investigation: str,
+                               question: str = None, run_async: bool = True) -> str:
+        """
+        Process a single document file (PDF, Excel, CSV, Word)
+
+        Args:
+            document_path: Path to document
+            investigation: Investigation name
+            question: Optional specific question (default: analyze document)
+            run_async: Run agent in background
+
+        Returns:
+            agent_id
+        """
+        doc_path = Path(document_path)
+
+        if not doc_path.exists():
+            raise FileNotFoundError(f"Document not found: {document_path}")
+
+        # Generate question if not provided
+        if not question:
+            question = f"Analyze document: {doc_path.name}"
+
+        print(f"\n[AGENT MANAGER] Processing document file: {doc_path.name}")
+
+        # Spawn document analysis agent
+        agent_id = self.spawn_agent(
+            question=question,
+            investigation=investigation,
+            agent_type="document_analysis",
+            document_path=str(doc_path),
+            run_async=run_async
+        )
+
+        print(f"[AGENT MANAGER] Document analysis agent spawned: {agent_id}")
+        return agent_id
+
     def get_stats(self) -> Dict:
         """Get agent manager statistics"""
         return {
@@ -327,10 +379,11 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description='Research Agent Manager')
-    parser.add_argument('command', choices=['detect', 'process', 'list', 'status', 'stats'],
+    parser.add_argument('command', choices=['detect', 'process', 'document', 'list', 'status', 'stats'],
                        help='Command to execute')
     parser.add_argument('--document', help='Path to document')
     parser.add_argument('--investigation', help='Investigation name')
+    parser.add_argument('--question', help='Research question (for document command)')
     parser.add_argument('--agent-id', help='Agent ID for status command')
     parser.add_argument('--filter', help='Filter agents by status (pending/running/completed/failed)')
 
@@ -362,6 +415,20 @@ def main():
         print(f"\nSpawned {len(agent_ids)} agents:")
         for agent_id in agent_ids:
             print(f"  - {agent_id}")
+
+    elif args.command == 'document':
+        if not args.document or not args.investigation:
+            print("Error: --document and --investigation required for document command")
+            return
+
+        agent_id = manager.process_document_file(
+            args.document,
+            args.investigation,
+            question=args.question,
+            run_async=False  # Synchronous for CLI
+        )
+
+        print(f"\nDocument analysis agent spawned: {agent_id}")
 
     elif args.command == 'list':
         agents = manager.list_agents(status=args.filter)
