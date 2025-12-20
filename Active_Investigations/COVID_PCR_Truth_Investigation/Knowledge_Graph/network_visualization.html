@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph - COVID_PCR_Truth_Investigation</title>
+    <script src="https://unpkg.com/vis-network@9.1.2/standalone/umd/vis-network.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e14 0%, #1a2332 100%);
+            color: #e6edf3;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px 30px;
+            border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        #network {
+            width: 100%;
+            height: calc(100vh - 100px);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .stats {
+            padding: 10px 30px;
+            background: rgba(0, 217, 255, 0.1);
+            color: #8b95a1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Knowledge Graph</h1>
+        <p>COVID_PCR_Truth_Investigation</p>
+    </header>
+    <div class="stats">
+        Nodes: 16 | Edges: 0 |
+        Last Updated: 2025-12-20T18:49:05.411300
+    </div>
+    <div id="network"></div>
+
+    <script>
+        const nodes = new vis.DataSet([{"id": "Investigate", "label": "Investigate", "type": "Organization", "degree": 0}, {"id": "Roche", "label": "Roche", "type": "Organization", "degree": 0}, {"id": "Abbott", "label": "Abbott", "type": "Organization", "degree": 0}, {"id": "Qiagen", "label": "Qiagen", "type": "Organization", "degree": 0}, {"id": "This", "label": "This", "type": "Organization", "degree": 0}, {"id": "Agent", "label": "Agent", "type": "Organization", "degree": 0}, {"id": "Provide", "label": "Provide", "type": "Organization", "degree": 0}, {"id": "Sample Entities\n\nExample Corporation", "label": "Sample Entities\n\nExample Corporation", "type": "Corporation", "degree": 0}, {"id": "Corporation", "label": "Corporation", "type": "Corporation", "degree": 0}, {"id": "Institution", "label": "Institution", "type": "Organization", "degree": 0}, {"id": "Sample Technology", "label": "Sample Technology", "type": "Organization", "degree": 0}, {"id": "Technology", "label": "Technology", "type": "Organization", "degree": 0}, {"id": "Trace", "label": "Trace", "type": "Organization", "degree": 0}, {"id": "Emergency Use Authorizations", "label": "Emergency Use Authorizations", "type": "Organization", "degree": 0}, {"id": "Map", "label": "Map", "type": "Organization", "degree": 0}, {"id": "Research", "label": "Research", "type": "Organization", "degree": 0}]);
+        const edges = new vis.DataSet([]);
+
+        const container = document.getElementById('network');
+        const data = {
+            nodes: nodes,
+            edges: edges
+        };
+
+        const options = {
+            nodes: {
+                shape: 'dot',
+                size: 16,
+                font: {
+                    size: 14,
+                    color: '#e6edf3'
+                },
+                borderWidth: 2,
+                shadow: true,
+                color: {
+                    border: '#00d9ff',
+                    background: '#0a0e14',
+                    highlight: {
+                        border: '#00ff9f',
+                        background: '#1a2332'
+                    }
+                }
+            },
+            edges: {
+                width: 2,
+                color: {
+                    color: '#00d9ff',
+                    highlight: '#00ff9f'
+                },
+                arrows: {
+                    to: {
+                        enabled: true,
+                        scaleFactor: 0.5
+                    }
+                },
+                font: {
+                    size: 10,
+                    color: '#8b95a1',
+                    align: 'middle'
+                },
+                smooth: {
+                    type: 'continuous'
+                }
+            },
+            physics: {
+                forceAtlas2Based: {
+                    gravitationalConstant: -50,
+                    centralGravity: 0.01,
+                    springLength: 100,
+                    springConstant: 0.08
+                },
+                maxVelocity: 50,
+                solver: 'forceAtlas2Based',
+                timestep: 0.35,
+                stabilization: {
+                    iterations: 150
+                }
+            }
+        };
+
+        const network = new vis.Network(container, data, options);
+    </script>
+</body>
+</html>
