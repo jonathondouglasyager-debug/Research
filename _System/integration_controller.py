@@ -14,6 +14,9 @@ from typing import Dict, List
 sys.path.append(str(Path(__file__).parent))
 
 from entity_integrator import EntityIntegrator
+from glossary_integrator import GlossaryIntegrator
+from timeline_integrator import TimelineIntegrator
+from network_integrator import NetworkIntegrator
 from agent_manager import AgentManager
 
 
@@ -149,28 +152,42 @@ class IntegrationController:
                 print("[INTEGRATION] No entities to integrate")
                 integration_report['entities'] = {'total_new': 0, 'added': 0, 'merged': 0}
 
-            # 2. GLOSSARY INTEGRATION (Phase 2 - Placeholder)
+            # 2. GLOSSARY INTEGRATION
             glossary_terms = findings['findings']['glossary_terms']
             if glossary_terms:
-                print(f"[INTEGRATION] Glossary integration: {len(glossary_terms)} terms (Phase 2 - Not yet implemented)")
-                integration_report['glossary'] = {'status': 'pending_phase2', 'count': len(glossary_terms)}
+                print(f"[INTEGRATION] Integrating {len(glossary_terms)} glossary terms...")
+                glossary_integrator = GlossaryIntegrator(investigation)
+                glossary_stats = glossary_integrator.integrate_terms(glossary_terms)
+                integration_report['glossary'] = glossary_stats
+                print(f"[INTEGRATION] Glossary: {glossary_stats['new_terms']} new, {glossary_stats['updated_terms']} updated")
             else:
-                integration_report['glossary'] = {'status': 'no_terms'}
+                print("[INTEGRATION] No glossary terms to integrate")
+                integration_report['glossary'] = {'new_terms': 0, 'updated_terms': 0}
 
-            # 3. TIMELINE INTEGRATION (Phase 2 - Placeholder)
+            # 3. TIMELINE INTEGRATION
             timeline_events = findings['findings']['timeline_events']
             if timeline_events:
-                print(f"[INTEGRATION] Timeline integration: {len(timeline_events)} events (Phase 2 - Not yet implemented)")
-                integration_report['timeline'] = {'status': 'pending_phase2', 'count': len(timeline_events)}
+                print(f"[INTEGRATION] Integrating {len(timeline_events)} timeline events...")
+                timeline_integrator = TimelineIntegrator(investigation)
+                timeline_stats = timeline_integrator.integrate_events(timeline_events)
+                integration_report['timeline'] = timeline_stats
+                print(f"[INTEGRATION] Timeline: {timeline_stats['new_events']} new, {timeline_stats['updated_events']} updated")
             else:
-                integration_report['timeline'] = {'status': 'no_events'}
+                print("[INTEGRATION] No timeline events to integrate")
+                integration_report['timeline'] = {'new_events': 0, 'updated_events': 0}
 
-            # 4. NETWORK INTEGRATION (Phase 2 - Placeholder)
-            print("[INTEGRATION] Network integration (Phase 2 - Not yet implemented)")
-            integration_report['network'] = {'status': 'pending_phase2'}
+            # 4. NETWORK INTEGRATION
+            print("[INTEGRATION] Building knowledge network...")
+            network_integrator = NetworkIntegrator(investigation)
+            network_stats = network_integrator.integrate_relationships(entities)
+            integration_report['network'] = network_stats
+            print(f"[INTEGRATION] Network: {network_stats['new_nodes']} new nodes, {network_stats['new_edges']} new edges")
 
             # UPDATE INTEGRATION STATUS
             findings['integration_status']['entities_integrated'] = True
+            findings['integration_status']['glossary_integrated'] = True
+            findings['integration_status']['timeline_integrated'] = True
+            findings['integration_status']['network_integrated'] = True
             findings['integration_status']['integrated_at'] = datetime.now().isoformat()
 
             # Save updated findings
@@ -217,10 +234,24 @@ class IntegrationController:
             entities_added = entity_stats.get('added', 0)
             entities_merged = entity_stats.get('merged', 0)
 
+            glossary_stats = integration_report.get('glossary', {})
+            glossary_new = glossary_stats.get('new_terms', 0)
+            glossary_updated = glossary_stats.get('updated_terms', 0)
+
+            timeline_stats = integration_report.get('timeline', {})
+            timeline_new = timeline_stats.get('new_events', 0)
+
+            network_stats = integration_report.get('network', {})
+            network_nodes = network_stats.get('new_nodes', 0)
+            network_edges = network_stats.get('new_edges', 0)
+
             message = f"Integrated agent findings: {agent_id}\n\n"
             message += f"Investigation: {investigation}\n"
             message += f"Entities: {entities_added} new, {entities_merged} merged\n"
-            message += f"\n[AUTO] Research Intelligence Platform"
+            message += f"Glossary: {glossary_new} new terms, {glossary_updated} updated\n"
+            message += f"Timeline: {timeline_new} new events\n"
+            message += f"Network: {network_nodes} new nodes, {network_edges} new edges\n"
+            message += f"\n[AUTO] Research Intelligence Platform - Phase 2"
 
             # Git add
             subprocess.run(['git', 'add', '-A'], cwd=self.research_dir, check=True, capture_output=True)

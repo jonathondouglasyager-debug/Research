@@ -1,0 +1,197 @@
+{
+  "nodes": {
+    "Investigate": {
+      "name": "Investigate",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956530",
+      "last_updated": "2025-12-20T18:49:04.956533",
+      "degree": 0
+    },
+    "Roche": {
+      "name": "Roche",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956539",
+      "last_updated": "2025-12-20T18:49:04.956540",
+      "degree": 0
+    },
+    "Abbott": {
+      "name": "Abbott",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956543",
+      "last_updated": "2025-12-20T18:49:04.956544",
+      "degree": 0
+    },
+    "Qiagen": {
+      "name": "Qiagen",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956546",
+      "last_updated": "2025-12-20T18:49:04.956547",
+      "degree": 0
+    },
+    "This": {
+      "name": "This",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956549",
+      "last_updated": "2025-12-20T18:49:04.956550",
+      "degree": 0
+    },
+    "Agent": {
+      "name": "Agent",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956574",
+      "last_updated": "2025-12-20T18:49:04.956576",
+      "degree": 0
+    },
+    "Provide": {
+      "name": "Provide",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956579",
+      "last_updated": "2025-12-20T18:49:04.956581",
+      "degree": 0
+    },
+    "Sample Entities\n\nExample Corporation": {
+      "name": "Sample Entities\n\nExample Corporation",
+      "type": "Corporation",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 1 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956584",
+      "last_updated": "2025-12-20T18:49:04.956585",
+      "degree": 0
+    },
+    "Corporation": {
+      "name": "Corporation",
+      "type": "Corporation",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 1 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956588",
+      "last_updated": "2025-12-20T18:49:04.956590",
+      "degree": 0
+    },
+    "Institution": {
+      "name": "Institution",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 1 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956592",
+      "last_updated": "2025-12-20T18:49:04.956594",
+      "degree": 0
+    },
+    "Sample Technology": {
+      "name": "Sample Technology",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 1 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956597",
+      "last_updated": "2025-12-20T18:49:04.956598",
+      "degree": 0
+    },
+    "Technology": {
+      "name": "Technology",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_571"
+      },
+      "first_seen": "2025-12-20T18:49:04.956600",
+      "last_updated": "2025-12-20T18:49:04.956601",
+      "degree": 0
+    }
+  },
+  "edges": [],
+  "metadata": {
+    "investigation": "COVID_PCR_Truth_Investigation",
+    "total_nodes": 12,
+    "total_edges": 0,
+    "most_connected": [
+      [
+        "Investigate",
+        0
+      ],
+      [
+        "Roche",
+        0
+      ],
+      [
+        "Abbott",
+        0
+      ],
+      [
+        "Qiagen",
+        0
+      ],
+      [
+        "This",
+        0
+      ],
+      [
+        "Agent",
+        0
+      ],
+      [
+        "Provide",
+        0
+      ],
+      [
+        "Sample Entities\n\nExample Corporation",
+        0
+      ],
+      [
+        "Corporation",
+        0
+      ],
+      [
+        "Institution",
+        0
+      ]
+    ],
+    "last_updated": "2025-12-20T18:49:04.956618"
+  }
+}

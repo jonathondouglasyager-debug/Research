@@ -1,0 +1,47 @@
+{
+  "events": [
+    {
+      "date": "2025-12-19",
+      "title": "sample entity\nSample Technology (Technology): Technology-related sample entity\n\n## Sample Timeline\n\n",
+      "description": "sample entity\nSample Technology (Technology): Technology-related sample entity\n\n## Sample Timeline\n\n2025-12-19: Agent created and initialized\n2025-12-19: Mock research result generated\n\n---\n\n*This mock result a",
+      "event_type": "discovery",
+      "entities_involved": [],
+      "sources": [
+        {
+          "source_id": "web_research_20251220_184904_571",
+          "citation": "Research Agent web_research_20251220_184904_571",
+          "reliability": "automated"
+        }
+      ],
+      "importance": "medium",
+      "created_by": "web_research_20251220_184904_571",
+      "created_at": "2025-12-20T18:49:04.955333"
+    },
+    {
+      "date": "2025-12-19",
+      "title": "y): Technology-related sample entity\n\n## Sample Timeline\n\n2025-12-19: Agent created and initialized\n",
+      "description": "y): Technology-related sample entity\n\n## Sample Timeline\n\n2025-12-19: Agent created and initialized\n2025-12-19: Mock research result generated\n\n---\n\n*This mock result allows the integration pipeline to be teste",
+      "event_type": "discovery",
+      "entities_involved": [],
+      "sources": [
+        {
+          "source_id": "web_research_20251220_184904_571",
+          "citation": "Research Agent web_research_20251220_184904_571",
+          "reliability": "automated"
+        }
+      ],
+      "importance": "medium",
+      "created_by": "web_research_20251220_184904_571",
+      "created_at": "2025-12-20T18:49:04.955365"
+    }
+  ],
+  "metadata": {
+    "investigation": "COVID_PCR_Truth_Investigation",
+    "event_count": 2,
+    "date_range": {
+      "earliest": "2025-12-19",
+      "latest": "2025-12-19"
+    },
+    "last_updated": "2025-12-20T18:49:04.955374"
+  }
+}

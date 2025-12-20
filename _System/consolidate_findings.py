@@ -46,15 +46,22 @@ class FindingsConsolidator:
         entities = {}
 
         for finding in findings_list:
-            for entity in finding.get('entities', []):
+            # Try both locations: findings.entities_discovered and top-level entities
+            entity_list = finding.get('findings', {}).get('entities_discovered', [])
+            if not entity_list:
+                entity_list = finding.get('entities', [])
+
+            for entity in entity_list:
                 name = entity.get('name', '')
-                if name and len(name) > 2:  # Filter out noise
+                # Filter out noise and placeholder entities
+                if name and len(name) > 2 and name not in ['This', 'Agent', 'Provide', 'Investigate']:
                     if name not in entities:
                         entities[name] = {
                             'name': name,
                             'type': entity.get('type', 'Unknown'),
                             'mentions': 1,
-                            'sources': []
+                            'sources': [],
+                            'description': entity.get('description', '')
                         }
                     else:
                         entities[name]['mentions'] += 1
@@ -71,13 +78,21 @@ class FindingsConsolidator:
         events = []
 
         for finding in findings_list:
-            for event in finding.get('timeline_events', []):
-                events.append({
-                    'date': event.get('date', 'Unknown'),
-                    'description': event.get('event', 'No description'),
-                    'context': event.get('context', ''),
-                    'source_agent': finding.get('agent_id', 'unknown')
-                })
+            # Try both locations
+            event_list = finding.get('findings', {}).get('timeline_events', [])
+            if not event_list:
+                event_list = finding.get('timeline_events', [])
+
+            for event in event_list:
+                # Filter out placeholder/mock events
+                desc = event.get('description', event.get('event', ''))
+                if 'mock' not in desc.lower() and 'sample' not in desc.lower():
+                    events.append({
+                        'date': event.get('date', 'Unknown'),
+                        'description': event.get('title', event.get('event', 'No description')),
+                        'context': event.get('context', desc),
+                        'source_agent': finding.get('agent_id', 'unknown')
+                    })
 
         # Sort by date
         events.sort(key=lambda x: x['date'], reverse=True)
@@ -88,7 +103,12 @@ class FindingsConsolidator:
         terms = {}
 
         for finding in findings_list:
-            for term in finding.get('glossary_terms', []):
+            # Try both locations
+            term_list = finding.get('findings', {}).get('glossary_terms', [])
+            if not term_list:
+                term_list = finding.get('glossary_terms', [])
+
+            for term in term_list:
                 term_name = term.get('term', '')
                 if term_name and term_name not in terms:
                     terms[term_name] = {
@@ -104,7 +124,12 @@ class FindingsConsolidator:
         sources = set()
 
         for finding in findings_list:
-            for source in finding.get('sources', []):
+            # Try both locations
+            source_list = finding.get('findings', {}).get('sources', [])
+            if not source_list:
+                source_list = finding.get('sources', [])
+
+            for source in source_list:
                 if source.get('url'):
                     sources.add((source.get('title', 'Untitled'), source.get('url')))
 

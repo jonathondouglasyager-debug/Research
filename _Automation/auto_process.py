@@ -91,9 +91,16 @@ class AutoProcessor:
         cmd3 = f'python _System\\consolidate_findings.py --investigation "{investigation}"'
         commands.append(('Generate Consolidated Report', cmd3))
 
-        # Command 4: Sync to GitHub
-        cmd4 = 'python _Automation\\organize_and_sync.py'
-        commands.append(('Sync to GitHub', cmd4))
+        # Command 4: Export visualizations
+        cmd4_timeline = f'python _System\\timeline_integrator.py --investigation "{investigation}" --export-html'
+        cmd4_network = f'python _System\\network_integrator.py --investigation "{investigation}" --export-html'
+        cmd4_glossary = f'python _System\\glossary_integrator.py --investigation "{investigation}" --export'
+        cmd4 = f'{cmd4_timeline} && {cmd4_network} && {cmd4_glossary}'
+        commands.append(('Export Visualizations (Timeline/Network/Glossary)', cmd4))
+
+        # Command 5: Sync to GitHub
+        cmd5 = 'python _Automation\\organize_and_sync.py'
+        commands.append(('Sync to GitHub', cmd5))
 
         return commands
 
