@@ -138,9 +138,10 @@
     "cross_references": []
   },
   "integration_status": {
-    "entities_integrated": false,
-    "glossary_integrated": false,
-    "timeline_integrated": false,
-    "integrated_at": null
+    "entities_integrated": true,
+    "glossary_integrated": true,
+    "timeline_integrated": true,
+    "integrated_at": "2025-12-20T18:49:05.155002",
+    "network_integrated": true
   }
 }

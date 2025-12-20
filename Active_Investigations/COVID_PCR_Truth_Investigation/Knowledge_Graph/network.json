@@ -52,103 +52,127 @@
       "name": "This",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956549",
-      "last_updated": "2025-12-20T18:49:04.956550",
+      "last_updated": "2025-12-20T18:49:05.154342",
       "degree": 0
     },
     "Agent": {
       "name": "Agent",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956574",
-      "last_updated": "2025-12-20T18:49:04.956576",
+      "last_updated": "2025-12-20T18:49:05.154349",
       "degree": 0
     },
     "Provide": {
       "name": "Provide",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956579",
-      "last_updated": "2025-12-20T18:49:04.956581",
+      "last_updated": "2025-12-20T18:49:05.154353",
       "degree": 0
     },
     "Sample Entities\n\nExample Corporation": {
       "name": "Sample Entities\n\nExample Corporation",
       "type": "Corporation",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956584",
-      "last_updated": "2025-12-20T18:49:04.956585",
+      "last_updated": "2025-12-20T18:49:05.154363",
       "degree": 0
     },
     "Corporation": {
       "name": "Corporation",
       "type": "Corporation",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956588",
-      "last_updated": "2025-12-20T18:49:04.956590",
+      "last_updated": "2025-12-20T18:49:05.154365",
       "degree": 0
     },
     "Institution": {
       "name": "Institution",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956592",
-      "last_updated": "2025-12-20T18:49:04.956594",
+      "last_updated": "2025-12-20T18:49:05.154367",
       "degree": 0
     },
     "Sample Technology": {
       "name": "Sample Technology",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956597",
-      "last_updated": "2025-12-20T18:49:04.956598",
+      "last_updated": "2025-12-20T18:49:05.154369",
       "degree": 0
     },
     "Technology": {
       "name": "Technology",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Investigate board connections and financial relationships between major testing companies (Roche, Abbott, Qiagen)",
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_571"
+        "source": "Agent web_research_20251220_184904_575"
       },
       "first_seen": "2025-12-20T18:49:04.956600",
-      "last_updated": "2025-12-20T18:49:04.956601",
+      "last_updated": "2025-12-20T18:49:05.154371",
+      "degree": 0
+    },
+    "Trace": {
+      "name": "Trace",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_575"
+      },
+      "first_seen": "2025-12-20T18:49:05.154328",
+      "last_updated": "2025-12-20T18:49:05.154335",
+      "degree": 0
+    },
+    "Emergency Use Authorizations": {
+      "name": "Emergency Use Authorizations",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_575"
+      },
+      "first_seen": "2025-12-20T18:49:05.154338",
+      "last_updated": "2025-12-20T18:49:05.154339",
       "degree": 0
     }
   },
   "edges": [],
   "metadata": {
     "investigation": "COVID_PCR_Truth_Investigation",
-    "total_nodes": 12,
+    "total_nodes": 14,
     "total_edges": 0,
     "most_connected": [
       [
@@ -192,6 +216,6 @@
         0
       ]
     ],
-    "last_updated": "2025-12-20T18:49:04.956618"
+    "last_updated": "2025-12-20T18:49:05.154399"
   }
 }
