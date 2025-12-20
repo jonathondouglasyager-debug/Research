@@ -16,12 +16,17 @@
           "source_id": "web_research_20251220_184904_575",
           "citation": "Research Agent web_research_20251220_184904_575",
           "reliability": "automated"
+        },
+        {
+          "source_id": "web_research_20251220_184904_578",
+          "citation": "Research Agent web_research_20251220_184904_578",
+          "reliability": "automated"
         }
       ],
       "importance": "medium",
       "created_by": "web_research_20251220_184904_571",
       "created_at": "2025-12-20T18:49:04.955333",
-      "last_updated": "2025-12-20T18:49:05.145192"
+      "last_updated": "2025-12-20T18:49:05.274465"
     },
     {
       "date": "2025-12-19",
@@ -39,12 +44,17 @@
           "source_id": "web_research_20251220_184904_575",
           "citation": "Research Agent web_research_20251220_184904_575",
           "reliability": "automated"
+        },
+        {
+          "source_id": "web_research_20251220_184904_578",
+          "citation": "Research Agent web_research_20251220_184904_578",
+          "reliability": "automated"
         }
       ],
       "importance": "medium",
       "created_by": "web_research_20251220_184904_571",
       "created_at": "2025-12-20T18:49:04.955365",
-      "last_updated": "2025-12-20T18:49:05.145213"
+      "last_updated": "2025-12-20T18:49:05.274485"
     }
   ],
   "metadata": {
@@ -54,6 +64,6 @@
       "earliest": "2025-12-19",
       "latest": "2025-12-19"
     },
-    "last_updated": "2025-12-20T18:49:05.145222"
+    "last_updated": "2025-12-20T18:49:05.274491"
   }
 }

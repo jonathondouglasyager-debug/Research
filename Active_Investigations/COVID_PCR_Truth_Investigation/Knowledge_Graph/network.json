@@ -52,96 +52,96 @@
       "name": "This",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956549",
-      "last_updated": "2025-12-20T18:49:05.154342",
+      "last_updated": "2025-12-20T18:49:05.283080",
       "degree": 0
     },
     "Agent": {
       "name": "Agent",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956574",
-      "last_updated": "2025-12-20T18:49:05.154349",
+      "last_updated": "2025-12-20T18:49:05.283084",
       "degree": 0
     },
     "Provide": {
       "name": "Provide",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956579",
-      "last_updated": "2025-12-20T18:49:05.154353",
+      "last_updated": "2025-12-20T18:49:05.283086",
       "degree": 0
     },
     "Sample Entities\n\nExample Corporation": {
       "name": "Sample Entities\n\nExample Corporation",
       "type": "Corporation",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956584",
-      "last_updated": "2025-12-20T18:49:05.154363",
+      "last_updated": "2025-12-20T18:49:05.283089",
       "degree": 0
     },
     "Corporation": {
       "name": "Corporation",
       "type": "Corporation",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956588",
-      "last_updated": "2025-12-20T18:49:05.154365",
+      "last_updated": "2025-12-20T18:49:05.283091",
       "degree": 0
     },
     "Institution": {
       "name": "Institution",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956592",
-      "last_updated": "2025-12-20T18:49:05.154367",
+      "last_updated": "2025-12-20T18:49:05.283093",
       "degree": 0
     },
     "Sample Technology": {
       "name": "Sample Technology",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 1 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956597",
-      "last_updated": "2025-12-20T18:49:05.154369",
+      "last_updated": "2025-12-20T18:49:05.283095",
       "degree": 0
     },
     "Technology": {
       "name": "Technology",
       "type": "Organization",
       "properties": {
-        "description": "Entity discovered during research on: Trace FDA approval timeline for COVID-19 PCR tests and Emergency Use Authorizations",
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
         "role": "Mentioned 2 times in research",
-        "source": "Agent web_research_20251220_184904_575"
+        "source": "Agent web_research_20251220_184904_578"
       },
       "first_seen": "2025-12-20T18:49:04.956600",
-      "last_updated": "2025-12-20T18:49:05.154371",
+      "last_updated": "2025-12-20T18:49:05.283097",
       "degree": 0
     },
     "Trace": {
@@ -167,12 +167,24 @@
       "first_seen": "2025-12-20T18:49:05.154338",
       "last_updated": "2025-12-20T18:49:05.154339",
       "degree": 0
+    },
+    "Map": {
+      "name": "Map",
+      "type": "Organization",
+      "properties": {
+        "description": "Entity discovered during research on: Map the diagnostic testing industry consolidation from 2019-2025",
+        "role": "Mentioned 2 times in research",
+        "source": "Agent web_research_20251220_184904_578"
+      },
+      "first_seen": "2025-12-20T18:49:05.283070",
+      "last_updated": "2025-12-20T18:49:05.283076",
+      "degree": 0
     }
   },
   "edges": [],
   "metadata": {
     "investigation": "COVID_PCR_Truth_Investigation",
-    "total_nodes": 14,
+    "total_nodes": 15,
     "total_edges": 0,
     "most_connected": [
       [
@@ -216,6 +228,6 @@
         0
       ]
     ],
-    "last_updated": "2025-12-20T18:49:05.154399"
+    "last_updated": "2025-12-20T18:49:05.283115"
   }
 }
