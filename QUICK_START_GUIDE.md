@@ -57,17 +57,19 @@ Spawns Research Agents (one per question)
   ↓
 Agents Execute Research
   ↓
-Integration Controller Runs
-  ├─ Entities added to database
-  ├─ Fuzzy matching (merges duplicates)
-  ├─ Timeline events extracted
-  └─ Glossary terms identified
+FULL CIRCLE INTEGRATION:
+  ├─ Entities: Added to database with fuzzy matching
+  ├─ Glossary: Terms added to local + master glossaries
+  ├─ Timeline: Events added chronologically
+  ├─ Network: Knowledge graph updated with connections
+  └─ Cross-References: Entity relationships tracked globally
   ↓
-Consolidated Report Generated
-  ├─ All agent findings combined
-  ├─ Executive summary created
-  ├─ Next steps suggested
-  └─ Beautiful HTML report saved
+VISUALIZATIONS GENERATED:
+  ├─ Consolidated Report (all findings combined)
+  ├─ Timeline HTML (interactive chronological view)
+  ├─ Network Graph (entity relationship visualization)
+  ├─ Glossary Markdown (term definitions)
+  └─ Cross-Reference Report (global connections)
   ↓
 Git Auto-Commits Everything
   ↓
@@ -117,19 +119,54 @@ Your findings here...
 
 ## 🔍 View Your Results
 
-### Consolidated Research Report (Recommended)
-After processing completes, open your consolidated report:
-```
-Active_Investigations\{Investigation_Name}\Consolidated_Research_Report.html
-```
+After processing, you get **5 interactive visualizations** per investigation:
+
+### 1. Consolidated Research Report (Main Overview)
+**Location:** `Active_Investigations\{Investigation}\Consolidated_Research_Report.html`
 
 Shows:
-- All agent findings in one place
+- All agent findings combined
 - Entities discovered across all agents
-- Timeline of events
-- Glossary of terms
+- Timeline events preview
+- Glossary terms preview
 - Recommended next research steps
 - All sources referenced
+
+### 2. Timeline Visualization
+**Location:** `Active_Investigations\{Investigation}\timeline.html`
+
+Shows:
+- Chronological events discovered
+- Grouped by year
+- Entities involved in each event
+- Color-coded by importance
+
+### 3. Knowledge Graph Network
+**Location:** `Active_Investigations\{Investigation}\Knowledge_Graph\network_visualization.html`
+
+Shows:
+- Interactive network of entities
+- Visual relationships between entities
+- Click and drag to explore
+- Connection strength visualization
+
+### 4. Glossary Reference
+**Location:** `Active_Investigations\{Investigation}\glossary.md`
+
+Shows:
+- All terms defined during research
+- Alphabetically organized
+- Context for each term
+- Mention counts
+
+### 5. Cross-Reference Report (Global View)
+**Location:** `_Intelligence\cross_reference_report.html`
+
+Shows:
+- Entities appearing in multiple investigations
+- Strongest co-occurrence patterns
+- Global research connections
+- Cross-investigation insights
 
 ### Monitor Agents in Real-Time
 ```cmd
@@ -139,16 +176,13 @@ start Tools_and_Systems\Master_Research_Hub\agent_monitor_dashboard.html
 
 Or double-click the **Research Intelligence Platform** desktop shortcut!
 
-Shows:
-- Active agents and their status
-- Completed agents
-- Pending integrations
-- Real-time updates every 5 seconds
-
 ### View Raw Data
 - **Entity Database:** `Active_Investigations\{Investigation}\entity_database.csv`
-- **Agent Findings:** `Active_Investigations\{Investigation}\Agent_Findings\{agent_id}\summary.md`
-- **Live Dashboard:** `research_dashboard.html` (auto-generated)
+- **Network Data:** `Active_Investigations\{Investigation}\Knowledge_Graph\network.json`
+- **Glossary Data:** `Active_Investigations\{Investigation}\glossary.json`
+- **Timeline Data:** `Active_Investigations\{Investigation}\timeline.json`
+- **Master Glossary:** `_Intelligence\master_glossary.json`
+- **Cross-References:** `_Intelligence\cross_references.json`
 
 ---
 
@@ -170,6 +204,48 @@ python _System\integration_controller.py run
 ```cmd
 python _Automation\organize_and_sync.py
 ```
+
+---
+
+## 📄 Document Analysis (NEW in Phase 2!)
+
+Process PDFs, Excel, CSV, Word documents directly:
+
+### Analyze a PDF
+```cmd
+python _System\agent_manager.py document --document "path\to\file.pdf" --investigation "Investigation_Name"
+```
+
+### Analyze Excel Spreadsheet
+```cmd
+python _System\agent_manager.py document --document "data.xlsx" --investigation "Investigation_Name"
+```
+
+### Analyze CSV Data
+```cmd
+python _System\agent_manager.py document --document "data.csv" --investigation "Investigation_Name"
+```
+
+### With Specific Research Question
+```cmd
+python _System\agent_manager.py document --document "file.pdf" --investigation "Investigation_Name" --question "What are the key findings about X?"
+```
+
+**Supported Formats:**
+- PDF (.pdf)
+- Excel (.xlsx, .xls)
+- CSV (.csv)
+- Word (.docx, .doc)
+- Text (.txt)
+- Markdown (.md)
+
+**What Gets Extracted:**
+- Full text content
+- Tables and data
+- Entities (companies, people, organizations)
+- Timeline events (dates mentioned)
+- Glossary terms (acronyms, definitions)
+- Statistics (for data files)
 
 ---
 

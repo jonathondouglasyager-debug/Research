@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Intelligence Platform - Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e14 0%, #1a2332 100%);
+            color: #e6edf3;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            background: linear-gradient(135deg, #00d9ff 0%, #00ff9f 100%);
+            color: #0a0e14;
+            padding: 50px 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.8;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #00d9ff;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 217, 255, 0.3);
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0, 255, 159, 0.1) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #00d9ff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+            border-left-color: #00ff9f;
+        }
+        .card-title {
+            color: #00d9ff;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .card-description {
+            color: #e6edf3;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .card-location {
+            color: #8b95a1;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-top: 8px;
+            font-size: 0.85em;
+        }
+        .investigation-select {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e6edf3;
+            border: 2px solid #00d9ff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .info-box {
+            background: rgba(255, 165, 0, 0.1);
+            border-left: 4px solid #ffa500;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .info-box h3 {
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Research Intelligence Platform</h1>
+            <div class="subtitle">Your Complete Research Command Center</div>
+        </header>
+
+        <div class="section">
+            <h2>Investigation Outputs</h2>
+            <p style="color: #8b95a1; margin-bottom: 20px;">Select your investigation to access all visualizations and data</p>
+
+            <select class="investigation-select" id="investigation-select" onchange="updateLinks()">
+                <option value="COVID_PCR_Truth_Investigation">COVID PCR Truth Investigation</option>
+                <option value="Weather_Modification">Weather Modification</option>
+                <option value="Fox_News_Corp_Investigation">Fox News Corp Investigation</option>
+                <option value="Surveillance_Infrastructure">Surveillance Infrastructure</option>
+                <option value="Flight_Tracking">Flight Tracking</option>
+                <option value="Media_Ownership">Media Ownership</option>
+                <option value="General_Research">General Research</option>
+            </select>
+
+            <div class="card-grid">
+                <a id="link-consolidated" href="#">
+                    <div class="card">
+                        <div class="card-title">📊 Consolidated Report</div>
+                        <div class="card-description">
+                            Complete overview of all research findings. Best place to start.
+                        </div>
+                        <div>
+                            <span class="badge">All Findings</span>
+                            <span class="badge">Executive Summary</span>
+                            <span class="badge">Next Steps</span>
+                        </div>
+                        <div class="card-location" id="loc-consolidated">Active_Investigations/{Investigation}/Consolidated_Research_Report.html</div>
+                    </div>
+                </a>
+
+                <a id="link-timeline" href="#">
+                    <div class="card">
+                        <div class="card-title">📅 Timeline</div>
+                        <div class="card-description">
+                            Chronological view of all events discovered during research.
+                        </div>
+                        <div>
+                            <span class="badge">Events by Year</span>
+                            <span class="badge">Entity Connections</span>
+                        </div>
+                        <div class="card-location" id="loc-timeline">Active_Investigations/{Investigation}/timeline.html</div>
+                    </div>
+                </a>
+
+                <a id="link-network" href="#">
+                    <div class="card">
+                        <div class="card-title">🕸️ Knowledge Graph</div>
+                        <div class="card-description">
+                            Interactive network visualization of entity relationships.
+                        </div>
+                        <div>
+                            <span class="badge">Interactive</span>
+                            <span class="badge">Drag & Explore</span>
+                        </div>
+                        <div class="card-location" id="loc-network">Active_Investigations/{Investigation}/Knowledge_Graph/network_visualization.html</div>
+                    </div>
+                </a>
+
+                <a id="link-glossary" href="#">
+                    <div class="card">
+                        <div class="card-title">📖 Glossary</div>
+                        <div class="card-description">
+                            All terms and definitions discovered during research.
+                        </div>
+                        <div>
+                            <span class="badge">Alphabetical</span>
+                            <span class="badge">Contextual</span>
+                        </div>
+                        <div class="card-location" id="loc-glossary">Active_Investigations/{Investigation}/glossary.md</div>
+                    </div>
+                </a>
+
+                <a id="link-entities" href="#">
+                    <div class="card">
+                        <div class="card-title">🏢 Entity Database</div>
+                        <div class="card-description">
+                            Comprehensive database of all tracked entities with details.
+                        </div>
+                        <div>
+                            <span class="badge">CSV Format</span>
+                            <span class="badge">Excel Compatible</span>
+                        </div>
+                        <div class="card-location" id="loc-entities">Active_Investigations/{Investigation}/entity_database.csv</div>
+                    </div>
+                </a>
+
+                <a id="link-findings" href="#">
+                    <div class="card">
+                        <div class="card-title">🔍 Agent Findings</div>
+                        <div class="card-description">
+                            Individual research results from each autonomous agent.
+                        </div>
+                        <div>
+                            <span class="badge">Detailed</span>
+                            <span class="badge">Per Agent</span>
+                        </div>
+                        <div class="card-location" id="loc-findings">Active_Investigations/{Investigation}/Agent_Findings/</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Global Intelligence</h2>
+            <p style="color: #8b95a1; margin-bottom: 20px;">Cross-investigation insights and master databases</p>
+
+            <div class="card-grid">
+                <a href="_Intelligence/cross_reference_report.html">
+                    <div class="card">
+                        <div class="card-title">🔗 Cross-Reference Report</div>
+                        <div class="card-description">
+                            Entities and connections across ALL investigations. Global view.
+                        </div>
+                        <div>
+                            <span class="badge">Multi-Investigation</span>
+                            <span class="badge">Co-occurrences</span>
+                        </div>
+                        <div class="card-location">_Intelligence/cross_reference_report.html</div>
+                    </div>
+                </a>
+
+                <a href="_Intelligence/master_glossary.md">
+                    <div class="card">
+                        <div class="card-title">📚 Master Glossary</div>
+                        <div class="card-description">
+                            All terms from all investigations combined.
+                        </div>
+                        <div>
+                            <span class="badge">Comprehensive</span>
+                            <span class="badge">Cross-Indexed</span>
+                        </div>
+                        <div class="card-location">_Intelligence/master_glossary.md</div>
+                    </div>
+                </a>
+
+                <a href="research_dashboard.html">
+                    <div class="card">
+                        <div class="card-title">📈 Live Dashboard</div>
+                        <div class="card-description">
+                            Real-time overview with embedded data (auto-generated).
+                        </div>
+                        <div>
+                            <span class="badge">Real-Time</span>
+                            <span class="badge">Embedded Data</span>
+                        </div>
+                        <div class="card-location">research_dashboard.html</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Monitoring & Tools</h2>
+
+            <div class="card-grid">
+                <a href="Tools_and_Systems/Master_Research_Hub/agent_monitor_dashboard.html">
+                    <div class="card">
+                        <div class="card-title">🤖 Agent Monitor</div>
+                        <div class="card-description">
+                            Real-time status of all research agents.
+                        </div>
+                        <div>
+                            <span class="badge">Live Updates</span>
+                            <span class="badge">5 Second Refresh</span>
+                        </div>
+                        <div class="card-location">Tools_and_Systems/Master_Research_Hub/agent_monitor_dashboard.html</div>
+                    </div>
+                </a>
+
+                <a href="QUICK_START_GUIDE.md">
+                    <div class="card">
+                        <div class="card-title">📖 Quick Start Guide</div>
+                        <div class="card-description">
+                            Complete guide to using the research platform.
+                        </div>
+                        <div>
+                            <span class="badge">Documentation</span>
+                            <span class="badge">Examples</span>
+                        </div>
+                        <div class="card-location">QUICK_START_GUIDE.md</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Quick Access Commands</h3>
+            <p style="margin-top: 10px; line-height: 1.8;">
+                <strong>Process new research:</strong><br>
+                <code style="background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 4px; display: inline-block; margin-top: 5px;">
+                    cd C:\Users\jonat\Documents\Research && python _Automation\auto_process.py --auto
+                </code>
+            </p>
+        </div>
+
+        <div style="text-align: center; color: #8b95a1; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            Research Intelligence Platform - Phase 2 Complete
+        </div>
+    </div>
+
+    <script>
+        function updateLinks() {
+            const inv = document.getElementById('investigation-select').value;
+            const base = 'Active_Investigations';
+
+            // Update links
+            document.getElementById('link-consolidated').href = `${base}/${inv}/Consolidated_Research_Report.html`;
+            document.getElementById('link-timeline').href = `${base}/${inv}/timeline.html`;
+            document.getElementById('link-network').href = `${base}/${inv}/Knowledge_Graph/network_visualization.html`;
+            document.getElementById('link-glossary').href = `${base}/${inv}/glossary.md`;
+            document.getElementById('link-entities').href = `${base}/${inv}/entity_database.csv`;
+            document.getElementById('link-findings').href = `${base}/${inv}/Agent_Findings/`;
+
+            // Update locations
+            document.getElementById('loc-consolidated').textContent = `${base}/${inv}/Consolidated_Research_Report.html`;
+            document.getElementById('loc-timeline').textContent = `${base}/${inv}/timeline.html`;
+            document.getElementById('loc-network').textContent = `${base}/${inv}/Knowledge_Graph/network_visualization.html`;
+            document.getElementById('loc-glossary').textContent = `${base}/${inv}/glossary.md`;
+            document.getElementById('loc-entities').textContent = `${base}/${inv}/entity_database.csv`;
+            document.getElementById('loc-findings').textContent = `${base}/${inv}/Agent_Findings/`;
+        }
+
+        // Initialize with default
+        updateLinks();
+    </script>
+</body>
+</html>
