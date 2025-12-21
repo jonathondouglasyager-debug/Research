@@ -96,8 +96,9 @@ class AutoProcessor:
         cmd4_network = f'python _System\\network_integrator.py --investigation "{investigation}" --export-html'
         cmd4_glossary = f'python _System\\glossary_integrator.py --investigation "{investigation}" --export'
         cmd4_xref = 'python _System\\cross_reference_engine.py report'
-        cmd4 = f'{cmd4_timeline} && {cmd4_network} && {cmd4_glossary} && {cmd4_xref}'
-        commands.append(('Export Visualizations (Timeline/Network/Glossary/XRef)', cmd4))
+        cmd4_interactive = f'python _System\\interactive_document_viewer.py --document "{filepath}" --investigation "{investigation}"'
+        cmd4 = f'{cmd4_timeline} && {cmd4_network} && {cmd4_glossary} && {cmd4_xref} && {cmd4_interactive}'
+        commands.append(('Export Visualizations + Interactive Document', cmd4))
 
         # Command 5: Sync to GitHub
         cmd5 = 'python _Automation\\organize_and_sync.py'

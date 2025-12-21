@@ -65,6 +65,7 @@ FULL CIRCLE INTEGRATION:
   └─ Cross-References: Entity relationships tracked globally
   ↓
 VISUALIZATIONS GENERATED:
+  ├─ Interactive Document (live entity links, tooltips - Phase 3!)
   ├─ Consolidated Report (all findings combined)
   ├─ Timeline HTML (interactive chronological view)
   ├─ Network Graph (entity relationship visualization)
@@ -119,9 +120,25 @@ Your findings here...
 
 ## 🔍 View Your Results
 
-After processing, you get **5 interactive visualizations** per investigation:
+After processing, you get **6 interactive visualizations** per investigation (Phase 3 complete!):
 
-### 1. Consolidated Research Report (Main Overview)
+### 1. Interactive Research Document (NEW - Phase 3!) ✨
+**Location:** `Research_Inbox\{YourFile}_interactive.html`
+
+**Features:**
+- **Clickable Entities** - Click any entity name to see full details
+- **Hover Tooltips** - Hover over entities to see quick info
+- **Glossary Terms** - Hover over terms for instant definitions
+- **Source Citations** - Click citations to see sources
+- **Rich Formatting** - Beautiful, readable layout
+- **Navigation Links** - Quick links to all other visualizations
+
+**Special Syntax:**
+- `[[Entity Name]]` → Interactive entity link with tooltip
+- `[[term]]` → Glossary term with definition popup
+- `[[src_123]]` → Clickable source citation
+
+### 2. Consolidated Research Report (Main Overview)
 **Location:** `Active_Investigations\{Investigation}\Consolidated_Research_Report.html`
 
 Shows:
@@ -132,7 +149,7 @@ Shows:
 - Recommended next research steps
 - All sources referenced
 
-### 2. Timeline Visualization
+### 3. Timeline Visualization
 **Location:** `Active_Investigations\{Investigation}\timeline.html`
 
 Shows:
@@ -141,7 +158,7 @@ Shows:
 - Entities involved in each event
 - Color-coded by importance
 
-### 3. Knowledge Graph Network
+### 4. Knowledge Graph Network
 **Location:** `Active_Investigations\{Investigation}\Knowledge_Graph\network_visualization.html`
 
 Shows:
@@ -150,7 +167,7 @@ Shows:
 - Click and drag to explore
 - Connection strength visualization
 
-### 4. Glossary Reference
+### 5. Glossary Reference
 **Location:** `Active_Investigations\{Investigation}\glossary.md`
 
 Shows:
@@ -159,7 +176,7 @@ Shows:
 - Context for each term
 - Mention counts
 
-### 5. Cross-Reference Report (Global View)
+### 6. Cross-Reference Report (Global View)
 **Location:** `_Intelligence\cross_reference_report.html`
 
 Shows:
