@@ -180,8 +180,9 @@ class InteractiveDocumentViewer:
         # Generate complete HTML page
         full_html = self._generate_html_page(html_content, markdown_file.stem)
 
-        # Save HTML
-        output_file = markdown_file.parent / f"{markdown_file.stem}_interactive.html"
+        # Save HTML to investigation directory (not source document directory)
+        # This ensures navigation links work correctly
+        output_file = self.investigation_dir / f"{markdown_file.stem}_interactive.html"
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(full_html)
 

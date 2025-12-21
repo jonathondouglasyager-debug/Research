@@ -123,7 +123,7 @@ Your findings here...
 After processing, you get **6 interactive visualizations** per investigation (Phase 3 complete!):
 
 ### 1. Interactive Research Document (NEW - Phase 3!) ✨
-**Location:** `Research_Inbox\{YourFile}_interactive.html`
+**Location:** `Active_Investigations\{Investigation}\{YourFile}_interactive.html`
 
 **Features:**
 - **Clickable Entities** - Click any entity name to see full details
