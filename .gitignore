@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
+_System/logs/
+_System/*_state.json
+_System/source_registry.json
+_System/versions/
+.env
+*.log
